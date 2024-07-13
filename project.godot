@@ -17,3 +17,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://global.tscn"
+
+[display]
+
+window/size/viewport_width=576
+window/size/viewport_height=324
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
