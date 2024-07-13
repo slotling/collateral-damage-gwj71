@@ -9,6 +9,8 @@ const default_data = { # REBOOT EXISTING SAVE FILE EVERYTIME YOU WANT TO CHANGE 
 var save_path: String = "user://megarion.anime"
 var data: Dictionary = { }
 
+
+
 func _ready():
 	#reboot_data()
 	load_data()
