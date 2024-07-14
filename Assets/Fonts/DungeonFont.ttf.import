@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bup6vndtdjoy3"
-path="res://.godot/imported/KOMIKAX_.ttf-4bacf1f39e80923248c614097f51cb54.fontdata"
+uid="uid://cwosu7y8ryfau"
+path="res://.godot/imported/DungeonFont.ttf-087023e295df8ad562340c75bc73a7f3.fontdata"
 
 [deps]
 
-source_file="res://Fonts/KOMIKAX_.ttf"
-dest_files=["res://.godot/imported/KOMIKAX_.ttf-4bacf1f39e80923248c614097f51cb54.fontdata"]
+source_file="res://Assets/Fonts/DungeonFont.ttf"
+dest_files=["res://.godot/imported/DungeonFont.ttf-087023e295df8ad562340c75bc73a7f3.fontdata"]
 
 [params]
 
