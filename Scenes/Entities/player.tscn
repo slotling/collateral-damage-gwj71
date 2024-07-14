@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2vt5m4ks2jor"]
+[gd_scene load_steps=4 format=3 uid="uid://d2vt5m4ks2jor"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player.gd" id="1_4mm5d"]
+[ext_resource type="PackedScene" uid="uid://7ua4udaksgfe" path="res://Handlers/movement_handler.tscn" id="2_wj5aa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vcs05"]
 radius = 16.0
@@ -11,3 +12,5 @@ script = ExtResource("1_4mm5d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_vcs05")
+
+[node name="MovementHandler" parent="." instance=ExtResource("2_wj5aa")]
