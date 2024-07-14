@@ -10,6 +10,12 @@ var running := false
 var dir := Vector2.ZERO
 var state := "idle"
 
+var bot_sprint_condition: bool = true # tells bots whether to sprint or not
+var bot_sprint_activation_threshold: int = 1000
+
+func _ready():
+	bot_sprint_activation_threshold = randi_range(200, 1000)
+
 func _physics_process(_delta):
 	
 	print(stamina)
@@ -28,7 +34,14 @@ func _physics_process(_delta):
 	
 	state = get_parent().state
 	
-	## Handle Anim Speed
+	## Handle bot sprint condition
+	if stamina >= bot_sprint_activation_threshold:
+		bot_sprint_condition = true
+	elif stamina <= randi_range(-100, 100):
+		bot_sprint_condition = false
+		bot_sprint_activation_threshold = randi_range(200, 1000)
+	
+	## Handle Speed
 	if running and stamina > -100 and state == "walk": # Proceed if stamina is drained AND is running
 		
 		speed_boost = int(float(stamina)/2.0) # Procedurally Generated Speed Boost
@@ -39,6 +52,7 @@ func _physics_process(_delta):
 		speed_boost = 0 # Remove Speed Boost
 		## Recharge Stamina
 		if stamina < max_stamina: # Prevent Overstamina
+			
 			if state == "idle": # Whilst Idle
 				stamina = clamp(stamina + 4, -INF, max_stamina) # Recharge Stamina
 			elif state == "walk": # Whilst Walking
