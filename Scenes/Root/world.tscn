@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://dxacdto1scojh"]
+[gd_scene load_steps=2 format=3 uid="uid://dxacdto1scojh"]
+
+[ext_resource type="PackedScene" uid="uid://dop5wt4mfcqi1" path="res://Scenes/Display/camera.tscn" id="1_k0bij"]
 
 [node name="World" type="Node2D"]
+
+[node name="Camera" parent="." instance=ExtResource("1_k0bij")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 88.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 104.0
+rotation = -0.785398
