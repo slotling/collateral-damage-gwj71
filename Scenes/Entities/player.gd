@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const ACCEL = 5000.0
-const MAX_SPEED = 500.0
+const ACCEL = 4000.0
+const MAX_SPEED = 400.0
 
 
 func _physics_process(delta):
@@ -18,5 +18,7 @@ func _physics_process(delta):
 	else:
 		velocity.y = move_toward(velocity.y, 0, delta_accel)
 	velocity.y = clamp(velocity.y, -MAX_SPEED, MAX_SPEED)
+	
+	
 
 	move_and_slide()
