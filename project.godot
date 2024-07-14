@@ -25,7 +25,8 @@ gdscript/warnings/untyped_declaration=1
 
 [display]
 
-window/size/resizable=false
+window/size/viewport_width=576
+window/size/viewport_height=324
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"
@@ -56,6 +57,11 @@ attack2={
 
 2d_physics/layer_1="you can name these"
 2d_physics/layer_2="idiot"
+
+[layer_names]
+
+2d_physics/layer_1="Default"
+2d_physics/layer_2="Soft Collision"
 
 [rendering]
 
