@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dw8xtna508csf"
-path="res://.godot/imported/PeaberryBase.ttf-a840a4903b73cf608a89dfb534d56379.fontdata"
+uid="uid://bi6x30dpos4nj"
+path="res://.godot/imported/m6x11plus.ttf-9e4f5a50de8321b7e40779d52d37c033.fontdata"
 
 [deps]
 
-source_file="res://Fonts/PeaberryBase.ttf"
-dest_files=["res://.godot/imported/PeaberryBase.ttf-a840a4903b73cf608a89dfb534d56379.fontdata"]
+source_file="res://Assets/Fonts/m6x11plus.ttf"
+dest_files=["res://.godot/imported/m6x11plus.ttf-9e4f5a50de8321b7e40779d52d37c033.fontdata"]
 
 [params]
 
