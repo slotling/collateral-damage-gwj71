@@ -3,7 +3,8 @@ extends Node
 const default_data = { # REBOOT EXISTING SAVE FILE EVERYTIME YOU WANT TO CHANGE THE DEFAULT DATA !!!
 	"settings":{
 		
-	}
+	},
+	"megarion":"is so skibidi",
 }
 
 var save_path: String = "user://megarion.anime"
