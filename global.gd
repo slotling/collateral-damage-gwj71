@@ -19,7 +19,6 @@ func save_data(): # saves the "data" dict onto the json file that is the save fi
 		file.store_var(data)
 		print(data)
 		file.close()
-		load_data()
 
 func load_data(): # load in the saved data from the save file into the game's "data" dict
 	if FileAccess.file_exists(save_path):
