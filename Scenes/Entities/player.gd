@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var movement_handler: Node = $MovementHandler
+@onready var health_handler: Node = $HealthHandler
 
 var state: String = "idle"
 
@@ -12,3 +13,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+
+func _on_health_handler_died(cause):
+	state = "dead"
