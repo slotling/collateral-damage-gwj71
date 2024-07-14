@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2vt5m4ks2jor"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/player.gd" id="1_4mm5d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vcs05"]
+radius = 16.0
+height = 64.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_4mm5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_vcs05")
