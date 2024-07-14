@@ -17,9 +17,6 @@ func _ready():
 	bot_sprint_activation_threshold = randi_range(200, 1000)
 
 func _physics_process(_delta):
-	
-	print(stamina)
-	
 	## Validity Check
 	if get_parent().state == "dead":
 		return

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca3tsn8ksqgef"]
+
+[ext_resource type="Script" path="res://Scenes/Misc/UpCurvePath.gd" id="1_ijatl"]
+
+[sub_resource type="Curve2D" id="Curve2D_wsca1"]
+
+[node name="UpCurvePath" type="Path2D"]
+editor_description = "enable editable children and add to pathfollow2d node"
+curve = SubResource("Curve2D_wsca1")
+script = ExtResource("1_ijatl")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotation = -1.9513
+rotates = false
+loop = false

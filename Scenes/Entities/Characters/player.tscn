@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2vt5m4ks2jor"]
+[gd_scene load_steps=7 format=3 uid="uid://d2vt5m4ks2jor"]
 
-[ext_resource type="Script" path="res://Scenes/Entities/player.gd" id="1_4mm5d"]
+[ext_resource type="Script" path="res://Scenes/Entities/Characters/player.gd" id="1_4mm5d"]
 [ext_resource type="PackedScene" uid="uid://dop5wt4mfcqi1" path="res://Scenes/Display/camera.tscn" id="2_04t7k"]
 [ext_resource type="PackedScene" uid="uid://7ua4udaksgfe" path="res://Handlers/movement_handler.tscn" id="2_wj5aa"]
 [ext_resource type="PackedScene" uid="uid://bd0rf1irac7tl" path="res://Handlers/health_handler.tscn" id="3_mkbxr"]
+[ext_resource type="PackedScene" uid="uid://48p86jdswl23" path="res://Handlers/AttackHandlers/CharacterAttack.tscn" id="5_a04fe"]
 [ext_resource type="PackedScene" uid="uid://bn7wfghlv05w0" path="res://Handlers/soft_collision.tscn" id="5_y6jt2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6q348"]
@@ -29,5 +30,9 @@ shape = SubResource("RectangleShape2D_jroy1")
 [node name="MovementHandler" parent="." instance=ExtResource("2_wj5aa")]
 
 [node name="HealthHandler" parent="." instance=ExtResource("3_mkbxr")]
+
+[node name="CharacterAttack1" parent="." instance=ExtResource("5_a04fe")]
+
+[node name="CharacterAttack2" parent="." instance=ExtResource("5_a04fe")]
 
 [connection signal="died" from="HealthHandler" to="." method="_on_health_handler_died"]
