@@ -1,13 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxacdto1scojh"]
 
 [ext_resource type="TileSet" uid="uid://ceesdgnytboj8" path="res://Resources/Tilesets/MainTileset.tres" id="1_rnnsq"]
-[ext_resource type="PackedScene" uid="uid://d2vt5m4ks2jor" path="res://Scenes/Entities/player.tscn" id="2_ude3w"]
+[ext_resource type="PackedScene" uid="uid://djorhqqn1rked" path="res://Scenes/Entities/Characters/demolitionist_player.tscn" id="2_0m2oe"]
 
 [node name="World" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("2_ude3w")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_rnnsq")
 format = 2
-layer_0/tile_data = PackedInt32Array(-262151, 0, 0, -196615, 0, 0, -131079, 0, 0, -65543, 0, 0, -7, 0, 0, 65529, 0, 0, 131065, 0, 0, 196601, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 65543, 0, 0, 7, 0, 0, -65529, 0, 0, -131065, 0, 0, -196601, 0, 0, -262137, 0, 0, -262138, 0, 0, -262139, 0, 0, -327676, 0, 0, -327677, 0, 0, -327678, 0, 0, -327679, 0, 0, -327680, 0, 0, -262145, 0, 0, -262146, 0, 0, -262147, 0, 0, -262148, 0, 0, -262149, 0, 0, -262150, 0, 0, 196613, 0, 0, -327675, 0, 0, -131076, 0, 0, -131077, 0, 0, -65541, 0, 0, 4, 0, 0, -65532, 0, 0)
+layer_0/tile_data = PackedInt32Array(131069, 0, 0, 196605, 0, 0, 262141, 0, 0, 327677, 0, 0, 327678, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 262146, 0, 0, 262147, 0, 0, 196611, 0, 0, 196612, 0, 0, 131076, 0, 0, 65540, 0, 0, 4, 0, 0, -65532, 0, 0, -131068, 0, 0, -131069, 0, 0, -196606, 0, 0, -196607, 0, 0, -262144, 0, 0, -196609, 0, 0, -196610, 0, 0, -196611, 0, 0, -131076, 0, 0, -65540, 0, 0, -5, 0, 0, 65531, 0, 0, 131067, 0, 0, 131068, 0, 0)
+
+[node name="DemolitionistPlayer" parent="." instance=ExtResource("2_0m2oe")]
+position = Vector2(96, 16)

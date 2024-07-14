@@ -11,9 +11,6 @@ var dir := Vector2.ZERO
 var state := "idle"
 
 func _physics_process(_delta):
-	
-	print(stamina)
-	
 	## Validity Check
 	if get_parent().state == "dead":
 		return

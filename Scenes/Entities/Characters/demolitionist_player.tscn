@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://djorhqqn1rked"]
+
+[ext_resource type="PackedScene" uid="uid://d2vt5m4ks2jor" path="res://Scenes/Entities/Characters/player.tscn" id="1_w0i3m"]
+[ext_resource type="Script" path="res://Handlers/AttackHandlers/Demolitionist_Attack1.gd" id="2_svhre"]
+
+[node name="DemolitionistPlayer" instance=ExtResource("1_w0i3m")]
+
+[node name="CharacterAttack1" parent="." index="4"]
+script = ExtResource("2_svhre")

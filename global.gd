@@ -38,3 +38,7 @@ func reboot_data(): # reverts both the save file's data and the "data" dict to t
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.close()
 	save_data()
+
+# Utility functions
+func add_world_node(instance):
+	get_tree().get_root().add_child(instance)
