@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dwyk283kseamj"
-path="res://.godot/imported/novem___.ttf-5c4b350e50ceebe7067c963db8304fbb.fontdata"
+uid="uid://bh5clhb7q8f3r"
+path="res://.godot/imported/Ubuntu-MI.ttf-4532f89a0c1852c86bf09b26685dafb7.fontdata"
 
 [deps]
 
-source_file="res://Fonts/novem___.ttf"
-dest_files=["res://.godot/imported/novem___.ttf-5c4b350e50ceebe7067c963db8304fbb.fontdata"]
+source_file="res://Assets/Fonts/Ubuntu-MI.ttf"
+dest_files=["res://.godot/imported/Ubuntu-MI.ttf-4532f89a0c1852c86bf09b26685dafb7.fontdata"]
 
 [params]
 
