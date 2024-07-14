@@ -9,6 +9,8 @@ const default_data = { # REBOOT EXISTING SAVE FILE EVERYTIME YOU WANT TO CHANGE 
 var save_path: String = "user://megarion.anime"
 var data: Dictionary = { }
 
+
+
 func _ready():
 	#reboot_data()
 	load_data()
@@ -19,6 +21,7 @@ func save_data(): # saves the "data" dict onto the json file that is the save fi
 		file.store_var(data)
 		print(data)
 		file.close()
+		load_data()
 
 func load_data(): # load in the saved data from the save file into the game's "data" dict
 	if FileAccess.file_exists(save_path):
