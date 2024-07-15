@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfqvhwih0qcti"]
+
+[ext_resource type="PackedScene" uid="uid://ca3tsn8ksqgef" path="res://Scenes/Misc/UpCurvePath.tscn" id="1_eohv5"]
+[ext_resource type="Script" path="res://Scenes/Entities/Projectiles/Bomb.gd" id="1_vxjbw"]
+
+[sub_resource type="Curve2D" id="Curve2D_a7154"]
+resource_local_to_scene = true
+
+[node name="Bomb" type="Node2D"]
+script = ExtResource("1_vxjbw")
+
+[node name="UpCurvePath" parent="." instance=ExtResource("1_eohv5")]
+curve = SubResource("Curve2D_a7154")
+
+[node name="ColorRect" type="ColorRect" parent="UpCurvePath/PathFollow2D" index="0"]
+offset_left = -19.3123
+offset_top = -16.3412
+offset_right = 20.6877
+offset_bottom = 23.6588
+rotation = -0.261799
+
+[editable path="UpCurvePath"]

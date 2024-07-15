@@ -36,8 +36,6 @@ func custom_params_setup() -> void:
 		"max_stamina",
 	]:
 		movement_handler.set(i, get(i))
-	
-	
 
 func target_setup() -> void:
 	await get_tree().physics_frame
@@ -51,10 +49,7 @@ func navigate_dir() -> Vector2:
 	return global_position.direction_to(nav_agent.get_next_path_position())
 
 func _physics_process(delta: float) -> void:
-	
 	dir = navigate_dir()
-	
-	print(dir)
 	
 	if soft_collision.is_colliding():
 		velocity += soft_collision.get_push_vector() * delta * 1000
@@ -65,4 +60,5 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-
+func _on_health_handler_died(cause):
+	queue_free()
