@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://djorhqqn1rked"]
+[gd_scene load_steps=4 format=3 uid="uid://djorhqqn1rked"]
 
 [ext_resource type="PackedScene" uid="uid://d2vt5m4ks2jor" path="res://Scenes/Entities/Characters/player.tscn" id="1_w0i3m"]
 [ext_resource type="Script" path="res://Handlers/AttackHandlers/Demolitionist_Attack1.gd" id="2_svhre"]
+[ext_resource type="Texture2D" uid="uid://b1k3mggtht0mx" path="res://icon.svg" id="3_akf5q"]
 
 [node name="DemolitionistPlayer" instance=ExtResource("1_w0i3m")]
-collision_layer = 0
 
 [node name="CharacterAttack1" parent="." index="5"]
 script = ExtResource("2_svhre")
+
+[node name="Icon" type="Sprite2D" parent="." index="7"]
+texture = ExtResource("3_akf5q")
