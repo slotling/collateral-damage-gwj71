@@ -62,3 +62,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_health_handler_died(cause):
 	queue_free()
+
+func _on_hit_box_handler_hit(strength, cause):
+	health_handler.affect(-abs(strength), cause)
