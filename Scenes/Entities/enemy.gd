@@ -12,6 +12,7 @@ extends CharacterBody2D
 @export_category("Movement Handler")
 @export var speed: int = 150
 @export var max_stamina: int = 1000
+@export var knockback_multiplier: int = 50
 
 var state: String = "idle"
 var dir: Vector2 = Vector2.ZERO
@@ -34,6 +35,7 @@ func custom_params_setup() -> void:
 	for i in [
 		"speed",
 		"max_stamina",
+		"knockback_multiplier"
 	]:
 		movement_handler.set(i, get(i))
 
@@ -63,5 +65,5 @@ func _physics_process(delta: float) -> void:
 func _on_health_handler_died(cause):
 	queue_free()
 
-func _on_hit_box_handler_hit(strength, cause):
-	health_handler.affect(-abs(strength), cause)
+func _on_hit_box_handler_hit(strength, cause, hurtbox_global_position):
+	health_handler.affect(-abs(strength), cause, hurtbox_global_position)
