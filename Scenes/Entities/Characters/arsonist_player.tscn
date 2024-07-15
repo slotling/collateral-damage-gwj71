@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl472ck8pk4d7"]
+
+[ext_resource type="PackedScene" uid="uid://d2vt5m4ks2jor" path="res://Scenes/Entities/Characters/player.tscn" id="1_ofonj"]
+[ext_resource type="Script" path="res://Handlers/AttackHandlers/Arsonist_Attack1.gd" id="2_owpu5"]
+
+[node name="ArsonistPlayer" instance=ExtResource("1_ofonj")]
+
+[node name="CharacterAttack1" parent="." index="5"]
+script = ExtResource("2_owpu5")
