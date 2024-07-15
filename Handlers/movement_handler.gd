@@ -3,6 +3,7 @@ extends Node
 @export var stamina := 1000
 @export var max_stamina := 1000
 @export var max_speed := 400
+@export var knockback_multiplier := 50
 @export_node_path("AnimatedSprite2D") var sprite_path
 
 var speed_boost := 0
@@ -15,6 +16,12 @@ var bot_sprint_activation_threshold: int = 1000
 
 func _ready():
 	bot_sprint_activation_threshold = randi_range(200, 1000)
+	await get_tree().physics_frame
+	get_parent().health_handler.connect("hit", push)
+
+func push(damage, cause, hurtbox_global_position):
+	var push_vector = (hurtbox_global_position.direction_to(get_parent().global_position)).normalized()
+	get_parent().velocity -= push_vector * (damage * knockback_multiplier)
 
 func _physics_process(_delta):
 	## Validity Check
