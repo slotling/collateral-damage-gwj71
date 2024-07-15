@@ -20,7 +20,7 @@ func save_data(): # saves the "data" dict onto the json file that is the save fi
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.WRITE)
 		file.store_var(data)
-		print(data)
+		print_rich("[rainbow freq=1.0 sat=0.8 val=0.8]" + str(data) + "[/rainbow]\n[img=160x160]res://UI/megarion.jpg[/img]")
 		file.close()
 		load_data()
 
@@ -28,7 +28,7 @@ func load_data(): # load in the saved data from the save file into the game's "d
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		data = file.get_var()
-		print(data)
+		print_rich("[rainbow freq=1.0 sat=0.8 val=0.8]" + str(data) + "[/rainbow]\n[img=160x160]res://UI/megarion.jpg[/img]")
 		file.close()
 	else:
 		reboot_data()
