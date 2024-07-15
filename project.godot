@@ -55,8 +55,9 @@ attack2={
 
 [layer_names]
 
-2d_physics/layer_1="Default"
+2d_physics/layer_1="World (layer) - Enemy & Player (mask)"
 2d_physics/layer_2="Soft Collision"
+2d_physics/layer_3="Enemy - Enemy"
 
 [rendering]
 
