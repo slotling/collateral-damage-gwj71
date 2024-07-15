@@ -4,14 +4,14 @@
 [ext_resource type="Script" path="res://Scenes/Entities/Projectiles/Bomb.gd" id="1_vxjbw"]
 [ext_resource type="Texture2D" uid="uid://b1k3mggtht0mx" path="res://icon.svg" id="3_wqwyo"]
 
-[sub_resource type="Curve2D" id="Curve2D_y73i5"]
+[sub_resource type="Curve2D" id="Curve2D_cu1qv"]
 resource_local_to_scene = true
 
 [node name="Bomb" type="Node2D"]
 script = ExtResource("1_vxjbw")
 
 [node name="UpCurvePath" parent="." instance=ExtResource("1_eohv5")]
-curve = SubResource("Curve2D_y73i5")
+curve = SubResource("Curve2D_cu1qv")
 
 [node name="Sprite2D" type="Sprite2D" parent="UpCurvePath/PathFollow2D" index="0"]
 modulate = Color(1, 0, 1, 1)
