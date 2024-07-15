@@ -1,8 +1,9 @@
 extends Node
 
-@export var stamina := 1000
-@export var max_stamina := 1000
-@export var max_speed := 400
+@export var stamina := 1000.0
+@export var max_stamina := 1000.0
+@export var max_speed := 250.0
+@export var running_speed_boost_multiplier := 2.0
 @export var knockback_multiplier := 50
 @export_node_path("AnimatedSprite2D") var sprite_path
 
@@ -47,8 +48,7 @@ func _physics_process(_delta):
 	
 	## Handle Speed
 	if running and stamina > -100 and state == "walk": # Proceed if stamina is drained AND is running
-		
-		speed_boost = int(float(stamina)/2.0) # Procedurally Generated Speed Boost
+		speed_boost = stamina/max_stamina*(running_speed_boost_multiplier-1)*max_speed # Procedurally Generated Speed Boost
 		## Drain Stamina Whilst Running
 		stamina = clamp(stamina - 5, -100, INF) # Drain Stamina
 	else: # Proceed if stamina is full OR is resting

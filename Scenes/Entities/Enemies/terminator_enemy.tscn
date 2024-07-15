@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://cedwbr4ui4t4j"]
+
+[ext_resource type="PackedScene" uid="uid://bgmyc6lbh46uf" path="res://Scenes/Entities/enemy.tscn" id="1_iclhj"]
+[ext_resource type="PackedScene" uid="uid://qo5gh36pq2cc" path="res://Handlers/AttackHandlers/enemy_attack.tscn" id="2_ky7sh"]
+[ext_resource type="Script" path="res://Handlers/AttackHandlers/EnemyAttacks/TerminatorEnemy_Attack1.gd" id="3_glmjw"]
+[ext_resource type="Script" path="res://Handlers/AttackHandlers/EnemyAttacks/TerminatorEnemy_Attack2.gd" id="4_lvvis"]
+
+[node name="TerminatorEnemy" instance=ExtResource("1_iclhj")]
+
+[node name="EnemyAttack" parent="EnemyAttacksGroup" index="0" instance=ExtResource("2_ky7sh")]
+script = ExtResource("3_glmjw")
+
+[node name="EnemyAttack2" parent="EnemyAttacksGroup" index="1" instance=ExtResource("2_ky7sh")]
+script = ExtResource("4_lvvis")

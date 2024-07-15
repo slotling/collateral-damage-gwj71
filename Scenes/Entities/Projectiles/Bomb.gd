@@ -14,7 +14,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$UpCurvePath/PathFollow2D.progress += 10
+	$UpCurvePath/PathFollow2D.progress += 400 * delta
 	
 	if $UpCurvePath/PathFollow2D.progress_ratio >= 1:
 		detonate()
