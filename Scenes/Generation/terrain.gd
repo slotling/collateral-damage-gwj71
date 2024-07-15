@@ -17,6 +17,9 @@ const tile_atlas_coords = [
 	Vector2(0, 0)
 ]
 
+func relocate_player(position:Vector2):
+	var target = get_tree().get_first_node_in_group("player")
+
 func generate():
 	var noise_value_array:Array = []
 	var noise_value_array_flattened:Array = []
@@ -31,14 +34,20 @@ func generate():
 	var max_val:float = noise_value_array_flattened.max()
 	var min_val:float = noise_value_array_flattened.min()
 	
+	var spawnable_tiles = []
+	
 	for x in range(size.x):
 		for y in range(size.y):
 			var noise_value_decimal = (noise_value_array[x][y] - min_val) / (max_val-min_val)
+			if noise_value_decimal <= 0.1:
+				spawnable_tiles.append(Vector2(x, y))
 			
 			for i in range(color_ramp_offsets.size()):
 				if noise_value_decimal <= color_ramp_offsets[i]:
 					generate_tile(i-1, x, y)
 					break
+	
+	relocate_player(spawnable_tiles.pick_random())
 
 func generate_initial():
 	for x in range(size.x+2):
