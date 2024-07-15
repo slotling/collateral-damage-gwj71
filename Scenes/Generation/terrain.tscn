@@ -5,11 +5,11 @@
 
 [sub_resource type="Gradient" id="Gradient_s6f1m"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.130435, 1)
+offsets = PackedFloat32Array(0, 0.347826, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_s0251"]
-frequency = 0.047
+frequency = 0.025
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1eg75"]
 color_ramp = SubResource("Gradient_s6f1m")

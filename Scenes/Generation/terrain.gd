@@ -3,7 +3,7 @@ extends Node2D
 @export var size:Vector2 = Vector2.ZERO
 
 @export var noise_map : NoiseTexture2D
-@onready var noise : Noise = noise_map.noise
+var noise : Noise
 @onready var color_ramp : Gradient = noise_map.color_ramp
 @onready var color_ramp_offsets : Array = noise_map.color_ramp.offsets
 
@@ -40,10 +40,19 @@ func generate():
 					generate_tile(i-1, x, y)
 					break
 
+func generate_initial():
+	for x in range(size.x+2):
+		for y in range(size.y+2):
+			generate_tile(0, x-1, y-1)
+
 func generate_tile(value, x, y):
 	tilemap.set_cell(0, Vector2(x-size.x/2, y-size.y/2), tile_source[value], tile_atlas_coords[value])
 
 func _ready():
+	randomize()
+	noise_map.noise.seed = randi()
+	noise = noise_map.noise
+	generate_initial()
 	generate()
 
 func _process(delta):

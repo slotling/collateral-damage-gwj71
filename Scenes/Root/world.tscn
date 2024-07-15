@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxacdto1scojh"]
+[gd_scene load_steps=3 format=3 uid="uid://dxacdto1scojh"]
 
 [ext_resource type="PackedScene" uid="uid://d3hrl4tjnukfe" path="res://Scenes/Generation/terrain.tscn" id="1_r6r10"]
 [ext_resource type="PackedScene" uid="uid://djorhqqn1rked" path="res://Scenes/Entities/Characters/demolitionist_player.tscn" id="2_0m2oe"]
-[ext_resource type="PackedScene" uid="uid://bgmyc6lbh46uf" path="res://Scenes/Entities/enemy.tscn" id="3_r2ge0"]
 
 [node name="World" type="Node2D"]
 
@@ -10,12 +9,11 @@
 size = Vector2(100, 100)
 
 [node name="DemolitionistPlayer" parent="." instance=ExtResource("2_0m2oe")]
+position = Vector2(4, 1)
+collision_layer = 0
+collision_mask = 0
 
-[node name="Enemy" parent="." instance=ExtResource("3_r2ge0")]
-position = Vector2(192, 160)
+[node name="Camera" parent="DemolitionistPlayer" index="0"]
+zoom = Vector2(0.25, 0.25)
 
-[node name="Enemy2" parent="." instance=ExtResource("3_r2ge0")]
-position = Vector2(-176, 240)
-
-[node name="Enemy3" parent="." instance=ExtResource("3_r2ge0")]
-position = Vector2(320, -32)
+[editable path="DemolitionistPlayer"]
