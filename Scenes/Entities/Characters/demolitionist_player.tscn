@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Handlers/AttackHandlers/Demolitionist_Attack1.gd" id="2_svhre"]
 
 [node name="DemolitionistPlayer" instance=ExtResource("1_w0i3m")]
+collision_layer = 0
 
-[node name="CharacterAttack1" parent="." index="4"]
+[node name="CharacterAttack1" parent="." index="5"]
 script = ExtResource("2_svhre")

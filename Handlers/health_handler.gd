@@ -12,3 +12,5 @@ func affect(value, cause):
 	if health == 0:
 		died.emit(cause)
 
+func _on_hit_box_handler_hit(strength, cause):
+	affect(-strength, cause)
