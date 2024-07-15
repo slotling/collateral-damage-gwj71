@@ -5,5 +5,5 @@
 
 [node name="DemolitionistPlayer" instance=ExtResource("1_w0i3m")]
 
-[node name="CharacterAttack1" parent="." index="4"]
+[node name="CharacterAttack1" parent="." index="5"]
 script = ExtResource("2_svhre")
