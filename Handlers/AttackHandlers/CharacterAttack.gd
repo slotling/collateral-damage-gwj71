@@ -9,7 +9,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var pressed := Input.is_action_just_pressed("attack1") if !is_secondary_attack else Input.is_action_just_pressed("attack2")
-	if pressed && $CooldownTimer.is_stopped():
+	if pressed and $CooldownTimer.is_stopped() and get_parent().state != "dead":
 		execute()
 		$CooldownTimer.start()
 
