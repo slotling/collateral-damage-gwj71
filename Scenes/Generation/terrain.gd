@@ -8,6 +8,9 @@ var noise : Noise
 @onready var color_ramp_offsets : Array = noise_map.color_ramp.offsets
 
 @onready var tilemap: TileMap = $TileMap
+@onready var tileset: TileSet = tilemap.tile_set
+@onready var tilesize: Vector2 = tileset.tile_size
+
 const tile_source = [
 	0,
 	1
@@ -17,8 +20,10 @@ const tile_atlas_coords = [
 	Vector2(0, 0)
 ]
 
-func relocate_player(position:Vector2):
+func relocate_player(x, y):
 	var target = get_tree().get_first_node_in_group("player")
+	target.global_position = Vector2(x-size.x/2, y-size.y/2)*tilesize
+	print(target.global_position)
 
 func generate():
 	var noise_value_array:Array = []
@@ -39,7 +44,7 @@ func generate():
 	for x in range(size.x):
 		for y in range(size.y):
 			var noise_value_decimal = (noise_value_array[x][y] - min_val) / (max_val-min_val)
-			if noise_value_decimal <= 0.1:
+			if noise_value_decimal >= 0.5:
 				spawnable_tiles.append(Vector2(x, y))
 			
 			for i in range(color_ramp_offsets.size()):
@@ -47,7 +52,8 @@ func generate():
 					generate_tile(i-1, x, y)
 					break
 	
-	relocate_player(spawnable_tiles.pick_random())
+	var random_spawnable_tile_pos = spawnable_tiles.pick_random()
+	relocate_player(random_spawnable_tile_pos.x, random_spawnable_tile_pos.y)
 
 func generate_initial():
 	for x in range(size.x+2):

@@ -13,7 +13,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta) -> void:
+func _physics_process(delta) -> void:
 	$UpCurvePath/PathFollow2D.progress += 400 * delta
 	if $UpCurvePath/PathFollow2D.progress_ratio >= 1:
 		detonate()

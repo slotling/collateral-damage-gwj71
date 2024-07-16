@@ -20,6 +20,6 @@ size = Vector2(100, 100)
 position = Vector2(4, 1)
 
 [node name="TerminatorEnemy" parent="." instance=ExtResource("3_4ti20")]
-position = Vector2(-72, 32)
+position = Vector2(-344, -176)
 
 [editable path="DemolitionistPlayer"]
