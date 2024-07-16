@@ -1,6 +1,6 @@
 extends Area2D
 
-signal hit(strength: int, cause: String)
+signal hit(strength: int, cause: String, hurtbox_global_position: Vector2)
 signal cooldown_end()
 
 @export var immune := false

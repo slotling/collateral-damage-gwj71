@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-func _on_health_handler_died(cause):
+func _on_health_handler_died(value, cause, hurtbox_global_position):
 	queue_free()
 
 func _on_hit_box_handler_hit(strength, cause, hurtbox_global_position):
