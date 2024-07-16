@@ -17,7 +17,7 @@ size = Vector2(32, 24)
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ap06"]
 radius = 8.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy", "enemy_and_player"]]
 collision_layer = 4
 collision_mask = 5
 motion_mode = 1
@@ -49,8 +49,7 @@ shape = SubResource("CircleShape2D_6ap06")
 [node name="MovementHandler" parent="." instance=ExtResource("3_od5h0")]
 max_speed = 150
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." groups=["enemy"]]
 
 [node name="EnemyAttacksGroup" parent="." instance=ExtResource("7_73tpc")]
 

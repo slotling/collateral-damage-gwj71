@@ -1,12 +1,14 @@
 extends Node
 class_name EnemyAttack
 
-@export var cooldown = 1
+@export var disabled:bool = false
+
+@onready var enemy: Enemy = get_parent().get_parent()
+@onready var player: Player = get_tree().get_first_node_in_group("player")
 
 func _ready():
-	pass # Replace with function body.
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 

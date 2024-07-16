@@ -13,7 +13,7 @@ radius = 40.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jroy1"]
 size = Vector2(24, 24)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["enemy_and_player", "player"]]
 motion_mode = 1
 script = ExtResource("1_4mm5d")
 
