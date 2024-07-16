@@ -1,6 +1,6 @@
 extends Node
 
-signal died(cause)
+signal died(value, cause, hurtbox_global_position)
 signal hit(value, cause, hurtbox_global_position)
 
 @export var health : int = 100
