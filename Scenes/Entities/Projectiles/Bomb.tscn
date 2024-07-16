@@ -1,22 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfqvhwih0qcti"]
+[gd_scene load_steps=5 format=3 uid="uid://cfqvhwih0qcti"]
 
 [ext_resource type="PackedScene" uid="uid://ca3tsn8ksqgef" path="res://Scenes/Misc/UpCurvePath.tscn" id="1_eohv5"]
 [ext_resource type="Script" path="res://Scenes/Entities/Projectiles/Bomb.gd" id="1_vxjbw"]
-
-[sub_resource type="Curve2D" id="Curve2D_7n3nd"]
-resource_local_to_scene = true
+[ext_resource type="Curve2D" uid="uid://co1oeabgggmst" path="res://Resources/Curves/ProjectileCurve.tres" id="3_22m7i"]
+[ext_resource type="Texture2D" uid="uid://b1k3mggtht0mx" path="res://icon.svg" id="3_wqwyo"]
 
 [node name="Bomb" type="Node2D"]
 script = ExtResource("1_vxjbw")
 
 [node name="UpCurvePath" parent="." instance=ExtResource("1_eohv5")]
-curve = SubResource("Curve2D_7n3nd")
+curve = ExtResource("3_22m7i")
 
-[node name="ColorRect" type="ColorRect" parent="UpCurvePath/PathFollow2D" index="0"]
-offset_left = -19.3123
-offset_top = -16.3412
-offset_right = 20.6877
-offset_bottom = 23.6588
-rotation = -0.261799
+[node name="Sprite2D" type="Sprite2D" parent="UpCurvePath/PathFollow2D" index="0"]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("3_wqwyo")
 
 [editable path="UpCurvePath"]
