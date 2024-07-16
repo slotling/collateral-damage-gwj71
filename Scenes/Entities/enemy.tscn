@@ -42,6 +42,11 @@ shape = SubResource("RectangleShape2D_pck75")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6ap06")
 
+[node name="ReactionTimeTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.25
+autostart = true
+
 [node name="HealthHandler" parent="." instance=ExtResource("2_mm7t0")]
 
 [node name="MovementHandler" parent="." instance=ExtResource("3_od5h0")]
@@ -51,4 +56,5 @@ max_speed = 150
 path_postprocessing = 1
 
 [connection signal="hit" from="HitBoxHandler" to="." method="_on_hit_box_handler_hit"]
+[connection signal="timeout" from="ReactionTimeTimer" to="." method="_on_reaction_time_timer_timeout"]
 [connection signal="died" from="HealthHandler" to="." method="_on_health_handler_died"]
