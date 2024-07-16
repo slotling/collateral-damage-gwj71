@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxacdto1scojh"]
+[gd_scene load_steps=3 format=3 uid="uid://dxacdto1scojh"]
 
 [ext_resource type="PackedScene" uid="uid://d3hrl4tjnukfe" path="res://Scenes/Generation/terrain.tscn" id="1_r6r10"]
 [ext_resource type="PackedScene" uid="uid://djorhqqn1rked" path="res://Scenes/Entities/Characters/demolitionist_player.tscn" id="2_0m2oe"]
-[ext_resource type="PackedScene" uid="uid://brrquad1bj0h1" path="res://Scenes/Environment/bamboo.tscn" id="3_wogju"]
 
 [node name="World" type="Node2D"]
 
@@ -14,8 +13,5 @@ position = Vector2(4, 1)
 
 [node name="Camera" parent="DemolitionistPlayer" index="0"]
 zoom = Vector2(0.25, 0.25)
-
-[node name="Bamboo" parent="." instance=ExtResource("3_wogju")]
-position = Vector2(64, -64)
 
 [editable path="DemolitionistPlayer"]
