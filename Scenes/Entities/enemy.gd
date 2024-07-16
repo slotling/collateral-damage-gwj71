@@ -50,7 +50,7 @@ func navigate_dir() -> Vector2:
 	return global_position.direction_to(nav_agent.get_next_path_position())
 
 func _physics_process(delta: float) -> void:
-	dir = navigate_dir()
+	
 	
 	if soft_collision.is_colliding():
 		velocity += soft_collision.get_push_vector() * delta * 1000
@@ -66,3 +66,6 @@ func _on_health_handler_died(value, cause, hurtbox_global_position):
 
 func _on_hit_box_handler_hit(strength, cause, hurtbox_global_position):
 	health_handler.affect(-abs(strength), cause, hurtbox_global_position)
+
+func _on_reaction_time_timer_timeout():
+	dir = navigate_dir()
