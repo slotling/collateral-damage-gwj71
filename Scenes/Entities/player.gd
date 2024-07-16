@@ -12,5 +12,5 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func _on_health_handler_died(cause):
+func _on_health_handler_died(value, cause, hurtbox_global_position):
 	state = "dead"

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://brrquad1bj0h1"]
+
+[ext_resource type="PackedScene" uid="uid://nnds0qqkrcr6" path="res://Scenes/Environment/environment_object.tscn" id="1_f4gq0"]
+[ext_resource type="Script" path="res://Scenes/Environment/bamboo.gd" id="2_mt40n"]
+[ext_resource type="PackedScene" uid="uid://yso47d6pjwco" path="res://Handlers/hit_box_handler.tscn" id="3_q3nrw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hib25"]
+radius = 16.0
+
+[node name="Bamboo" instance=ExtResource("1_f4gq0")]
+script = ExtResource("2_mt40n")
+regeneration_time = 1.0
+
+[node name="HealthHandler" parent="." index="1"]
+health = 10
+max_health = 10
+
+[node name="HitBoxHandler" parent="." index="6" instance=ExtResource("3_q3nrw")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxHandler" index="1"]
+shape = SubResource("CircleShape2D_hib25")
+
+[connection signal="hit" from="HitBoxHandler" to="." method="_on_hit_box_handler_hit"]
