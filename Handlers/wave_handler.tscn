@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://14wcwtgp2v2v"]
+
+[ext_resource type="Script" path="res://Handlers/WaveHandler.gd" id="1_1r20v"]
+
+[node name="WaveHandler" type="Node"]
+script = ExtResource("1_1r20v")
+
+[node name="WaveCooldown" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="wave_completed" from="." to="." method="_on_wave_completed"]
+[connection signal="timeout" from="WaveCooldown" to="." method="_on_wave_cooldown_timeout"]

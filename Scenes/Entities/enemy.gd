@@ -19,7 +19,6 @@ var dir: Vector2 = Vector2.ZERO
 var target: CharacterBody2D = null
 
 func _ready() -> void:
-	
 	custom_params_setup()
 	
 	target = get_tree().get_first_node_in_group("player")

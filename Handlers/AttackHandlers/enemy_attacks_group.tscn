@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://0hfltfn6va1t"]
+
+[ext_resource type="Script" path="res://Handlers/AttackHandlers/enemy_attacks_group.gd" id="1_2fq18"]
+
+[node name="EnemyAttacksGroup" type="Node"]
+script = ExtResource("1_2fq18")
