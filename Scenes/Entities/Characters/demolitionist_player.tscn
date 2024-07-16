@@ -6,7 +6,7 @@
 
 [node name="DemolitionistPlayer" instance=ExtResource("1_w0i3m")]
 
-[node name="CharacterAttack1" parent="." index="5"]
+[node name="CharacterAttack1" parent="." index="6"]
 script = ExtResource("2_svhre")
 
 [node name="Icon" type="Sprite2D" parent="." index="7"]

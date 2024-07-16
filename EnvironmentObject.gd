@@ -18,10 +18,15 @@ func _ready() -> void:
 func calculate_fall_to_vector(hurtbox_global_position) -> Vector2:
 	return -round(global_position.direction_to(hurtbox_global_position))
 
+func soft_anim_play(anim:String) -> void:
+	if anim_player.has_animation(anim):
+		anim_player.play(anim)
+
 func _on_health_handler_hit(value, cause, hurtbox_global_position) -> void:
 	sprite_shaker.shake()
 
 func _on_health_handler_died(value, cause, hurtbox_global_position) -> void:
+	soft_anim_play("hit")
 	
 	if regeneration_time <= 0.0:
 		queue_free()

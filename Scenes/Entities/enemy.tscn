@@ -52,7 +52,7 @@ autostart = true
 [node name="HealthHandler" parent="." instance=ExtResource("2_mm7t0")]
 
 [node name="MovementHandler" parent="." instance=ExtResource("3_od5h0")]
-max_speed = 150
+max_speed = 150.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true

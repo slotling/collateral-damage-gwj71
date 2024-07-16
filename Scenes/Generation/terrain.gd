@@ -90,6 +90,3 @@ func _ready():
 	generate_initial()
 	generate()
 	make_and_bake_navigation()
-
-func _process(delta):
-	print(Engine.get_frames_per_second())
