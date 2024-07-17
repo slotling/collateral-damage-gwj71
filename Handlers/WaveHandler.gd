@@ -1,11 +1,11 @@
 extends Node
+
 signal wave_completed
 signal all_waves_finished
 
 @onready var cooldown_timer = $WaveCooldown
 @onready var camera = get_tree().get_first_node_in_group("main_cam")
 @onready var enemy = preload("res://Scenes/Entities/enemy.tscn")
-
 
 @export var wave_cooldown: int
 @export var max_enemy_count: int
@@ -17,13 +17,10 @@ enum enemy_types {
 }
 
 var enemy_count: int = 0
+var current_wave: int = 0
 
-var current_wave = 0
 func _ready():
-
 	randomize()
-	
-
 
 func start_wave():
 	for n in range(max_enemy_count):
