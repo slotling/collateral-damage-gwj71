@@ -232,18 +232,25 @@ size = Vector2(32, 64)
 height = 64.0
 
 [node name="Bamboo" instance=ExtResource("1_f4gq0")]
+y_sort_enabled = true
 script = ExtResource("2_mt40n")
 regeneration_time = 1.0
 
+[node name="SpriteShaker" parent="." index="0"]
+duration = 6
+pause_interval = 0.02
+offset_range = 4
+
 [node name="HealthHandler" parent="." index="1"]
-health = 10
-max_health = 10
+health = 20
+max_health = 20
 
 [node name="Sprite2D" parent="." index="2"]
 texture = SubResource("AtlasTexture_mndo6")
 offset = Vector2(0, -16)
 
 [node name="GrownSprite" type="Sprite2D" parent="Sprite2D" index="0"]
+y_sort_enabled = true
 texture = ExtResource("4_fna0w")
 offset = Vector2(0, -70)
 

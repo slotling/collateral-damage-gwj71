@@ -18,7 +18,7 @@ debugNoRelocate = true
 size = Vector2(100, 100)
 
 [node name="DemolitionistPlayer" parent="." instance=ExtResource("2_0m2oe")]
-position = Vector2(4, 1)
+position = Vector2(80, 8)
 
 [node name="Bamboo" parent="." instance=ExtResource("4_4rcn2")]
 position = Vector2(128, -16)

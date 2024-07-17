@@ -6,6 +6,7 @@ extends Node
 @export var offset_range: int = 2
 
 var default_offset: Vector2
+var global_random_offset: Vector2 = Vector2.ZERO
 
 func shake() -> void:
 	var sprites_to_offset: Array = [sprite]
@@ -19,10 +20,19 @@ func shake() -> void:
 	for current_sprite_idx in sprites_to_offset.size():
 		soft_shake(sprites_to_offset[current_sprite_idx], original_offsets_list[current_sprite_idx])
 
+func set_global_random_offset(sprite_to_watch):
+	if sprite_to_watch != sprite:
+		return
+	global_random_offset.x = randi_range(-offset_range, offset_range)
+	global_random_offset.y = randi_range(-offset_range, offset_range)
+
 func soft_shake(current_sprite, offset) -> void:
+	
 	for i in duration:
+		
 		current_sprite.offset = offset
-		current_sprite.offset.x += randi_range(-offset_range, offset_range)
-		current_sprite.offset.y += randi_range(-offset_range, offset_range)
+		current_sprite.offset += global_random_offset
+		set_global_random_offset(current_sprite)
 		await get_tree().create_timer(pause_interval).timeout
+		
 	current_sprite.offset = offset
