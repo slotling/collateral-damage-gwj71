@@ -6,6 +6,7 @@ signal all_waves_finished
 @onready var cooldown_timer = $WaveCooldown
 @onready var camera = get_tree().get_first_node_in_group("main_cam")
 @onready var enemy = preload("res://Scenes/Entities/enemy.tscn")
+@export var enabled = true
 
 @export var wave_cooldown: int
 @export var max_enemy_count: int
@@ -23,6 +24,9 @@ func _ready():
 	randomize()
 
 func start_wave():
+	if !enabled:
+		return
+	
 	for n in range(max_enemy_count):
 		enemy_count = n
 		
@@ -52,7 +56,6 @@ func spawn_enemy():
 	if health_handler:
 		health_handler.connect("died", update_enemy_counter)
 
-	
 	get_parent().add_child(enemy_instance)
 
 	if enemy_count == 0:

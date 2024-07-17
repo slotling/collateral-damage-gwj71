@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkgwrq0s5kkjl"]
+
+[ext_resource type="Script" path="res://Handlers/despawn_on_contact_handler.gd" id="1_5gayd"]
+
+[node name="DespawnOnContactHandler" type="Area2D"]
+script = ExtResource("1_5gayd")
