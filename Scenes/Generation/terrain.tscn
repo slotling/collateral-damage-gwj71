@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3hrl4tjnukfe"]
+[gd_scene load_steps=7 format=3 uid="uid://d3hrl4tjnukfe"]
 
 [ext_resource type="Script" path="res://Scenes/Generation/terrain.gd" id="1_7boge"]
 [ext_resource type="PackedScene" uid="uid://cgqxwb20faojq" path="res://Scenes/Generation/tile_map.tscn" id="2_2jma3"]
@@ -12,11 +12,19 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 frequency = 0.025
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1eg75"]
+width = 100
+height = 100
 color_ramp = SubResource("Gradient_s6f1m")
 noise = SubResource("FastNoiseLite_s0251")
 
-[node name="Terrain" type="Node2D" groups=["terrain_generator"]]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_tktbw"]
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="Terrain" type="Node2D"]
 script = ExtResource("1_7boge")
 noise_map = SubResource("NoiseTexture2D_1eg75")
 
-[node name="TileMap" parent="." groups=["tilemap"] instance=ExtResource("2_2jma3")]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_tktbw")
+
+[node name="TileMap" parent="NavigationRegion2D" groups=["tilemap"] instance=ExtResource("2_2jma3")]

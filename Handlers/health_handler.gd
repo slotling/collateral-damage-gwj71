@@ -6,7 +6,7 @@ signal hit(value, cause, hurtbox_global_position)
 @export var health : int = 100
 @export var max_health : int = 100
 
-func affect(value, cause,hurtbox_global_position):
+func affect(value, cause, hurtbox_global_position):
 	health = clamp(health + value, 0, max_health)
 	hit.emit(value, cause, hurtbox_global_position)
 	if health == 0:

@@ -15,17 +15,21 @@ var state: String = "default" # default, fire, fallen
 func _ready() -> void:
 	pass
 
-func instantiate_debri(value, cause, hurtbox_global_position) -> void:
-	var fall_to_vector: Vector2 = -round(global_position.direction_to(hurtbox_global_position))
+func calculate_fall_to_vector(hurtbox_global_position) -> Vector2:
+	return -round(global_position.direction_to(hurtbox_global_position))
+
+func soft_anim_play(anim:String) -> void:
+	if anim_player.has_animation(anim):
+		anim_player.play(anim)
 
 func _on_health_handler_hit(value, cause, hurtbox_global_position) -> void:
 	sprite_shaker.shake()
 
 func _on_health_handler_died(value, cause, hurtbox_global_position) -> void:
-	instantiate_debri(value, cause, hurtbox_global_position)
+	soft_anim_play("hit")
 	
 	if regeneration_time <= 0.0:
 		queue_free()
 
-func _on_hit_box_handler_hit(strength, cause, hurtbox_global_position):
+func _on_hit_box_handler_hit(strength, cause, hurtbox_global_position) -> void:
 	health_handler.affect(-abs(strength), cause, hurtbox_global_position)
