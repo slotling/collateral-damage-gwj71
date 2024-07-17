@@ -27,6 +27,7 @@ func push(damage, cause, hurtbox_global_position):
 func _physics_process(_delta):
 	## Validity Check
 	if get_parent().state == "dead":
+		get_parent().velocity = lerp(get_parent().velocity, Vector2.ZERO, 0.6)
 		return
 	
 	## Handle Velocity

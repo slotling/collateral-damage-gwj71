@@ -7,37 +7,14 @@ class_name Enemy
 @onready var soft_collision: Area2D = $SoftCollision
 
 @export_enum("terminator", "killer_panda") var type: String = "terminator"
-@export_category("Health Handler")
-@export var health: int = 100
-@export var max_health: int = 100
-@export_category("Movement Handler")
-@export var speed: int = 150
-@export var max_stamina: int = 1000
-@export var knockback_multiplier: int = 50
 
 var state: String = "idle"
 var dir: Vector2 = Vector2.ZERO
 var target: CharacterBody2D = null
 
 func _ready() -> void:
-	custom_params_setup()
-	
 	target = get_tree().get_first_node_in_group("player")
 	call_deferred("target_setup")
-
-func custom_params_setup() -> void:
-	for i in [
-		"health",
-		"max_health",
-	]:
-		health_handler.set(i, get(i))
-	
-	for i in [
-		"speed",
-		"max_stamina",
-		"knockback_multiplier"
-	]:
-		movement_handler.set(i, get(i))
 
 func target_setup() -> void:
 	await get_tree().physics_frame
