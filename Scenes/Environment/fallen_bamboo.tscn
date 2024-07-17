@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm1rwjwhxoud6"]
+
+[ext_resource type="PackedScene" uid="uid://nnds0qqkrcr6" path="res://Scenes/Environment/environment_object.tscn" id="1_5vcay"]
+
+[node name="FallenBamboo" instance=ExtResource("1_5vcay")]
