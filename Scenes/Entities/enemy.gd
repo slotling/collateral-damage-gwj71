@@ -5,6 +5,7 @@ class_name Enemy
 @onready var movement_handler: Node = $MovementHandler
 @onready var health_handler: Node = $HealthHandler
 @onready var soft_collision: Area2D = $SoftCollision
+@onready var wave_handler: Node = get_tree().get_first_node_in_group("wave_handler")
 
 @export_enum("terminator", "killer_panda") var type: String = "terminator"
 
@@ -40,6 +41,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_health_handler_died(value, cause, hurtbox_global_position):
+	if wave_handler:
+		
+		wave_handler.emit_signal("enemy_died")
+	
 	queue_free()
 
 func _on_hit_box_handler_hit(strength, cause, hurtbox_global_position):

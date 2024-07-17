@@ -27,4 +27,4 @@ noise_map = SubResource("NoiseTexture2D_1eg75")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_tktbw")
 
-[node name="TileMap" parent="NavigationRegion2D" instance=ExtResource("2_2jma3")]
+[node name="TileMap" parent="NavigationRegion2D" groups=["tilemap"] instance=ExtResource("2_2jma3")]
