@@ -29,7 +29,9 @@ func relocate_player(x, y):
 	if !debugNoRelocate:
 		target.global_position = Vector2(x-size.x/2, y-size.y/2)*tilesize
 
+var spawnable_tiles = []
 func generate():
+	spawnable_tiles = []
 	var noise_value_array:Array = []
 	var noise_value_array_flattened:Array = []
 	
@@ -42,9 +44,7 @@ func generate():
 
 	var max_val:float = noise_value_array_flattened.max()
 	var min_val:float = noise_value_array_flattened.min()
-	
-	spawnable_tiles = []
-	
+
 	for x in range(size.x):
 		for y in range(size.y):
 			var noise_value_decimal = (noise_value_array[x][y] - min_val) / (max_val-min_val)
@@ -92,3 +92,6 @@ func _ready():
 	generate_initial()
 	generate()
 	make_and_bake_navigation()
+
+func _process(delta):
+	pass

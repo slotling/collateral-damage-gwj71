@@ -9,15 +9,16 @@
 
 [node name="WaveHandler" parent="." instance=ExtResource("4_apm3v")]
 wave_cooldown = 10
-max_enemy_count = 1
+max_enemy_count = 10
 max_wave_count = 10
 spawning_distance = 700
 
 [node name="Terrain" parent="." instance=ExtResource("1_r6r10")]
+debugNoRelocate = true
 size = Vector2(100, 100)
 
 [node name="DemolitionistPlayer" parent="." instance=ExtResource("2_0m2oe")]
-position = Vector2(4, 1)
+position = Vector2(80, 8)
 
 [node name="Bamboo" parent="." instance=ExtResource("4_4rcn2")]
 position = Vector2(128, -16)

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var movement_handler: Node = $MovementHandler

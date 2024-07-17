@@ -9,6 +9,7 @@ enum enemy_types {terminator, killer_panda}
 @onready var cooldown_timer = $WaveCooldown
 @onready var terrain_generator: Node2D = get_tree().get_first_node_in_group("terrain_generator")
 @onready var enemy = preload("res://Scenes/Entities/enemy.tscn")
+@export var enabled = true
 
 @export var wave_cooldown: int
 @export var max_enemy_count: int
@@ -22,8 +23,13 @@ func _ready():
 	randomize()
 
 func start_wave():
+
+	if !enabled:
+		return
+	
 	for n in max_enemy_count:
 		enemy_count = n + 1
+
 		spawn_enemy()
 
 func get_random_position(): 
@@ -47,7 +53,7 @@ func spawn_enemy():
 	
 	enemy_count += 1
 	enemy_instance.type = str(enemy_type)
-	
+
 	enemy_instance.global_position = random_pos * terrain_generator.tilesize
 	get_parent().add_child(enemy_instance)
 
