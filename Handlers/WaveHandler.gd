@@ -48,7 +48,7 @@ func spawn_enemy():
 	enemy_count += 1
 	enemy_instance.type = str(enemy_type)
 	
-	enemy_instance.global_position = Vector2(random_pos.x, random_pos.y)*terrain_generator.tilesize
+	enemy_instance.global_position = random_pos * terrain_generator.tilesize
 	get_parent().add_child(enemy_instance)
 
 func _on_wave_completed():
