@@ -6,6 +6,9 @@
 
 [node name="TerminatorEnemy" instance=ExtResource("1_iclhj")]
 
+[node name="MovementHandler" parent="." index="6"]
+max_speed = 250.0
+
 [node name="EnemyAttack" parent="EnemyAttacksGroup" index="0" instance=ExtResource("2_ky7sh")]
 script = ExtResource("3_glmjw")
 

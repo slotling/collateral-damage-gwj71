@@ -1,26 +1,35 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://ceesdgnytboj8"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://ceesdgnytboj8"]
 
-[ext_resource type="Texture2D" uid="uid://b1k3mggtht0mx" path="res://icon.svg" id="1_ly63v"]
+[ext_resource type="Texture2D" uid="uid://qwjb26svp7gc" path="res://Assets/Textures/NyomSprites.png" id="1_t2ng3"]
+[ext_resource type="Texture2D" uid="uid://bc87wc7sxfayf" path="res://Assets/Textures/water_tile.png" id="2_yjc13"]
+[ext_resource type="Texture2D" uid="uid://dy2punu48a7dr" path="res://Assets/Textures/dirt_tile.png" id="3_4g30n"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_3p3gx"]
-source_geometry_group_name = &"navigation_polygon_source_group"
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1e8eb"]
-resource_name = "Wall"
-texture = ExtResource("1_ly63v")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rt2dc"]
+texture = ExtResource("1_t2ng3")
 texture_region_size = Vector2i(32, 32)
+3:7/0 = 0
+3:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:7/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fccle"]
+texture = ExtResource("2_yjc13")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 5
+0:0/animation_speed = 10.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_3p3gx")
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -16, -16, -16)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bqjy3"]
-resource_name = "Floor"
-texture = ExtResource("1_ly63v")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oxf81"]
+texture = ExtResource("3_4g30n")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/modulate = Color(0.498039, 0.498039, 0.498039, 0.427451)
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
@@ -28,5 +37,6 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_1e8eb")
-sources/1 = SubResource("TileSetAtlasSource_bqjy3")
+sources/3 = SubResource("TileSetAtlasSource_rt2dc")
+sources/4 = SubResource("TileSetAtlasSource_fccle")
+sources/5 = SubResource("TileSetAtlasSource_oxf81")
