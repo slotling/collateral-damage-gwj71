@@ -4,6 +4,7 @@ extends Node
 @export var duration: int = 12
 @export var pause_interval: float = 0.05
 @export var offset_range: int = 2
+@export var restore_default_offsets: bool = true
 
 var default_offset: Vector2
 var global_random_offset: Vector2 = Vector2.ZERO
@@ -34,5 +35,6 @@ func soft_shake(current_sprite, offset) -> void:
 		current_sprite.offset += global_random_offset
 		set_global_random_offset(current_sprite)
 		await get_tree().create_timer(pause_interval).timeout
-		
-	current_sprite.offset = offset
+	
+	if restore_default_offsets:
+		current_sprite.offset = offset

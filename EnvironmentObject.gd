@@ -23,11 +23,13 @@ func soft_anim_play(anim:String) -> void:
 		anim_player.play(anim)
 
 func _on_health_handler_hit(value, cause, hurtbox_global_position) -> void:
+	if state == "dead":
+		return
+	
 	soft_anim_play("hit")
 	sprite_shaker.shake()
 
 func _on_health_handler_died(value, cause, hurtbox_global_position) -> void:
-	
 	
 	if regeneration_time <= 0.0:
 		queue_free()

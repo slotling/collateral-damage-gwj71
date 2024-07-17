@@ -51,9 +51,11 @@ wait_time = 0.25
 autostart = true
 
 [node name="HealthHandler" parent="." instance=ExtResource("2_mm7t0")]
+health = 50
+max_health = 50
 
 [node name="MovementHandler" parent="." instance=ExtResource("3_od5h0")]
-max_speed = 150.0
+max_speed = 100.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." groups=["enemy"]]
 
