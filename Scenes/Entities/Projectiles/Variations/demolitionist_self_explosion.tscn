@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcxywow2418mq"]
+
+[ext_resource type="PackedScene" uid="uid://cqbskis2pu6vb" path="res://Scenes/Entities/Projectiles/explosion.tscn" id="1_tc5ts"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f6fyc"]
+resource_local_to_scene = true
+radius = 194.648
+
+[node name="DemolitionistSelfExplosion" instance=ExtResource("1_tc5ts")]
+
+[node name="HurtBoxHandler" parent="." index="0"]
+avoid_damaging_player = true
+
+[node name="CollisionShape2D" parent="HurtBoxHandler" index="0"]
+shape = SubResource("CircleShape2D_f6fyc")

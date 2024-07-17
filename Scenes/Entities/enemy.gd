@@ -6,8 +6,6 @@ class_name Enemy
 @onready var health_handler: Node = $HealthHandler
 @onready var soft_collision: Area2D = $SoftCollision
 
-@export_enum("terminator", "killer_panda") var type: String = "terminator"
-
 var state: String = "idle"
 var dir: Vector2 = Vector2.ZERO
 var target: CharacterBody2D = null

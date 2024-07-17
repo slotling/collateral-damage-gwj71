@@ -5,7 +5,7 @@ signal all_waves_finished
 
 @onready var cooldown_timer = $WaveCooldown
 @onready var camera = get_tree().get_first_node_in_group("main_cam")
-@onready var enemy = preload("res://Scenes/Entities/enemy.tscn")
+@onready var enemy = preload("res://Scenes/Entities/Enemies/terminator_enemy.tscn")
 @export var enabled = true
 
 @export var wave_cooldown: int
@@ -50,7 +50,7 @@ func spawn_enemy():
 	var health_handler = enemy_instance.health_handler
 	
 	enemy_count += 1
-	enemy_instance.type = str(enemy_type)
+	# enemy_instance.type = str(enemy_type)
 	enemy_instance.global_position = get_random_position()
 	
 	if health_handler:

@@ -7,6 +7,10 @@ extends Node
 
 func _ready():
 	randomize()
+	
+	ongoing = true
+	await get_tree().create_timer(randf_range(0, 1)).timeout
+	ongoing = false
 
 var in_range := false
 var ongoing := false
@@ -29,6 +33,8 @@ func attack():
 	var attack_chosen: EnemyAttack = usable_attacks.pick_random()
 	ongoing = true
 	await attack_chosen.execute()
+	await get_tree().create_timer(randf_range(0, 0.5)).timeout
+	
 	ongoing = false
 
 func _process(delta):
