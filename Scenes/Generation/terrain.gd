@@ -20,10 +20,13 @@ const tile_atlas_coords = [
 	Vector2(0, 0)
 ]
 
+var spawnable_tiles
+
 func relocate_player(x, y):
 	var target = get_tree().get_first_node_in_group("player")
 	target.global_position = Vector2(x-size.x/2, y-size.y/2)*tilesize
 	print(target.global_position)
+	
 
 func generate():
 	var noise_value_array:Array = []
@@ -39,7 +42,7 @@ func generate():
 	var max_val:float = noise_value_array_flattened.max()
 	var min_val:float = noise_value_array_flattened.min()
 	
-	var spawnable_tiles = []
+	spawnable_tiles = []
 	
 	for x in range(size.x):
 		for y in range(size.y):
