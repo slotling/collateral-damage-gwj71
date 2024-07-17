@@ -1,14 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://brrquad1bj0h1"]
+[gd_scene load_steps=14 format=3 uid="uid://brrquad1bj0h1"]
 
 [ext_resource type="PackedScene" uid="uid://nnds0qqkrcr6" path="res://Scenes/Environment/environment_object.tscn" id="1_f4gq0"]
 [ext_resource type="Script" path="res://Scenes/Environment/bamboo.gd" id="2_mt40n"]
-[ext_resource type="Texture2D" uid="uid://dfev2eg1mqero" path="res://Assets/Textures/EnvTextures.png" id="3_ph42x"]
+[ext_resource type="Texture2D" uid="uid://qwjb26svp7gc" path="res://Assets/Textures/NyomSprites.png" id="3_2df0l"]
 [ext_resource type="PackedScene" uid="uid://yso47d6pjwco" path="res://Handlers/hit_box_handler.tscn" id="3_q3nrw"]
 [ext_resource type="Texture2D" uid="uid://bfyb8ocvtxwc0" path="res://Resources/Atlases/default_bamboo_atlas.tres" id="4_fna0w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mndo6"]
-atlas = ExtResource("3_ph42x")
-region = Rect2(64, 56, 32, 24)
+atlas = ExtResource("3_2df0l")
+region = Rect2(0, 104, 64, 56)
 
 [sub_resource type="Animation" id="Animation_ff4ya"]
 length = 0.001
@@ -34,7 +34,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -32)]
+"values": [Vector2(0, -70)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -126,7 +126,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, -27), Vector2(0, -28), Vector2(0, -32)]
+"values": [Vector2(0, -62), Vector2(0, -62), Vector2(0, -70)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -202,7 +202,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -32)]
+"values": [Vector2(0, -70)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -225,8 +225,11 @@ _data = {
 "hit": SubResource("Animation_khmxg")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hib25"]
-radius = 16.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwjpc"]
+size = Vector2(32, 64)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2kes6"]
+height = 64.0
 
 [node name="Bamboo" instance=ExtResource("1_f4gq0")]
 script = ExtResource("2_mt40n")
@@ -236,22 +239,27 @@ regeneration_time = 1.0
 health = 10
 max_health = 10
 
-[node name="Sprite2D" parent="." index="3"]
+[node name="Sprite2D" parent="." index="2"]
 texture = SubResource("AtlasTexture_mndo6")
-offset = Vector2(0, -8)
+offset = Vector2(0, -16)
 
 [node name="GrownSprite" type="Sprite2D" parent="Sprite2D" index="0"]
 texture = ExtResource("4_fna0w")
-offset = Vector2(0, -32)
+offset = Vector2(0, -70)
 
-[node name="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" parent="." index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_ah0qk")
 }
 
-[node name="HitBoxHandler" parent="." index="6" instance=ExtResource("3_q3nrw")]
+[node name="HitBoxHandler" parent="." index="5" instance=ExtResource("3_q3nrw")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxHandler" index="1"]
-shape = SubResource("CircleShape2D_hib25")
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_rwjpc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2kes6")
 
 [connection signal="hit" from="HitBoxHandler" to="." method="_on_hit_box_handler_hit"]
