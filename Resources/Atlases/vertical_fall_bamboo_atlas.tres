@@ -1,7 +1,7 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://d4dn63qt4s532"]
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://78238istpcd0"]
 
-[ext_resource type="Texture2D" uid="uid://dfev2eg1mqero" path="res://Assets/Textures/EnvTextures.png" id="1_35n6j"]
+[ext_resource type="Texture2D" uid="uid://qwjb26svp7gc" path="res://Assets/Textures/NyomSprites.png" id="1_knvut"]
 
 [resource]
-atlas = ExtResource("1_35n6j")
-region = Rect2(0, 80, 128, 48)
+atlas = ExtResource("1_knvut")
+region = Rect2(192, 0, 384, 96)
