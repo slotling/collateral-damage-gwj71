@@ -20,5 +20,4 @@ func get_hit(str, cause, hurtbox_global_position):
 
 func _on_area_entered(area):
 	if area.is_in_group("hurtbox"):
-		if get_parent().is_in_group(area.damage_to_type):
-			get_hit(area.strength, area.cause, area.global_position)
+		get_hit(area.strength, area.cause, area.global_position)
