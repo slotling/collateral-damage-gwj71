@@ -1,12 +1,16 @@
 extends Area2D
 
-@export_enum("enemy", "player", "enemy_and_player") var despawn_to_type: String = "enemy_and_player" # as well as world
+@export var strength := 10
+@export var cause := "Unknown"
+@export var avoid_damaging_enemies := false
+@export var avoid_damaging_player := false
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _on_body_entered(body):
+	var parent = get_parent()
+	if avoid_damaging_enemies && body.is_in_group("enemy"):
+		return
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	if avoid_damaging_player && body.is_in_group("player"):
+		return
+	
+	parent.despawn()
