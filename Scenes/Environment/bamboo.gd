@@ -23,6 +23,19 @@ func _on_health_handler_died(value, cause, hurtbox_global_position) -> void:
 			while fall_vector.x == 0:
 				fall_vector.x = randi_range(-1, 1)
 			
+			_on_regrow_timer_timeout()
+			
 			fallen_bamboo_instance.facing = fall_vector
 			call_deferred("add_child", fallen_bamboo_instance)
 			anim_player.play("fallen")
+
+func _on_regrow_timer_timeout():
+	
+	if health_handler.health >= health_handler.max_health:
+		state = "alive"
+		anim_player.play("grow")
+		return
+	
+	health_handler.health += 10
+	$RegrowTimer.start(2)
+

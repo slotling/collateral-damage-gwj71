@@ -17,9 +17,5 @@ y_sort_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="RegenTimer" type="Timer" parent="."]
-autostart = true
-
 [connection signal="died" from="HealthHandler" to="." method="_on_health_handler_died"]
 [connection signal="hit" from="HealthHandler" to="." method="_on_health_handler_hit"]
-[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]

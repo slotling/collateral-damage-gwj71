@@ -11,3 +11,7 @@ func _ready():
 
 func sprite_shaker_shake():
 	sprite_shaker.shake()
+
+
+func _on_decay_timer_timeout():
+	anim_player.play("decay")

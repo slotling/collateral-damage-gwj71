@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dm1rwjwhxoud6"]
+[gd_scene load_steps=16 format=3 uid="uid://dm1rwjwhxoud6"]
 
 [ext_resource type="PackedScene" uid="uid://nnds0qqkrcr6" path="res://Scenes/Environment/environment_object.tscn" id="1_5vcay"]
 [ext_resource type="Script" path="res://Scenes/Environment/fallen_bamboo.gd" id="2_kbg35"]
@@ -139,7 +139,7 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(5, 3.5)]
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(8, 4)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -148,7 +148,7 @@ tracks/11/path = NodePath("HurtBoxHandler:monitorable")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.55, 0.7),
+"times": PackedFloat32Array(0, 0.3, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, false, true, false]
@@ -289,7 +289,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(5, 3.5)]
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(8, 4)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -298,7 +298,7 @@ tracks/10/path = NodePath("HurtBoxHandler:monitorable")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.55, 0.7),
+"times": PackedFloat32Array(0, 0.3, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, false, true, false]
@@ -463,7 +463,7 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(5, 3.5)]
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(8, 4)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -472,7 +472,7 @@ tracks/11/path = NodePath("HurtBoxHandler:monitorable")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.55, 0.7),
+"times": PackedFloat32Array(0, 0.3, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, false, true, false]
@@ -613,7 +613,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(5, 3.5)]
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(8, 4)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -634,7 +634,7 @@ tracks/11/path = NodePath("HurtBoxHandler:monitorable")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.55, 0.7),
+"times": PackedFloat32Array(0, 0.3, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, false, true, false]
@@ -763,7 +763,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(5, 3.5)]
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(8, 4)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -772,7 +772,7 @@ tracks/9/path = NodePath("HurtBoxHandler:monitorable")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.55, 0.7),
+"times": PackedFloat32Array(0, 0.3, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, false, true, false]
@@ -925,7 +925,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(5, 3.5)]
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(8, 4)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -946,7 +946,7 @@ tracks/11/path = NodePath("HurtBoxHandler:monitorable")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.55, 0.7),
+"times": PackedFloat32Array(0, 0.3, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, false, true, false]
@@ -1124,6 +1124,47 @@ tracks/12/keys = {
 "update": 1,
 "values": [50]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Sprite2D:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cbmfo"]
+resource_name = "decay"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0sow6"]
 _data = {
@@ -1133,7 +1174,8 @@ _data = {
 "1_-1": SubResource("Animation_hnbp2"),
 "1_0": SubResource("Animation_tb8ae"),
 "1_1": SubResource("Animation_y25st"),
-"RESET": SubResource("Animation_75pb3")
+"RESET": SubResource("Animation_75pb3"),
+"decay": SubResource("Animation_cbmfo")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7c2da"]
@@ -1159,13 +1201,16 @@ libraries = {
 "": SubResource("AnimationLibrary_0sow6")
 }
 
-[node name="Marker2D" type="Marker2D" parent="." index="5"]
-position = Vector2(0, 56)
-
-[node name="HurtBoxHandler" parent="." index="6" instance=ExtResource("5_dom2m")]
+[node name="HurtBoxHandler" parent="." index="4" instance=ExtResource("5_dom2m")]
 monitorable = false
 strength = 50
 cause = "Crushed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxHandler" index="0"]
 shape = SubResource("RectangleShape2D_7c2da")
+
+[node name="DecayTimer" type="Timer" parent="." index="5"]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="DecayTimer" to="." method="_on_decay_timer_timeout"]

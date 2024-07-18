@@ -20,6 +20,8 @@ func _process(delta) -> void:
 	else:
 		$UpCurvePath/PathFollow2D/Sprite2D.rotation_degrees -= ROTATE_DEGREES_SPEED * delta 
 	
+	#ROTATE_DEGREES_SPEED -= 10 * sign(ROTATE_DEGREES_SPEED) * delta
+	
 	$UpCurvePath/PathFollow2D.progress += CURVE_SPEED * delta
 	if $UpCurvePath/PathFollow2D.progress_ratio >= 1:
 		detonate()
