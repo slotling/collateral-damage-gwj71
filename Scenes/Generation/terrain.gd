@@ -67,9 +67,18 @@ func generate_initial():
 
 var navigation_vertices = []
 
+var bambooPreload = preload("res://Scenes/Environment/bamboo.tscn")
+
 func generate_tile(value, x, y):
 	var tilepos = Vector2(x-size.x/2, y-size.y/2)
 	tilemap.set_cell(0, tilepos, tile_source[value], tile_atlas_coords[value])
+	
+	match value:
+		1:
+			if randi_range(0, 15) == 0:
+				var instance = bambooPreload.instantiate()
+				instance.global_position = tilepos*tilesize
+				Global.add_world_node(instance)
 
 func make_and_bake_navigation():
 	var new_navigation_mesh = NavigationPolygon.new()
