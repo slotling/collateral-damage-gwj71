@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcxywow2418mq"]
+[gd_scene load_steps=4 format=3 uid="uid://bcxywow2418mq"]
 
 [ext_resource type="PackedScene" uid="uid://cqbskis2pu6vb" path="res://Scenes/Entities/Projectiles/explosion.tscn" id="1_tc5ts"]
+[ext_resource type="Texture2D" uid="uid://dlugdnup3lyps" path="res://Resources/Atlases/explosion.tres" id="2_3xqs1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f6fyc"]
 resource_local_to_scene = true
-radius = 194.648
+radius = 168.19
 
 [node name="DemolitionistSelfExplosion" instance=ExtResource("1_tc5ts")]
 
@@ -13,3 +14,213 @@ avoid_damaging_player = true
 
 [node name="CollisionShape2D" parent="HurtBoxHandler" index="0"]
 shape = SubResource("CircleShape2D_f6fyc")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Sprites" index="7"]
+position = Vector2(-96, -56)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D9" type="Sprite2D" parent="Sprites" index="8"]
+position = Vector2(-136, -56)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D10" type="Sprite2D" parent="Sprites" index="9"]
+position = Vector2(-80, -96)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D11" type="Sprite2D" parent="Sprites" index="10"]
+position = Vector2(-112, -96)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D12" type="Sprite2D" parent="Sprites" index="11"]
+position = Vector2(-80, -16)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D13" type="Sprite2D" parent="Sprites" index="12"]
+position = Vector2(-112, -16)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D14" type="Sprite2D" parent="Sprites" index="13"]
+position = Vector2(-56, -56)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D15" type="Sprite2D" parent="Sprites" index="14"]
+position = Vector2(96, -56)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D16" type="Sprite2D" parent="Sprites" index="15"]
+position = Vector2(56, -56)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D17" type="Sprite2D" parent="Sprites" index="16"]
+position = Vector2(112, -96)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D18" type="Sprite2D" parent="Sprites" index="17"]
+position = Vector2(80, -96)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D19" type="Sprite2D" parent="Sprites" index="18"]
+position = Vector2(112, -16)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D20" type="Sprite2D" parent="Sprites" index="19"]
+position = Vector2(80, -16)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D21" type="Sprite2D" parent="Sprites" index="20"]
+position = Vector2(136, -56)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D22" type="Sprite2D" parent="Sprites" index="21"]
+position = Vector2(-96, 64)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D23" type="Sprite2D" parent="Sprites" index="22"]
+position = Vector2(-136, 64)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D24" type="Sprite2D" parent="Sprites" index="23"]
+position = Vector2(-80, 24)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D25" type="Sprite2D" parent="Sprites" index="24"]
+position = Vector2(-112, 24)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D26" type="Sprite2D" parent="Sprites" index="25"]
+position = Vector2(-80, 104)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D27" type="Sprite2D" parent="Sprites" index="26"]
+position = Vector2(-112, 104)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D28" type="Sprite2D" parent="Sprites" index="27"]
+position = Vector2(-56, 64)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D29" type="Sprite2D" parent="Sprites" index="28"]
+position = Vector2(96, 64)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D30" type="Sprite2D" parent="Sprites" index="29"]
+position = Vector2(56, 64)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D31" type="Sprite2D" parent="Sprites" index="30"]
+position = Vector2(112, 24)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D32" type="Sprite2D" parent="Sprites" index="31"]
+position = Vector2(80, 24)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D33" type="Sprite2D" parent="Sprites" index="32"]
+position = Vector2(112, 104)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D34" type="Sprite2D" parent="Sprites" index="33"]
+position = Vector2(80, 104)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D35" type="Sprite2D" parent="Sprites" index="34"]
+position = Vector2(136, 64)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D36" type="Sprite2D" parent="Sprites" index="35"]
+position = Vector2(0, -104)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D37" type="Sprite2D" parent="Sprites" index="36"]
+position = Vector2(-40, -104)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D38" type="Sprite2D" parent="Sprites" index="37"]
+position = Vector2(16, -144)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D39" type="Sprite2D" parent="Sprites" index="38"]
+position = Vector2(-16, -144)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D40" type="Sprite2D" parent="Sprites" index="39"]
+position = Vector2(16, -64)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D41" type="Sprite2D" parent="Sprites" index="40"]
+position = Vector2(-16, -64)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D42" type="Sprite2D" parent="Sprites" index="41"]
+position = Vector2(40, -104)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D43" type="Sprite2D" parent="Sprites" index="42"]
+position = Vector2(0, 120)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D44" type="Sprite2D" parent="Sprites" index="43"]
+position = Vector2(-40, 120)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D45" type="Sprite2D" parent="Sprites" index="44"]
+position = Vector2(16, 80)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D46" type="Sprite2D" parent="Sprites" index="45"]
+position = Vector2(-16, 80)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D47" type="Sprite2D" parent="Sprites" index="46"]
+position = Vector2(16, 160)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D48" type="Sprite2D" parent="Sprites" index="47"]
+position = Vector2(-16, 160)
+texture = ExtResource("2_3xqs1")
+hframes = 5
+
+[node name="Sprite2D49" type="Sprite2D" parent="Sprites" index="48"]
+position = Vector2(40, 120)
+texture = ExtResource("2_3xqs1")
+hframes = 5
