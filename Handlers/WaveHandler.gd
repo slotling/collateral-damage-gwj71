@@ -4,8 +4,6 @@ signal wave_completed
 signal all_waves_finished
 signal enemy_died
 
-enum enemy_types {terminator, killer_panda}
-
 @onready var cooldown_timer = $WaveCooldown
 @onready var terrain_generator: Node2D = get_tree().get_first_node_in_group("terrain_generator")
 @onready var enemy = preload("res://Scenes/Entities/Enemies/terminator_enemy.tscn")
@@ -23,7 +21,6 @@ func _ready():
 	randomize()
 
 func start_wave():
-
 	if !enabled:
 		return
 	
@@ -31,6 +28,7 @@ func start_wave():
 		enemy_count = n + 1
 
 		spawn_enemy()
+		await get_tree().create_timer(1).timeout
 
 func get_random_position(): 
 	if terrain_generator:
@@ -40,18 +38,12 @@ func get_random_position():
 		return random_tile_pos - terrain_generator.size/2
 	return Vector2.ZERO
 
-func get_enemy_type() -> int:
-	var enemy_type = randi_range(0, enemy_types.size() - 1)
-	return enemy_type
-
 func spawn_enemy():
 	var enemy_instance = enemy.instantiate()
-	var enemy_type = get_enemy_type()
 	var random_pos = get_random_position()
 	var health_handler = enemy_instance.health_handler
 	
 	enemy_count += 1
-	# enemy_instance.type = str(enemy_type)
 
 	enemy_instance.global_position = random_pos * terrain_generator.tilesize
 	get_parent().add_child(enemy_instance)
