@@ -37,8 +37,7 @@ func get_random_position():
 		var spawnable_tiles = terrain_generator.spawnable_tiles
 		var random_tile_pos = spawnable_tiles.pick_random()
 		
-		print(random_tile_pos)
-		return random_tile_pos
+		return random_tile_pos - terrain_generator.size/2
 	return Vector2.ZERO
 
 func get_enemy_type() -> int:
@@ -64,7 +63,7 @@ func _on_wave_completed():
 
 func _on_wave_cooldown_timeout():
 	if current_wave <= max_wave_count:
-		print(enemy_count)
+		
 		start_wave()
 		print("wave started")
 	else:
