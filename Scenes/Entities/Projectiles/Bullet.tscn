@@ -18,12 +18,14 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_hin6l")
 
 [node name="HurtBoxHandler" parent="." instance=ExtResource("3_fhy25")]
+cause = "Shot"
 avoid_damaging_enemies = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxHandler"]
 shape = SubResource("CircleShape2D_whifp")
 
 [node name="DespawnOnContactHandler" parent="." instance=ExtResource("4_gi5hn")]
+cause = "Shot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DespawnOnContactHandler"]
 shape = SubResource("CircleShape2D_whifp")

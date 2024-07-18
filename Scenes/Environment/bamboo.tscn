@@ -514,7 +514,8 @@ size = Vector2(32, 64)
 [node name="Bamboo" instance=ExtResource("1_f4gq0")]
 y_sort_enabled = true
 script = ExtResource("2_mt40n")
-regeneration_time = 1.0
+flammable = true
+regeneratable = true
 
 [node name="SpriteShaker" parent="." index="0"]
 duration = 6
@@ -545,14 +546,18 @@ libraries = {
 "": SubResource("AnimationLibrary_ah0qk")
 }
 
-[node name="HitBoxHandler" parent="." index="6" instance=ExtResource("3_q3nrw")]
+[node name="HitBoxHandler" parent="." index="5" instance=ExtResource("3_q3nrw")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxHandler" index="1"]
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_rwjpc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
 rotation = 1.5708
 shape = SubResource("CircleShape2D_gesg1")
 
+[node name="RegrowTimer" type="Timer" parent="." index="7"]
+one_shot = true
+
 [connection signal="hit" from="HitBoxHandler" to="." method="_on_hit_box_handler_hit"]
+[connection signal="timeout" from="RegrowTimer" to="." method="_on_regrow_timer_timeout"]
