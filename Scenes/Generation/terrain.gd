@@ -25,8 +25,6 @@ const tile_atlas_coords = [
 	Vector2(3, 7)
 ]
 
-var spawnable_tiles
-
 func relocate_player(x, y):
 	var target = get_tree().get_first_node_in_group("player")
 	if !debugNoRelocate:

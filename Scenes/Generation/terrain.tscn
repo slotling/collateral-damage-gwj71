@@ -18,7 +18,7 @@ height = 100
 color_ramp = SubResource("Gradient_s6f1m")
 noise = SubResource("FastNoiseLite_s0251")
 
-[node name="Terrain" type="Node2D"]
+[node name="Terrain" type="Node2D" groups=["terrain_generator"]]
 script = ExtResource("1_7boge")
 noise_map = SubResource("NoiseTexture2D_1eg75")
 
