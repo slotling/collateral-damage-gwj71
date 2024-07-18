@@ -16,6 +16,8 @@ spawning_distance = 700
 size = Vector2(100, 100)
 
 [node name="DemolitionistPlayer" parent="." instance=ExtResource("2_0m2oe")]
+
 position = Vector2(80, 8)
 
 [editable path="DemolitionistPlayer"]
+=======
