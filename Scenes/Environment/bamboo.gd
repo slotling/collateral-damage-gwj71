@@ -26,6 +26,8 @@ func _on_health_handler_died(value, cause, hurtbox_global_position) -> void:
 			_on_regrow_timer_timeout()
 			
 			fallen_bamboo_instance.facing = fall_vector
+			fallen_bamboo_instance.position += Vector2(randi_range(-10, 10), randi_range(-10, 10))
+			
 			call_deferred("add_child", fallen_bamboo_instance)
 			anim_player.play("fallen")
 

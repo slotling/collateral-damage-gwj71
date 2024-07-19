@@ -48,4 +48,4 @@ func reboot_data() -> void: # reverts both the save file's data and the "data" d
 
 # Utility functions
 func add_world_node(instance) -> void:
-	get_tree().get_root().call_deferred("add_child", instance)
+	get_tree().get_first_node_in_group("main").call_deferred("add_child", instance)
