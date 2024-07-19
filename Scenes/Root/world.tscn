@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://14wcwtgp2v2v" path="res://Handlers/wave_handler.tscn" id="4_apm3v"]
 
 [node name="World" type="Node2D" groups=["main"]]
+y_sort_enabled = true
 
 [node name="WaveHandler" parent="." instance=ExtResource("4_apm3v")]
 wave_cooldown = 10
@@ -13,6 +14,8 @@ max_wave_count = 10
 spawning_distance = 700
 
 [node name="Terrain" parent="." instance=ExtResource("1_r6r10")]
+z_index = -2
 size = Vector2(100, 100)
 
 [node name="DemolitionistPlayer" parent="." instance=ExtResource("2_0m2oe")]
+position = Vector2(8, 64)
