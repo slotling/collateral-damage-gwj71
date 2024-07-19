@@ -9,7 +9,14 @@ extends Node
 var default_offset: Vector2
 var global_random_offset: Vector2 = Vector2.ZERO
 
+var is_shaking: bool = false
+
 func shake() -> void:
+	if is_shaking:
+		return
+	
+	is_shaking = true
+	
 	var sprites_to_offset: Array = [sprite]
 	var original_offsets_list: Array = [sprite.offset]
 	
@@ -20,6 +27,7 @@ func shake() -> void:
 	
 	for current_sprite_idx in sprites_to_offset.size():
 		soft_shake(sprites_to_offset[current_sprite_idx], original_offsets_list[current_sprite_idx])
+	
 
 func set_global_random_offset(sprite_to_watch):
 	if sprite_to_watch != sprite:
@@ -38,3 +46,5 @@ func soft_shake(current_sprite, offset) -> void:
 	
 	if restore_default_offsets:
 		current_sprite.offset = offset
+	
+	is_shaking = false

@@ -26,5 +26,5 @@ func _on_area_entered(area):
 		
 		if area.avoid_damaging_player && parent.is_in_group("player"):
 			return
-			
+		
 		get_hit(area.strength, area.cause, area.global_position)
