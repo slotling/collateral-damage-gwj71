@@ -1191,7 +1191,6 @@ offset_range = 5
 restore_default_offsets = false
 
 [node name="Sprite2D" parent="." index="2"]
-y_sort_enabled = false
 texture = ExtResource("3_er8m7")
 offset = Vector2(0, -70)
 hframes = 6
