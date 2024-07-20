@@ -533,10 +533,12 @@ offset = Vector2(0, -58)
 hframes = 5
 
 [node name="Sprite2D" parent="." index="3"]
+z_index = -1
 texture = SubResource("AtlasTexture_mndo6")
 offset = Vector2(0, -16)
 
 [node name="GrownSprite" type="Sprite2D" parent="Sprite2D" index="0"]
+z_as_relative = false
 y_sort_enabled = true
 texture = ExtResource("4_fna0w")
 offset = Vector2(0, -70)

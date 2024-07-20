@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=3 uid="uid://c37pk28hj6rad"]
 
 [ext_resource type="Script" path="res://UI/gui.gd" id="1_a0fpn"]
-[ext_resource type="Texture2D" path="res://Resources/Atlases/gui_icon_atlas.tres" id="2_vd156"]
-[ext_resource type="Texture2D" path="res://Resources/Atlases/gui_icon_lower_frame_atlas.tres" id="4_ddwg2"]
-[ext_resource type="Texture2D" path="res://Resources/Atlases/gui_empty_hearts.tres" id="5_m2yw5"]
+[ext_resource type="Texture2D" uid="uid://dmsc4lddqmp2g" path="res://Resources/Atlases/gui_icon_atlas.tres" id="2_vd156"]
+[ext_resource type="Texture2D" uid="uid://cy4bq8j415dod" path="res://Resources/Atlases/gui_icon_lower_frame_atlas.tres" id="4_ddwg2"]
+[ext_resource type="Texture2D" uid="uid://f67tfmkjjysr" path="res://Resources/Atlases/gui_empty_hearts.tres" id="5_m2yw5"]
 [ext_resource type="Texture2D" uid="uid://dgfuu1enctak4" path="res://Assets/Emotions/TeddyDynamite/TeddyDynamiteEmotionSheet.png" id="5_ugdgb"]
-[ext_resource type="Texture2D" path="res://Resources/Atlases/gui_hearts.tres" id="6_6yntk"]
+[ext_resource type="Texture2D" uid="uid://b3g38a4j7bre6" path="res://Resources/Atlases/gui_hearts.tres" id="6_6yntk"]
 [ext_resource type="PackedScene" uid="uid://bwvgbh0q0mp66" path="res://Handlers/sprite_shaker.tscn" id="7_yytos"]
-[ext_resource type="Texture2D" path="res://Resources/Atlases/gui_empty_stamina_atlas.tres" id="8_tp7gk"]
-[ext_resource type="Texture2D" path="res://Resources/Atlases/gui_stamina_atlas.tres" id="9_wnh1g"]
+[ext_resource type="Texture2D" uid="uid://ce6nmwq1d6tdc" path="res://Resources/Atlases/gui_empty_stamina_atlas.tres" id="8_tp7gk"]
+[ext_resource type="Texture2D" uid="uid://bno2dgijcapuc" path="res://Resources/Atlases/gui_stamina_atlas.tres" id="9_wnh1g"]
 [ext_resource type="FontFile" uid="uid://bi6x30dpos4nj" path="res://Assets/Fonts/m6x11plus.ttf" id="10_u05t0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p5pw0"]
@@ -29,11 +29,13 @@ script = ExtResource("1_a0fpn")
 
 [node name="HeartShaker" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_yytos")]
 sprite = NodePath("../Control/HBoxContainer/VBoxContainer/Hearts")
+offset_property = "texture_progress_offset"
 pause_interval = 0.01
 offset_range = 7
 
 [node name="StaminaShaker" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_yytos")]
 sprite = NodePath("../Control/HBoxContainer/VBoxContainer/Stamina")
+offset_property = "texture_progress_offset"
 pause_interval = 0.01
 offset_range = 1
 
