@@ -5,7 +5,6 @@
 [ext_resource type="Script" path="res://Handlers/AttackHandlers/EnemyAttacks/TerminatorEnemy_Attack1.gd" id="3_glmjw"]
 
 [node name="TerminatorEnemy" instance=ExtResource("1_iclhj")]
-y_sort_enabled = false
 
 [node name="MovementHandler" parent="." index="6"]
 max_speed = 250.0

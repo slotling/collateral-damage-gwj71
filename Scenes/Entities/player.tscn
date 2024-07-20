@@ -51,3 +51,4 @@ is_secondary_attack = true
 
 [connection signal="hit" from="HitBoxHandler" to="." method="_on_hit_box_handler_hit"]
 [connection signal="died" from="HealthHandler" to="." method="_on_health_handler_died"]
+[connection signal="hit" from="HealthHandler" to="." method="_on_health_handler_hit"]
