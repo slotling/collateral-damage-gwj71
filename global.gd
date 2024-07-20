@@ -27,7 +27,7 @@ func save_data() -> void: # saves the "data" dict onto the json file that is the
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.WRITE)
 		file.store_var(data)
-		print_rich("[rainbow freq=1.0 sat=0.8 val=0.8]" + str(data) + "[/rainbow]\n[img=160x160]res://UI/megarion.jpg[/img]")
+		print_rich("[rainbow freq=1.0 sat=0.8 val=0.8]" + str(data) + "[/rainbow]")
 		file.close()
 		load_data()
 
