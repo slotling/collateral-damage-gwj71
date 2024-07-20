@@ -13,7 +13,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.55, 0.6),
@@ -1183,6 +1183,8 @@ size = Vector2(16, 16)
 
 [node name="FallenBamboo" instance=ExtResource("1_5vcay")]
 script = ExtResource("2_kbg35")
+flammable = null
+regeneratable = null
 
 [node name="SpriteShaker" parent="." index="0"]
 duration = 6
@@ -1201,7 +1203,6 @@ libraries = {
 }
 
 [node name="HurtBoxHandler" parent="." index="4" instance=ExtResource("5_dom2m")]
-visible = false
 monitorable = false
 strength = 50
 cause = "Crushed"

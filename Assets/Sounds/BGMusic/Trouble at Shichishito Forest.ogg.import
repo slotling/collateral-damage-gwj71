@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b4ayv1nkddd36"
+path="res://.godot/imported/Trouble at Shichishito Forest.ogg-f4418f54c32d67463118c80d3ac02579.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/BGMusic/Trouble at Shichishito Forest.ogg"
+dest_files=["res://.godot/imported/Trouble at Shichishito Forest.ogg-f4418f54c32d67463118c80d3ac02579.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

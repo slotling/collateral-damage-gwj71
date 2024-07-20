@@ -7,6 +7,7 @@ func init(pos: Vector2): # global positions
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.play_sound("PlayerSFX", "bomb" + str(randi_range(1, 3)), 0, global_position)
 	$AnimationPlayer.play("explosion")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

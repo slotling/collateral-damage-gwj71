@@ -10,6 +10,7 @@ func _ready():
 	anim_player.play(anim_name)
 
 func sprite_shaker_shake():
+	Global.play_sound("EnvSFX", "bamboo" + str(randi_range(1, 3)), 0, global_position)
 	sprite_shaker.shake()
 
 
