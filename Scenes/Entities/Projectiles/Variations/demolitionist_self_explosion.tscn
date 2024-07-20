@@ -5,7 +5,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f6fyc"]
 resource_local_to_scene = true
-radius = 168.0
 radius = 160.2
 
 [node name="DemolitionistSelfExplosion" instance=ExtResource("1_tc5ts")]
