@@ -25,6 +25,14 @@ const tile_atlas_coords = [
 	Vector2(3, 7)
 ]
 
+func _ready():
+	randomize()
+	noise_map.noise.seed = randi()
+	noise = noise_map.noise
+	generate_initial()
+	generate()
+	make_and_bake_navigation()
+
 func relocate_player(x, y):
 	var target = get_tree().get_first_node_in_group("player")
 	if !debugNoRelocate:
@@ -94,14 +102,3 @@ func make_and_bake_navigation():
 	navigation.navigation_polygon = new_navigation_mesh
 	navigation.bake_navigation_polygon()
 
-
-func _ready():
-	randomize()
-	noise_map.noise.seed = randi()
-	noise = noise_map.noise
-	generate_initial()
-	generate()
-	make_and_bake_navigation()
-
-func _process(delta):
-	pass

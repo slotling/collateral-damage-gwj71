@@ -17,4 +17,3 @@ func affect(value, cause, hurtbox_global_position):
 
 func _on_hit_box_handler_hit(strength, cause, hurtbox_global_position):
 	affect(-strength, cause, hurtbox_global_position)
-	

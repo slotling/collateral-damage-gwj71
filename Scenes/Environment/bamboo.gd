@@ -41,3 +41,6 @@ func _on_regrow_timer_timeout():
 	health_handler.affect(randi_range(5, 10), "Heal", global_position)
 	$RegrowTimer.start(2)
 
+func _on_animation_player_current_animation_changed(anim_name):
+	if anim_name == "hit":
+		Global.play_sound("EnvSFX", "bamboo" + str(randi_range(1, 3)), 0, global_position)
