@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=10 format=3 uid="uid://cedwbr4ui4t4j"]
 
 [ext_resource type="PackedScene" uid="uid://bgmyc6lbh46uf" path="res://Scenes/Entities/enemy.tscn" id="1_iclhj"]
@@ -5,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://qo5gh36pq2cc" path="res://Handlers/AttackHandlers/enemy_attack.tscn" id="2_ky7sh"]
 [ext_resource type="Script" path="res://Scenes/Entities/Enemies/terminator_enemy.gd" id="2_vmx8f"]
 [ext_resource type="Script" path="res://Handlers/AttackHandlers/EnemyAttacks/TerminatorEnemy_Attack1.gd" id="3_glmjw"]
+
 
 [sub_resource type="Animation" id="Animation_lc5r3"]
 resource_name = "walk"
@@ -71,6 +73,9 @@ vframes = 4
 
 [node name="CollisionShape2D" parent="HitBoxHandler" index="1"]
 position = Vector2(0, -20)
+
+[node name="CollisionShape2D" parent="HitBoxHandler" index="1"]
+shape = SubResource("RectangleShape2D_yvu18")
 
 [node name="MovementHandler" parent="." index="6"]
 max_speed = 250.0
