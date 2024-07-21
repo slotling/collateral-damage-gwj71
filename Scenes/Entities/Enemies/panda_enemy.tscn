@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8tiawpo7kom1"]
+
+[ext_resource type="PackedScene" uid="uid://bgmyc6lbh46uf" path="res://Scenes/Entities/enemy.tscn" id="1_dp45x"]
+[ext_resource type="PackedScene" uid="uid://qo5gh36pq2cc" path="res://Handlers/AttackHandlers/enemy_attack.tscn" id="2_jrqnt"]
+[ext_resource type="Script" path="res://Handlers/AttackHandlers/EnemyAttacks/PandaEnemy_Attack1.gd" id="2_knduc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkyva"]
+size = Vector2(112, 34)
+
+[node name="Panda_Enemy" instance=ExtResource("1_dp45x")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-2.14577e-06, 0)
+scale = Vector2(4, 2)
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_nkyva")
+
+[node name="HealthHandler" parent="." index="5"]
+health = 100
+max_health = 100
+
+[node name="MovementHandler" parent="." index="6"]
+max_speed = 300.0
+
+[node name="EnemyAttacksGroup" parent="." index="8"]
+range = 64
+
+[node name="EnemyAttack" parent="EnemyAttacksGroup" index="0" instance=ExtResource("2_jrqnt")]
+script = ExtResource("2_knduc")
