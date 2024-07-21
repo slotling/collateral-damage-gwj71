@@ -11,6 +11,9 @@ var state: String = "idle"
 var dir: Vector2 = Vector2.ZERO
 var target: CharacterBody2D = null
 
+func init(pos: Vector2):
+	global_position = pos
+
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("player")
 	call_deferred("target_setup")

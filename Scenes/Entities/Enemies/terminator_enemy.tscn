@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cedwbr4ui4t4j"]
+[gd_scene load_steps=5 format=3 uid="uid://cedwbr4ui4t4j"]
 
 [ext_resource type="PackedScene" uid="uid://bgmyc6lbh46uf" path="res://Scenes/Entities/enemy.tscn" id="1_iclhj"]
 [ext_resource type="PackedScene" uid="uid://qo5gh36pq2cc" path="res://Handlers/AttackHandlers/enemy_attack.tscn" id="2_ky7sh"]
 [ext_resource type="Script" path="res://Handlers/AttackHandlers/EnemyAttacks/TerminatorEnemy_Attack1.gd" id="3_glmjw"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvu18"]
+resource_local_to_scene = true
+size = Vector2(32, 24)
+
 [node name="TerminatorEnemy" instance=ExtResource("1_iclhj")]
+
+[node name="CollisionShape2D" parent="HitBoxHandler" index="1"]
+shape = SubResource("RectangleShape2D_yvu18")
 
 [node name="MovementHandler" parent="." index="6"]
 max_speed = 250.0

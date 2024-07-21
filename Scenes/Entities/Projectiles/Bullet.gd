@@ -9,7 +9,7 @@ func init(pos, rot_deg):
 
 func _ready():
 	await get_tree().create_timer(10).timeout
-	queue_free()
+	despawn()
 
 func _process(delta):
 	global_position += Vector2(SPEED*delta, 0).rotated(rotation)

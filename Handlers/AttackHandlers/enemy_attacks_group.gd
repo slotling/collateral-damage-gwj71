@@ -16,7 +16,6 @@ var in_range := false
 var ongoing := false
 
 func check_range():
-	print(player.global_position.distance_to(enemy.global_position))
 	in_range = player.global_position.distance_to(enemy.global_position) < range
 
 func attack():

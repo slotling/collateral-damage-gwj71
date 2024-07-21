@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://cr1bp5pyswuyb"]
+
+[ext_resource type="PackedScene" uid="uid://bgmyc6lbh46uf" path="res://Scenes/Entities/enemy.tscn" id="1_nrrmd"]
+[ext_resource type="PackedScene" uid="uid://qo5gh36pq2cc" path="res://Handlers/AttackHandlers/enemy_attack.tscn" id="2_u6mbq"]
+[ext_resource type="Script" path="res://Handlers/AttackHandlers/EnemyAttacks/CarEnemy_Attack1.gd" id="3_22jsp"]
+[ext_resource type="Script" path="res://Handlers/AttackHandlers/EnemyAttacks/CarEnemy_Attack2.gd" id="4_n71sa"]
+[ext_resource type="Script" path="res://Handlers/AttackHandlers/EnemyAttacks/CarEnemy_Attack3.gd" id="5_82hwh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bs2og"]
+size = Vector2(144, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4dv5"]
+resource_local_to_scene = true
+size = Vector2(144, 40)
+
+[node name="Car_Enemy" instance=ExtResource("1_nrrmd")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(5.72205e-06, 0)
+scale = Vector2(5, 2.5)
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+shape = SubResource("RectangleShape2D_bs2og")
+
+[node name="CollisionShape2D" parent="HitBoxHandler" index="1"]
+shape = SubResource("RectangleShape2D_u4dv5")
+
+[node name="HealthHandler" parent="." index="5"]
+health = 300
+max_health = 300
+
+[node name="MovementHandler" parent="." index="6"]
+max_speed = 150.0
+
+[node name="EnemyAttack" parent="EnemyAttacksGroup" index="0" instance=ExtResource("2_u6mbq")]
+script = ExtResource("3_22jsp")
+
+[node name="EnemyAttack2" parent="EnemyAttacksGroup" index="1" instance=ExtResource("2_u6mbq")]
+script = ExtResource("4_n71sa")
+
+[node name="EnemyAttack3" parent="EnemyAttacksGroup" index="2" instance=ExtResource("2_u6mbq")]
+script = ExtResource("5_82hwh")
