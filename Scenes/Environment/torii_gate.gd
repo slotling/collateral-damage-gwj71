@@ -12,8 +12,7 @@ func _on_health_handler_died(value, cause, hurtbox_global_position) -> void:
 	
 	if state == "dead":
 		
-		$HurtBoxHandler.strength = 40
-		
+		$HurtBoxHandler.strength = 25
 		
 		if cause == "Exploded":
 			sprite.flip_h = bool(randi_range(1, 0))

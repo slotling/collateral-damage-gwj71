@@ -101,6 +101,7 @@ autostart = true
 health = 50
 max_health = 50
 regen = true
+seconds_to_regen = 5.0
 show_bar = true
 
 [node name="MovementHandler" parent="." instance=ExtResource("3_od5h0")]
