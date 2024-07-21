@@ -4,6 +4,9 @@ extends Node2D
 @export var size:Vector2 = Vector2.ZERO
 @export var border_width:int = 20
 
+@export var bamboo_scarcity_chance: int = 15
+@export var torii_scarcity_chance: int = 200
+
 @export var noise_map : NoiseTexture2D
 var noise : Noise
 @onready var color_ramp : Gradient = noise_map.color_ramp
@@ -15,9 +18,9 @@ var noise : Noise
 @onready var tilesize: Vector2 = tileset.tile_size
 
 const tile_source = [
-	4,
-	5,
-	3
+	4, # water tile
+	5, # dirt tile
+	3 # grass tile
 ]
 const tile_atlas_coords = [
 	Vector2(0, 0),
@@ -76,15 +79,23 @@ func generate_initial():
 var navigation_vertices = []
 
 var bambooPreload = preload("res://Scenes/Environment/bamboo.tscn")
+var toriiPreload = preload("res://Scenes/Environment/torii_gate.tscn")
 
 func generate_tile(value, x, y):
 	var tilepos = Vector2(x-size.x/2, y-size.y/2)
 	tilemap.set_cell(0, tilepos, tile_source[value], tile_atlas_coords[value])
 	
 	match value:
-		1:
-			if randi_range(0, 15) == 0:
+		0: # water tile
+			pass
+		1: # dirt tile
+			if randi_range(0, bamboo_scarcity_chance) == 0:
 				var instance = bambooPreload.instantiate()
+				instance.global_position = tilepos*tilesize
+				Global.add_world_node(instance)
+		2: # grass tile
+			if randi_range(0, torii_scarcity_chance) == 0:
+				var instance = toriiPreload.instantiate()
 				instance.global_position = tilepos*tilesize
 				Global.add_world_node(instance)
 

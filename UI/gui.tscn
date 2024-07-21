@@ -27,11 +27,15 @@ bg_color = Color(1, 1, 1, 1)
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_a0fpn")
 
+[node name="EmotionTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="HeartShaker" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_yytos")]
 sprite = NodePath("../Control/HBoxContainer/VBoxContainer/Hearts")
 offset_property = "texture_progress_offset"
 pause_interval = 0.01
-offset_range = 7
+offset_range = 1
 
 [node name="StaminaShaker" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_yytos")]
 sprite = NodePath("../Control/HBoxContainer/VBoxContainer/Stamina")
@@ -80,7 +84,7 @@ texture = ExtResource("4_ddwg2")
 [node name="Icon" type="Sprite2D" parent="Control/HBoxContainer/IconBase"]
 position = Vector2(32, 32)
 texture = ExtResource("5_ugdgb")
-hframes = 4
+hframes = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
 layout_mode = 2
