@@ -13,6 +13,6 @@ func sprite_shaker_shake():
 	Global.play_sound("EnvSFX", "bamboo" + str(randi_range(1, 3)), 0, global_position)
 	sprite_shaker.shake()
 
+
 func _on_decay_timer_timeout():
-	state = "decaying"
 	anim_player.play("decay")

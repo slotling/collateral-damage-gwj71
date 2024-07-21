@@ -1,3 +1,4 @@
 [gd_resource type="NavigationPolygon" format=3 uid="uid://cjgmwojdmqfmn"]
 
 [resource]
+source_geometry_group_name = &"navigation_polygon_source_group"

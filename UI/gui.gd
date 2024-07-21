@@ -14,15 +14,15 @@ const emotions = {
 }
 
 @onready var player: Player = get_parent()
-@onready var heart_collection: TextureProgressBar = $Control/ColorRect/HBoxContainer/VBoxContainer/Hearts
+@onready var heart_collection: TextureProgressBar = $Control/HBoxContainer/VBoxContainer/Hearts
 @onready var heart_shaker: SpriteShaker = $HeartShaker
-@onready var stamina_collection: TextureProgressBar = $Control/ColorRect/HBoxContainer/VBoxContainer/Stamina
+@onready var stamina_collection: TextureProgressBar = $Control/HBoxContainer/VBoxContainer/Stamina
 @onready var stamina_shaker: SpriteShaker = $StaminaShaker
 @onready var icon_shaker: SpriteShaker = $IconShaker
 @onready var primary_atk_cooldown: ProgressBar = $AttackCooldowns/PrimaryAttackCooldown
 @onready var secondary_atk_cooldown: ProgressBar = $AttackCooldowns/SecondaryAttackCooldown
 @onready var emotion_timer: Timer = $EmotionTimer
-@onready var icon: Sprite2D = $Control/ColorRect/HBoxContainer/IconBase/Icon
+@onready var icon: Sprite2D = $Control/HBoxContainer/IconBase/Icon
 
 func _ready() -> void:
 	await player.ready
@@ -68,11 +68,11 @@ func update_hearts() -> void:
 	else:
 		heart_collection.value = lerp(heart_collection.value, float(player.health_handler.health), 0.1)
 	
-	if heart_collection.value > 90 * 2:
+	if heart_collection.value > 90:
 		heart_collection.set_progress_texture(hearts)
-	elif heart_collection.value > 55 * 2:
+	elif heart_collection.value > 55:
 		heart_collection.set_progress_texture(heh1_preload)
-	elif heart_collection.value > 22 * 2:
+	elif heart_collection.value > 22:
 		heart_collection.set_progress_texture(heh2_preload)
 	else:
 		heart_collection.set_progress_texture(heh3_preload)

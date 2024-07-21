@@ -1183,6 +1183,8 @@ size = Vector2(16, 16)
 
 [node name="FallenBamboo" instance=ExtResource("1_5vcay")]
 script = ExtResource("2_kbg35")
+flammable = null
+regeneratable = null
 
 [node name="SpriteShaker" parent="." index="0"]
 duration = 6
