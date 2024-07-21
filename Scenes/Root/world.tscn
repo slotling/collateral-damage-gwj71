@@ -9,11 +9,10 @@
 y_sort_enabled = true
 
 [node name="WaveHandler" parent="." instance=ExtResource("4_apm3v")]
-enabled = false
-wave_cooldown = 10
+
+wave_cooldown = 3
 max_enemy_count = 10
 max_wave_count = 10
-spawning_distance = 700
 
 [node name="Terrain" parent="." instance=ExtResource("1_r6r10")]
 z_index = -2
