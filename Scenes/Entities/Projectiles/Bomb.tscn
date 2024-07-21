@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Entities/Projectiles/Bomb.gd" id="1_vxjbw"]
 [ext_resource type="Texture2D" uid="uid://dnsjq5yixo2q6" path="res://Resources/Atlases/dynamite.tres" id="3_6cknm"]
 
-[sub_resource type="Curve2D" id="Curve2D_mgyhx"]
+[sub_resource type="Curve2D" id="Curve2D_k4pfc"]
 resource_local_to_scene = true
 
 [node name="Bomb" type="Node2D"]
@@ -13,7 +13,7 @@ script = ExtResource("1_vxjbw")
 ROTATE_DEGREES_SPEED = 1350
 
 [node name="UpCurvePath" parent="." instance=ExtResource("1_eohv5")]
-curve = SubResource("Curve2D_mgyhx")
+curve = SubResource("Curve2D_k4pfc")
 
 [node name="Sprite2D" type="Sprite2D" parent="UpCurvePath/PathFollow2D" index="0"]
 texture = ExtResource("3_6cknm")
