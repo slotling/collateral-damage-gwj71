@@ -35,7 +35,6 @@ func get_random_position():
 	return Vector2.ZERO
 
 func spawn_enemy():
-	print("among")
 	var enemy_instance = enemy.instantiate()
 	var random_pos = get_random_position()
 	var health_handler = enemy_instance.health_handler
