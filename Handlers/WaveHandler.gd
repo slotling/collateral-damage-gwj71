@@ -6,12 +6,27 @@ signal enemy_died
 
 @onready var cooldown_timer = $WaveCooldown
 @onready var terrain_generator: Node2D = get_tree().get_first_node_in_group("terrain_generator")
-@export var enemy = preload("res://Scenes/Entities/Enemies/terminator_enemy.tscn")
+var enemy_preload = [
+	preload("res://Scenes/Entities/Enemies/terminator_enemy.tscn"),
+	preload("res://Scenes/Entities/Enemies/panda_enemy.tscn"),
+	preload("res://Scenes/Entities/Enemies/car_enemy.tscn"),
+]
 @export var enabled = true
 
 @export var wave_cooldown: int
-@export var max_enemy_count: int
-@export var max_wave_count: int
+
+var wave_layout = [
+	[5, 0, 0],
+	[10, 0, 0],
+	[10, 0, 0],
+	[12, 1, 0],
+	[12, 1, 0],
+	[12, 1, 0],
+	[12, 2, 0],
+	[12, 2, 0],
+	[15, 2, 0],
+	[0, 0, 1],
+]
 
 var enemy_count: int = 0
 var current_wave: int = 0
@@ -22,10 +37,13 @@ func _ready():
 func start_wave():
 	if !enabled:
 		return
-	for n in max_enemy_count:
-		enemy_count = n
-		spawn_enemy()
-		await get_tree().create_timer(1).timeout
+	
+	var enemies_to_add = wave_layout[current_wave]
+	for i in range(enemies_to_add.size()):
+		for n in range(enemies_to_add[i]):
+			enemy_count = n
+			spawn_enemy(enemy_preload[i])
+			await get_tree().create_timer(1).timeout
 
 func get_random_position(): 
 	if terrain_generator:
@@ -34,7 +52,7 @@ func get_random_position():
 		return random_tile_pos - terrain_generator.size/2
 	return Vector2.ZERO
 
-func spawn_enemy():
+func spawn_enemy(enemy):
 	var enemy_instance = enemy.instantiate()
 	var random_pos = get_random_position()
 	var health_handler = enemy_instance.health_handler
@@ -48,7 +66,7 @@ func _on_wave_completed():
 	current_wave += 1
 
 func _on_wave_cooldown_timeout():
-	if current_wave != max_wave_count:
+	if current_wave != wave_layout.size():
 		start_wave()
 		print("wave started")
 	else:

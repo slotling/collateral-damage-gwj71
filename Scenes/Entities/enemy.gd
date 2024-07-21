@@ -19,6 +19,7 @@ func init(pos: Vector2):
 	global_position = pos
 
 func _ready() -> void:
+	$AnimationPlayerEnemy.play("spawn")
 	target = get_tree().get_first_node_in_group("player")
 	call_deferred("target_setup")
 
