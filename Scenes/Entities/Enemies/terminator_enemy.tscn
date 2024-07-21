@@ -1,15 +1,88 @@
-[gd_scene load_steps=4 format=3 uid="uid://cedwbr4ui4t4j"]
+[gd_scene load_steps=10 format=3 uid="uid://cedwbr4ui4t4j"]
 
 [ext_resource type="PackedScene" uid="uid://bgmyc6lbh46uf" path="res://Scenes/Entities/enemy.tscn" id="1_iclhj"]
+[ext_resource type="Texture2D" uid="uid://vkyqbwoivekd" path="res://Resources/Atlases/ninja_atlas.tres" id="2_c7nc8"]
 [ext_resource type="PackedScene" uid="uid://qo5gh36pq2cc" path="res://Handlers/AttackHandlers/enemy_attack.tscn" id="2_ky7sh"]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemies/terminator_enemy.gd" id="2_vmx8f"]
 [ext_resource type="Script" path="res://Handlers/AttackHandlers/EnemyAttacks/TerminatorEnemy_Attack1.gd" id="3_glmjw"]
 
+[sub_resource type="Animation" id="Animation_lc5r3"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_pg5pk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_56cro"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dxir2"]
+_data = {
+"RESET": SubResource("Animation_pg5pk"),
+"idle": SubResource("Animation_56cro"),
+"walk": SubResource("Animation_lc5r3")
+}
+
 [node name="TerminatorEnemy" instance=ExtResource("1_iclhj")]
+script = ExtResource("2_vmx8f")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_c7nc8")
+offset = Vector2(0, -14)
+vframes = 4
+
+[node name="CollisionShape2D" parent="HitBoxHandler" index="1"]
+position = Vector2(0, -20)
 
 [node name="MovementHandler" parent="." index="6"]
 max_speed = 250.0
 
 [node name="EnemyAttack" parent="EnemyAttacksGroup" index="0" instance=ExtResource("2_ky7sh")]
 script = ExtResource("3_glmjw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+libraries = {
+"": SubResource("AnimationLibrary_dxir2")
+}
+
+[connection signal="state_changed" from="." to="." method="_on_state_changed"]
 
 [editable path="EnemyAttacksGroup"]
