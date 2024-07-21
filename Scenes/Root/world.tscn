@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxacdto1scojh"]
 
 [ext_resource type="PackedScene" uid="uid://d3hrl4tjnukfe" path="res://Scenes/Generation/terrain.tscn" id="1_r6r10"]
-[ext_resource type="PackedScene" uid="uid://djorhqqn1rked" path="res://Scenes/Entities/Characters/demolitionist_player.tscn" id="3_i2ijw"]
+[ext_resource type="PackedScene" uid="uid://dl472ck8pk4d7" path="res://Scenes/Entities/Characters/arsonist_player.tscn" id="3_ljvp4"]
 [ext_resource type="PackedScene" uid="uid://14wcwtgp2v2v" path="res://Handlers/wave_handler.tscn" id="4_apm3v"]
 
 [node name="World" type="Node2D" groups=["main"]]
@@ -16,4 +16,4 @@ size = Vector2(100, 100)
 small_rock_scarcity_chance = 100
 big_rock_scarcity_chance = 220
 
-[node name="DemolitionistPlayer" parent="." instance=ExtResource("3_i2ijw")]
+[node name="ArsonistPlayer" parent="." instance=ExtResource("3_ljvp4")]
