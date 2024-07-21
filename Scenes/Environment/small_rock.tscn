@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://cck6w5dg3r0k6"]
+
+[ext_resource type="PackedScene" uid="uid://nnds0qqkrcr6" path="res://Scenes/Environment/environment_object.tscn" id="1_xpaj3"]
+[ext_resource type="Texture2D" uid="uid://j8pjeqsmop3q" path="res://Resources/Atlases/small_rocks_atlas.tres" id="2_b6ms6"]
+[ext_resource type="Script" path="res://Scenes/Environment/small_rock.gd" id="2_pnw5j"]
+[ext_resource type="PackedScene" uid="uid://yso47d6pjwco" path="res://Handlers/hit_box_handler.tscn" id="4_mbmo6"]
+
+[sub_resource type="Animation" id="Animation_l1nh3"]
+resource_name = "hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.7, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vw0h3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7kb72"]
+resource_name = "fallen"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 0.95), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gyilb"]
+_data = {
+"RESET": SubResource("Animation_vw0h3"),
+"fallen": SubResource("Animation_7kb72"),
+"hit": SubResource("Animation_l1nh3")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p5g1b"]
+radius = 8.0
+height = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kp6rj"]
+radius = 16.0
+
+[node name="SmallRock" instance=ExtResource("1_xpaj3")]
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("2_pnw5j")
+movable = true
+auto_disable_collision = false
+
+[node name="SpriteShaker" parent="." index="0"]
+duration = 6
+pause_interval = 0.01
+offset_range = 5
+
+[node name="HealthHandler" parent="." index="1"]
+health = 1
+max_health = 1
+regen = true
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_b6ms6")
+offset = Vector2(0, -16)
+vframes = 4
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_gyilb")
+}
+
+[node name="CollisionShape2D" parent="." index="4"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_p5g1b")
+
+[node name="HitBoxHandler" parent="." index="5" instance=ExtResource("4_mbmo6")]
+resistant_to = "Burnt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxHandler" index="1"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_kp6rj")
+
+[connection signal="hit" from="HitBoxHandler" to="." method="_on_hit_box_handler_hit"]
