@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bxtrrtwpd2l4o"]
+[gd_scene load_steps=18 format=3 uid="uid://bxtrrtwpd2l4o"]
 
 [ext_resource type="PackedScene" uid="uid://nnds0qqkrcr6" path="res://Scenes/Environment/environment_object.tscn" id="1_6cbch"]
 [ext_resource type="Script" path="res://Scenes/Environment/torii_gate.gd" id="2_bslew"]

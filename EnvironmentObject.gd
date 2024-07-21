@@ -1,7 +1,9 @@
-extends StaticBody2D
+extends CharacterBody2D
 
 @export var flammable: bool = false
 @export var regeneratable: bool = false
+@export var movable: bool = false
+@export var auto_disable_collision: bool = true
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var sprite_shaker: Node = $SpriteShaker
@@ -12,6 +14,12 @@ var state: String = "alive"
 
 func _ready() -> void:
 	pass
+
+func _physics_process(_delta) -> void:
+	if movable:
+		velocity = lerp(velocity, Vector2.ZERO, 0.1)
+		
+		move_and_slide()
 
 func calculate_fall_to_vector(hurtbox_global_position) -> Vector2:
 	return -round(global_position.direction_to(hurtbox_global_position))
@@ -34,4 +42,5 @@ func _on_hit_box_handler_hit(strength, cause, hurtbox_global_position) -> void:
 	health_handler.affect(-abs(strength), cause, hurtbox_global_position)
 
 func _process(delta):
-	$CollisionShape2D.disabled = (state == "dead" or state == "decaying")
+	if auto_disable_collision:
+		$CollisionShape2D.disabled = (state == "dead" or state == "decaying")
