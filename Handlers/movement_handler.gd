@@ -7,6 +7,10 @@ extends Node
 @export var knockback_multiplier := 50
 @export_node_path("AnimatedSprite2D") var sprite_path
 
+@onready var weapon_timer = get_node("../WeaponMoveSlowTimer")
+
+var speed_weapon_multiplier := 1.0
+
 var speed_boost := 0
 var running := false
 var dir := Vector2.ZERO
@@ -30,10 +34,16 @@ func _physics_process(_delta):
 		get_parent().velocity = lerp(get_parent().velocity, Vector2.ZERO, 0.6)
 		return
 	
+	if get_parent().is_in_group("player"):
+		if weapon_timer.is_stopped():
+			speed_weapon_multiplier = 1
+		else:
+			speed_weapon_multiplier = 0.5
+	
 	## Handle Velocity
 	if dir != Vector2.ZERO: # Proceed If Walking
 		get_parent().state = "walk"
-		get_parent().velocity = lerp(get_parent().velocity, dir * (lerp(max_speed, max_speed + speed_boost, 0.7)), 0.4)
+		get_parent().velocity = lerp(get_parent().velocity, dir * (lerp(max_speed, max_speed + speed_boost, 0.7)) * speed_weapon_multiplier, 0.4)
 	else: # Proceed If Idle
 		get_parent().state = "idle"
 		get_parent().velocity = lerp(get_parent().velocity, Vector2.ZERO, 0.2)

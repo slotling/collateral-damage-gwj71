@@ -7,7 +7,7 @@ class_name EnemyAttack
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 
 func _ready():
-	pass
+	randomize()
 
 func _process(delta):
 	pass

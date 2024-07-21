@@ -4,6 +4,7 @@ signal cooldown_end()
 
 @export var is_secondary_attack := false # will make it use secondary attack button if true
 @onready var cooldown_timer: Timer = $CooldownTimer
+@onready var weapon_timer = get_node("../WeaponMoveSlowTimer")
 
 signal execute_attack()
 
@@ -16,6 +17,9 @@ func _process(delta):
 	if pressed and cooldown_timer.is_stopped() and get_parent().state != "dead":
 		execute()
 		cooldown_timer.start()
+		weapon_timer.start()
+		
+		
 
 func execute():
 	pass
