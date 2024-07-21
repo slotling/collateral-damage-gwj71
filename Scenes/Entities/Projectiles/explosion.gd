@@ -15,6 +15,8 @@ func _process(delta):
 	for i in range($Sprites.get_children().size()):
 		$Sprites.get_child(i).frame = explosionFrame
 
+	$Sprites.visible = $AnimationPlayer.is_playing()
+
 func _on_explosion_active_timer_timeout():
 	$HurtBoxHandler/CollisionShape2D.disabled = true
 

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7e6hcrsvrrqm"]
+
+[ext_resource type="PackedScene" uid="uid://cfqvhwih0qcti" path="res://Scenes/Entities/Projectiles/Bomb.tscn" id="1_ubtrg"]
+[ext_resource type="Texture2D" uid="uid://6n1lr08tnvpj" path="res://Resources/Atlases/molotov_bomb.tres" id="2_gpwvb"]
+
+[sub_resource type="Curve2D" id="Curve2D_apdqm"]
+resource_local_to_scene = true
+
+[node name="MolotovBomb" instance=ExtResource("1_ubtrg")]
+
+[node name="UpCurvePath" parent="." index="0"]
+curve = SubResource("Curve2D_apdqm")
+
+[node name="Sprite2D" parent="UpCurvePath/PathFollow2D" index="0"]
+texture = ExtResource("2_gpwvb")
+
+[editable path="UpCurvePath"]

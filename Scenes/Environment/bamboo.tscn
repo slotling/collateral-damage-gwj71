@@ -514,6 +514,8 @@ size = Vector2(32, 42)
 
 [node name="Bamboo" instance=ExtResource("1_f4gq0")]
 y_sort_enabled = true
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("2_mt40n")
 flammable = true
 regeneratable = true
