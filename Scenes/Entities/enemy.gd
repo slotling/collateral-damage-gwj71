@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		movement_handler.dir = dir
 	
 	movement_handler.running = movement_handler.bot_sprint_condition
-	
+		
 	prev_state = state
 	
 	move_and_slide()
