@@ -9,7 +9,6 @@
 y_sort_enabled = true
 
 [node name="WaveHandler" parent="." instance=ExtResource("4_apm3v")]
-enabled = false
 wave_cooldown = 3
 max_enemy_count = 10
 max_wave_count = 10
