@@ -53,11 +53,13 @@ func get_random_position():
 		return random_tile_pos - terrain_generator.size/2
 	return Vector2.ZERO
 
+func _process(delta):
+	pass
+
 func spawn_enemy(enemy):
 	var enemy_instance = enemy.instantiate()
 	var random_pos = get_random_position()
 	var health_handler = enemy_instance.health_handler
-	enemy_count += 1
 	enemy_instance.global_position = random_pos * terrain_generator.tilesize
 	get_parent().add_child(enemy_instance)
 

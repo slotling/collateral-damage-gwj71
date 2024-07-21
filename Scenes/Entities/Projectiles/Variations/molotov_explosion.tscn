@@ -10,7 +10,7 @@ radius = 64.0
 explosionSfxName = "molotov_i"
 
 [node name="HurtBoxHandler" parent="." index="0"]
-strength = 2
+strength = 3
 cause = "Burnt"
 
 [node name="CollisionShape2D" parent="HurtBoxHandler" index="0"]

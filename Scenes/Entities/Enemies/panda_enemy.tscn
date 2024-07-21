@@ -69,6 +69,7 @@ _data = {
 }
 
 [node name="Panda_Enemy" instance=ExtResource("1_dp45x")]
+death_prefix = "panda_d"
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(-2.14577e-06, 0)

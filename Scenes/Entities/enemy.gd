@@ -4,6 +4,7 @@ class_name Enemy
 signal state_changed(new_state)
 
 @export var can_get_scared: bool = true
+@export var death_prefix = "ninja_d"
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var movement_handler: Node = $MovementHandler
@@ -60,6 +61,8 @@ func _on_health_handler_died(value, cause, hurtbox_global_position):
 	if wave_handler:
 		
 		wave_handler.emit_signal("enemy_died")
+	
+	Global.play_sound("EnemySFX", death_prefix + str(randi_range(1, 3)), 0, global_position)
 	
 	queue_free()
 
