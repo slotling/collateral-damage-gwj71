@@ -42,6 +42,8 @@ shape = SubResource("RectangleShape2D_jroy1")
 max_speed = 400.0
 
 [node name="HealthHandler" parent="." instance=ExtResource("3_mkbxr")]
+health = 200
+max_health = 200
 
 [node name="CharacterAttack1" parent="." instance=ExtResource("5_a04fe")]
 

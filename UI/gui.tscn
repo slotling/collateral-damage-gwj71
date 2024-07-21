@@ -32,19 +32,19 @@ wait_time = 2.0
 one_shot = true
 
 [node name="HeartShaker" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_yytos")]
-sprite = NodePath("../Control/HBoxContainer/VBoxContainer/Hearts")
+sprite = NodePath("../Control/ColorRect/HBoxContainer/VBoxContainer/Hearts")
 offset_property = "texture_progress_offset"
 pause_interval = 0.01
 offset_range = 1
 
 [node name="StaminaShaker" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_yytos")]
-sprite = NodePath("../Control/HBoxContainer/VBoxContainer/Stamina")
+sprite = NodePath("../Control/ColorRect/HBoxContainer/VBoxContainer/Stamina")
 offset_property = "texture_progress_offset"
 pause_interval = 0.01
 offset_range = 1
 
 [node name="IconShaker" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_yytos")]
-sprite = NodePath("../Control/HBoxContainer/IconBase/Icon")
+sprite = NodePath("../Control/ColorRect/HBoxContainer/IconBase/Icon")
 duration = 10
 pause_interval = 0.01
 offset_range = 7
@@ -63,48 +63,7 @@ offset_right = 176.0
 offset_bottom = 96.0
 color = Color(0, 0, 0, 0.211765)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 184.0
-offset_bottom = 72.0
-
-[node name="IconBase" type="TextureRect" parent="Control/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_vd156")
-stretch_mode = 2
-
-[node name="Frame" type="TextureRect" parent="Control/HBoxContainer/IconBase"]
-layout_mode = 2
-offset_right = 64.0
-offset_bottom = 64.0
-texture = ExtResource("4_ddwg2")
-
-[node name="Icon" type="Sprite2D" parent="Control/HBoxContainer/IconBase"]
-position = Vector2(32, 32)
-texture = ExtResource("5_ugdgb")
-hframes = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Hearts" type="TextureProgressBar" parent="Control/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-value = 100.0
-texture_under = ExtResource("5_m2yw5")
-texture_progress = ExtResource("6_6yntk")
-
-[node name="Stamina" type="TextureProgressBar" parent="Control/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-max_value = 96.0
-value = 96.0
-allow_lesser = true
-texture_under = ExtResource("8_tp7gk")
-texture_progress = ExtResource("9_wnh1g")
-
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="Control/ColorRect"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 75.0
@@ -114,6 +73,48 @@ text = "primary attack
 secondary attack"
 label_settings = SubResource("LabelSettings_p5pw0")
 autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 172.0
+offset_bottom = 72.0
+
+[node name="IconBase" type="TextureRect" parent="Control/ColorRect/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_vd156")
+stretch_mode = 2
+
+[node name="Frame" type="TextureRect" parent="Control/ColorRect/HBoxContainer/IconBase"]
+layout_mode = 2
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("4_ddwg2")
+
+[node name="Icon" type="Sprite2D" parent="Control/ColorRect/HBoxContainer/IconBase"]
+position = Vector2(32, 32)
+texture = ExtResource("5_ugdgb")
+hframes = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Hearts" type="TextureProgressBar" parent="Control/ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 200.0
+value = 200.0
+texture_under = ExtResource("5_m2yw5")
+texture_progress = ExtResource("6_6yntk")
+
+[node name="Stamina" type="TextureProgressBar" parent="Control/ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 96.0
+value = 96.0
+allow_lesser = true
+texture_under = ExtResource("8_tp7gk")
+texture_progress = ExtResource("9_wnh1g")
 
 [node name="AttackCooldowns" type="VBoxContainer" parent="."]
 offset_left = 61.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxacdto1scojh"]
+[gd_scene load_steps=4 format=3 uid="uid://dxacdto1scojh"]
 
 [ext_resource type="PackedScene" uid="uid://d3hrl4tjnukfe" path="res://Scenes/Generation/terrain.tscn" id="1_r6r10"]
 [ext_resource type="PackedScene" uid="uid://cr1bp5pyswuyb" path="res://Scenes/Entities/Enemies/car_enemy.tscn" id="4_a3550"]
@@ -15,7 +15,6 @@ max_wave_count = 10
 
 [node name="Terrain" parent="." instance=ExtResource("1_r6r10")]
 z_index = -2
-debugNoRelocate = true
 size = Vector2(100, 100)
 
 [node name="Car_Enemy" parent="." instance=ExtResource("4_a3550")]
