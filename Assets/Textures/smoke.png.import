@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3c3dq8i1dhd5"
-path="res://.godot/imported/megarion.jpg-ef9d3524913d1914b524bd87339dc8ed.ctex"
+uid="uid://vbxvfkbam5bj"
+path="res://.godot/imported/smoke.png-da4f27f7c77d869bbe2e35c6e755fedf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/megarion.jpg"
-dest_files=["res://.godot/imported/megarion.jpg-ef9d3524913d1914b524bd87339dc8ed.ctex"]
+source_file="res://Assets/Textures/smoke.png"
+dest_files=["res://.godot/imported/smoke.png-da4f27f7c77d869bbe2e35c6e755fedf.ctex"]
 
 [params]
 

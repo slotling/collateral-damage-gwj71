@@ -1,13 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://djorhqqn1rked"]
+[gd_scene load_steps=5 format=3 uid="uid://djorhqqn1rked"]
 
 [ext_resource type="PackedScene" uid="uid://d2vt5m4ks2jor" path="res://Scenes/Entities/player.tscn" id="1_w0i3m"]
 [ext_resource type="Script" path="res://Handlers/AttackHandlers/CharacterAttacks/Demolitionist_Attack1.gd" id="2_svhre"]
 [ext_resource type="Texture2D" uid="uid://b1k3mggtht0mx" path="res://icon.svg" id="3_akf5q"]
+[ext_resource type="Script" path="res://Handlers/AttackHandlers/CharacterAttacks/Demolitionist_Attack2.gd" id="3_sfkv8"]
 
 [node name="DemolitionistPlayer" instance=ExtResource("1_w0i3m")]
 
 [node name="CharacterAttack1" parent="." index="6"]
 script = ExtResource("2_svhre")
 
-[node name="Icon" type="Sprite2D" parent="." index="7"]
+[node name="CharacterAttack2" parent="." index="7"]
+script = ExtResource("3_sfkv8")
+
+[node name="CooldownTimer" parent="CharacterAttack2" index="0"]
+wait_time = 10.0
+
+[node name="Icon" type="Sprite2D" parent="." index="8"]
 texture = ExtResource("3_akf5q")
+offset = Vector2(0, -16)
+
+[editable path="CharacterAttack2"]

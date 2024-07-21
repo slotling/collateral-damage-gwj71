@@ -1,23 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6no1qlukpfbs"]
+[gd_scene load_steps=6 format=3 uid="uid://c6no1qlukpfbs"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Projectiles/Bullet.gd" id="1_7mcev"]
 [ext_resource type="Texture2D" uid="uid://b1k3mggtht0mx" path="res://icon.svg" id="2_hin6l"]
 [ext_resource type="PackedScene" uid="uid://cm2ssf8ce16m5" path="res://Handlers/hurt_box_handler.tscn" id="3_fhy25"]
+[ext_resource type="PackedScene" uid="uid://bkgwrq0s5kkjl" path="res://Handlers/despawn_on_contact_handler.tscn" id="4_gi5hn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_whifp"]
-radius = 16.0
+radius = 8.0
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_7mcev")
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(1, 0.35, 0, 1)
-position = Vector2(-4.76837e-07, 4.76837e-07)
-rotation = 1.5708
+rotation = 1.57079
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_hin6l")
 
 [node name="HurtBoxHandler" parent="." instance=ExtResource("3_fhy25")]
-damage_to_type = "player"
+cause = "Shot"
+avoid_damaging_enemies = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxHandler"]
+shape = SubResource("CircleShape2D_whifp")
+
+[node name="DespawnOnContactHandler" parent="." instance=ExtResource("4_gi5hn")]
+cause = "Shot"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DespawnOnContactHandler"]
 shape = SubResource("CircleShape2D_whifp")

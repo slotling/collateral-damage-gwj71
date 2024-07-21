@@ -2,17 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://ca3tsn8ksqgef" path="res://Scenes/Misc/UpCurvePath.tscn" id="1_eohv5"]
 [ext_resource type="Script" path="res://Scenes/Entities/Projectiles/Bomb.gd" id="1_vxjbw"]
-[ext_resource type="Curve2D" uid="uid://co1oeabgggmst" path="res://Resources/Curves/ProjectileCurve.tres" id="3_22m7i"]
-[ext_resource type="Texture2D" uid="uid://b1k3mggtht0mx" path="res://icon.svg" id="3_wqwyo"]
+[ext_resource type="Texture2D" uid="uid://dnsjq5yixo2q6" path="res://Resources/Atlases/dynamite.tres" id="3_6cknm"]
+
+[sub_resource type="Curve2D" id="Curve2D_65rgg"]
+resource_local_to_scene = true
 
 [node name="Bomb" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_vxjbw")
+ROTATE_DEGREES_SPEED = 1350
 
 [node name="UpCurvePath" parent="." instance=ExtResource("1_eohv5")]
-curve = ExtResource("3_22m7i")
+curve = SubResource("Curve2D_65rgg")
 
 [node name="Sprite2D" type="Sprite2D" parent="UpCurvePath/PathFollow2D" index="0"]
 modulate = Color(1, 0, 1, 1)
-texture = ExtResource("3_wqwyo")
+texture = ExtResource("3_6cknm")
 
 [editable path="UpCurvePath"]

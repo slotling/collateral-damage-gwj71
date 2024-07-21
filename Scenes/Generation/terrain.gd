@@ -2,6 +2,7 @@ extends Node2D
 
 @export var debugNoRelocate = false
 @export var size:Vector2 = Vector2.ZERO
+@export var border_width:int = 20
 
 @export var noise_map : NoiseTexture2D
 var noise : Noise
@@ -14,15 +15,23 @@ var noise : Noise
 @onready var tilesize: Vector2 = tileset.tile_size
 
 const tile_source = [
-	0,
-	1
+	4,
+	5,
+	3
 ]
 const tile_atlas_coords = [
 	Vector2(0, 0),
-	Vector2(0, 0)
+	Vector2(0, 0),
+	Vector2(3, 7)
 ]
 
-var spawnable_tiles
+func _ready():
+	randomize()
+	noise_map.noise.seed = randi()
+	noise = noise_map.noise
+	generate_initial()
+	generate()
+	make_and_bake_navigation()
 
 func relocate_player(x, y):
 	var target = get_tree().get_first_node_in_group("player")
@@ -48,7 +57,7 @@ func generate():
 	for x in range(size.x):
 		for y in range(size.y):
 			var noise_value_decimal = (noise_value_array[x][y] - min_val) / (max_val-min_val)
-			if noise_value_decimal >= 0.5:
+			if noise_value_decimal >= 0.6:
 				spawnable_tiles.append(Vector2(x, y))
 			
 			for i in range(color_ramp_offsets.size()):
@@ -60,15 +69,24 @@ func generate():
 	relocate_player(random_spawnable_tile_pos.x, random_spawnable_tile_pos.y)
 
 func generate_initial():
-	for x in range(size.x+2):
-		for y in range(size.y+2):
-			generate_tile(0, x-1, y-1)
+	for x in range(size.x+border_width*2):
+		for y in range(size.y+border_width*2):
+			generate_tile(0, x-border_width, y-border_width)
 
 var navigation_vertices = []
+
+var bambooPreload = preload("res://Scenes/Environment/bamboo.tscn")
 
 func generate_tile(value, x, y):
 	var tilepos = Vector2(x-size.x/2, y-size.y/2)
 	tilemap.set_cell(0, tilepos, tile_source[value], tile_atlas_coords[value])
+	
+	match value:
+		1:
+			if randi_range(0, 15) == 0:
+				var instance = bambooPreload.instantiate()
+				instance.global_position = tilepos*tilesize
+				Global.add_world_node(instance)
 
 func make_and_bake_navigation():
 	var new_navigation_mesh = NavigationPolygon.new()
@@ -84,14 +102,3 @@ func make_and_bake_navigation():
 	navigation.navigation_polygon = new_navigation_mesh
 	navigation.bake_navigation_polygon()
 
-
-func _ready():
-	randomize()
-	noise_map.noise.seed = randi()
-	noise = noise_map.noise
-	generate_initial()
-	generate()
-	make_and_bake_navigation()
-
-func _process(delta):
-	pass

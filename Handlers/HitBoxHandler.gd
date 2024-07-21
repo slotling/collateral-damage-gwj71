@@ -20,4 +20,11 @@ func get_hit(str, cause, hurtbox_global_position):
 
 func _on_area_entered(area):
 	if area.is_in_group("hurtbox"):
+		var parent = get_parent()
+		if area.avoid_damaging_enemies && parent.is_in_group("enemy"):
+			return
+		
+		if area.avoid_damaging_player && parent.is_in_group("player"):
+			return
+		
 		get_hit(area.strength, area.cause, area.global_position)

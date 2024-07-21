@@ -2,6 +2,8 @@ extends Node2D
 class_name Bomb
 
 var end_position:Vector2
+@export var CURVE_SPEED = 500
+@export var ROTATE_DEGREES_SPEED = 360*2
 
 func init(from=Vector2.ZERO, to=Vector2.ZERO) -> void: # global positions
 	global_position = from
@@ -10,11 +12,17 @@ func init(from=Vector2.ZERO, to=Vector2.ZERO) -> void: # global positions
 	end_position = to
 
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta) -> void:
-	$UpCurvePath/PathFollow2D.progress += 400 * delta
+func _process(delta) -> void:
+	if global_position.x <= end_position.x:
+		$UpCurvePath/PathFollow2D/Sprite2D.rotation_degrees += ROTATE_DEGREES_SPEED * delta 
+	else:
+		$UpCurvePath/PathFollow2D/Sprite2D.rotation_degrees -= ROTATE_DEGREES_SPEED * delta 
+	
+	#ROTATE_DEGREES_SPEED -= 10 * sign(ROTATE_DEGREES_SPEED) * delta
+	
+	$UpCurvePath/PathFollow2D.progress += CURVE_SPEED * delta
 	if $UpCurvePath/PathFollow2D.progress_ratio >= 1:
 		detonate()
 

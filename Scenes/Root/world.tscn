@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxacdto1scojh"]
+[gd_scene load_steps=4 format=3 uid="uid://dxacdto1scojh"]
 
 [ext_resource type="PackedScene" uid="uid://d3hrl4tjnukfe" path="res://Scenes/Generation/terrain.tscn" id="1_r6r10"]
 [ext_resource type="PackedScene" uid="uid://djorhqqn1rked" path="res://Scenes/Entities/Characters/demolitionist_player.tscn" id="2_0m2oe"]
-[ext_resource type="PackedScene" uid="uid://brrquad1bj0h1" path="res://Scenes/Environment/bamboo.tscn" id="4_4rcn2"]
 [ext_resource type="PackedScene" uid="uid://14wcwtgp2v2v" path="res://Handlers/wave_handler.tscn" id="4_apm3v"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" groups=["main"]]
+y_sort_enabled = true
 
 [node name="WaveHandler" parent="." instance=ExtResource("4_apm3v")]
 wave_cooldown = 10
@@ -14,13 +14,7 @@ max_wave_count = 10
 spawning_distance = 700
 
 [node name="Terrain" parent="." instance=ExtResource("1_r6r10")]
-debugNoRelocate = true
+z_index = -2
 size = Vector2(100, 100)
 
 [node name="DemolitionistPlayer" parent="." instance=ExtResource("2_0m2oe")]
-position = Vector2(80, 8)
-
-[node name="Bamboo" parent="." instance=ExtResource("4_4rcn2")]
-position = Vector2(128, -16)
-
-[editable path="DemolitionistPlayer"]

@@ -3,6 +3,9 @@ class_name Player
 
 @onready var movement_handler: Node = $MovementHandler
 @onready var health_handler: Node = $HealthHandler
+@onready var primary_attack: Node = $CharacterAttack1
+@onready var secondary_attack: Node = $CharacterAttack2
+@onready var game_ui: Node = $GUI
 
 var state: String = "idle"
 
@@ -18,3 +21,6 @@ func _on_health_handler_died(value, cause, hurtbox_global_position):
 
 func _on_hit_box_handler_hit(strength, cause, hurtbox_global_position):
 	health_handler.affect(-abs(strength), cause, hurtbox_global_position)
+
+func _on_health_handler_hit(value, cause, hurtbox_global_position):
+	game_ui.update_hearts(value, cause)

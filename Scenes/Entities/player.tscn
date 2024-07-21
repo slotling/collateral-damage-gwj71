@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2vt5m4ks2jor"]
+[gd_scene load_steps=12 format=3 uid="uid://d2vt5m4ks2jor"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player.gd" id="1_4mm5d"]
 [ext_resource type="PackedScene" uid="uid://dop5wt4mfcqi1" path="res://Scenes/Display/camera.tscn" id="2_04t7k"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bd0rf1irac7tl" path="res://Handlers/health_handler.tscn" id="3_mkbxr"]
 [ext_resource type="PackedScene" uid="uid://48p86jdswl23" path="res://Handlers/AttackHandlers/CharacterAttack.tscn" id="5_a04fe"]
 [ext_resource type="PackedScene" uid="uid://bn7wfghlv05w0" path="res://Handlers/soft_collision.tscn" id="5_y6jt2"]
+[ext_resource type="PackedScene" uid="uid://c37pk28hj6rad" path="res://UI/gui.tscn" id="8_4pj48"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t45nw"]
 size = Vector2(24, 24)
@@ -18,13 +19,13 @@ radius = 40.0
 size = Vector2(24, 24)
 
 [node name="Player" type="CharacterBody2D" groups=["enemy_and_player", "player"]]
-y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_4mm5d")
 
 [node name="Camera" parent="." instance=ExtResource("2_04t7k")]
 
 [node name="HitBoxHandler" parent="." instance=ExtResource("3_cd6oy")]
+cooldown_time = 0.05
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxHandler"]
 shape = SubResource("RectangleShape2D_t45nw")
@@ -38,6 +39,7 @@ shape = SubResource("CircleShape2D_6q348")
 shape = SubResource("RectangleShape2D_jroy1")
 
 [node name="MovementHandler" parent="." instance=ExtResource("2_wj5aa")]
+max_speed = 400.0
 
 [node name="HealthHandler" parent="." instance=ExtResource("3_mkbxr")]
 
@@ -46,5 +48,8 @@ shape = SubResource("RectangleShape2D_jroy1")
 [node name="CharacterAttack2" parent="." instance=ExtResource("5_a04fe")]
 is_secondary_attack = true
 
+[node name="GUI" parent="." instance=ExtResource("8_4pj48")]
+
 [connection signal="hit" from="HitBoxHandler" to="." method="_on_hit_box_handler_hit"]
 [connection signal="died" from="HealthHandler" to="." method="_on_health_handler_died"]
+[connection signal="hit" from="HealthHandler" to="." method="_on_health_handler_hit"]

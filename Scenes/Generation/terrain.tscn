@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" path="res://Scenes/Generation/terrain.gd" id="1_7boge"]
 [ext_resource type="PackedScene" uid="uid://cgqxwb20faojq" path="res://Scenes/Generation/tile_map.tscn" id="2_2jma3"]
+[ext_resource type="NavigationPolygon" uid="uid://cjgmwojdmqfmn" path="res://Resources/NavMesh/terrain_navmesh.tres" id="2_rjtu5"]
 
 [sub_resource type="Gradient" id="Gradient_s6f1m"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.347826, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.333333, 0.46087, 1)
+colors = PackedColorArray(0.109804, 0.270588, 0.47451, 1, 0.439216, 0.290196, 0.290196, 1, 0.203922, 0.494118, 0.423529, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_s0251"]
 frequency = 0.025
@@ -17,14 +18,11 @@ height = 100
 color_ramp = SubResource("Gradient_s6f1m")
 noise = SubResource("FastNoiseLite_s0251")
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_tktbw"]
-source_geometry_group_name = &"navigation_polygon_source_group"
-
-[node name="Terrain" type="Node2D"]
+[node name="Terrain" type="Node2D" groups=["terrain_generator"]]
 script = ExtResource("1_7boge")
 noise_map = SubResource("NoiseTexture2D_1eg75")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_tktbw")
+navigation_polygon = ExtResource("2_rjtu5")
 
 [node name="TileMap" parent="NavigationRegion2D" groups=["tilemap"] instance=ExtResource("2_2jma3")]

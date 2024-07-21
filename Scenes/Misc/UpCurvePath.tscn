@@ -10,6 +10,5 @@ curve = SubResource("Curve2D_wsca1")
 script = ExtResource("1_ijatl")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-rotation = -1.9513
 rotates = false
 loop = false
