@@ -25,6 +25,7 @@ script = ExtResource("1_4mm5d")
 [node name="Camera" parent="." instance=ExtResource("2_04t7k")]
 
 [node name="HitBoxHandler" parent="." instance=ExtResource("3_cd6oy")]
+position = Vector2(0, -24)
 cooldown_time = 0.05
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxHandler"]

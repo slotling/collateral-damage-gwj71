@@ -173,6 +173,7 @@ shape = SubResource("CapsuleShape2D_p5g1b")
 [node name="HurtBoxHandler" parent="." index="6" instance=ExtResource("6_jvxv7")]
 scale = Vector2(1e-05, 1e-05)
 monitorable = false
+strength = 25
 cause = "Crushed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxHandler" index="0"]
