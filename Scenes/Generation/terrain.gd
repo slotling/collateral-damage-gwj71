@@ -1,5 +1,8 @@
 extends Node2D
 
+const bambooPreload = preload("res://Scenes/Environment/bamboo.tscn")
+const toriiPreload = preload("res://Scenes/Environment/torii_gate.tscn")
+
 @export var debugNoRelocate = false
 @export var size:Vector2 = Vector2.ZERO
 @export var border_width:int = 20
@@ -78,8 +81,7 @@ func generate_initial():
 
 var navigation_vertices = []
 
-var bambooPreload = preload("res://Scenes/Environment/bamboo.tscn")
-var toriiPreload = preload("res://Scenes/Environment/torii_gate.tscn")
+
 
 func generate_tile(value, x, y):
 	var tilepos = Vector2(x-size.x/2, y-size.y/2)
