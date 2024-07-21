@@ -47,6 +47,8 @@ func _physics_process(delta: float) -> void:
 	
 	movement_handler.running = movement_handler.bot_sprint_condition
 	
+	sprite.flip_h = !bool(sign(dir.x) + 1)
+	
 	prev_state = state
 	
 	move_and_slide()

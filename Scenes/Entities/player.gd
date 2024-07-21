@@ -7,7 +7,12 @@ class_name Player
 @onready var secondary_attack: Node = $CharacterAttack2
 @onready var game_ui: Node = $GUI
 
+@export var icon_texture: Texture2D = null
+
 var state: String = "idle"
+
+func _ready():
+	game_ui.icon.texture = icon_texture
 
 func _physics_process(delta):
 	movement_handler.dir = Input.get_vector("left", "right", "forward", "backward").normalized()

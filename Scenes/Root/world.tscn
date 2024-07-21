@@ -2,14 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://d3hrl4tjnukfe" path="res://Scenes/Generation/terrain.tscn" id="1_r6r10"]
 [ext_resource type="PackedScene" uid="uid://dl472ck8pk4d7" path="res://Scenes/Entities/Characters/arsonist_player.tscn" id="4_6tavc"]
-[ext_resource type="PackedScene" uid="uid://cr1bp5pyswuyb" path="res://Scenes/Entities/Enemies/car_enemy.tscn" id="4_a3550"]
+[ext_resource type="PackedScene" path="res://Scenes/Entities/Enemies/car_enemy.tscn" id="4_a3550"]
 [ext_resource type="PackedScene" uid="uid://14wcwtgp2v2v" path="res://Handlers/wave_handler.tscn" id="4_apm3v"]
 
 [node name="World" type="Node2D" groups=["main"]]
 y_sort_enabled = true
 
 [node name="WaveHandler" parent="." instance=ExtResource("4_apm3v")]
-enabled = false
 wave_cooldown = 3
 max_enemy_count = 10
 max_wave_count = 10
