@@ -39,9 +39,10 @@ func start_wave():
 		return
 	
 	var enemies_to_add = wave_layout[current_wave]
+	enemy_count = 0
 	for i in range(enemies_to_add.size()):
+		enemy_count += enemies_to_add[i]
 		for n in range(enemies_to_add[i]):
-			enemy_count = n
 			spawn_enemy(enemy_preload[i])
 			await get_tree().create_timer(1).timeout
 
