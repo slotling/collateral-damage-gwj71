@@ -23,4 +23,5 @@ func _on_hit_box_handler_hit(strength, cause, hurtbox_global_position):
 	health_handler.affect(-abs(strength), cause, hurtbox_global_position)
 
 func _on_health_handler_hit(value, cause, hurtbox_global_position):
-	game_ui.update_hearts(value, cause)
+	game_ui.heart_shaker.shake()
+	game_ui.icon_shaker.shake()

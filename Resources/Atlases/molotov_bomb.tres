@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://6n1lr08tnvpj"]
+
+[ext_resource type="Texture2D" uid="uid://qwjb26svp7gc" path="res://Assets/Textures/NyomSprites.png" id="1_x4n0j"]
+
+[resource]
+atlas = ExtResource("1_x4n0j")
+region = Rect2(32, 192, 32, 32)

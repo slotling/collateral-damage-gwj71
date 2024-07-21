@@ -20,6 +20,7 @@ noise = SubResource("FastNoiseLite_s0251")
 
 [node name="Terrain" type="Node2D" groups=["terrain_generator"]]
 script = ExtResource("1_7boge")
+torii_scarcity_chance = 300
 noise_map = SubResource("NoiseTexture2D_1eg75")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]

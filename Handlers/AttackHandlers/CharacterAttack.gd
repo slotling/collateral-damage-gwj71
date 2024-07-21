@@ -8,7 +8,7 @@ signal cooldown_end()
 signal execute_attack()
 
 func _ready():
-	pass # Replace with function body.
+	cooldown_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

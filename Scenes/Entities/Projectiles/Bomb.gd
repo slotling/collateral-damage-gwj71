@@ -26,7 +26,7 @@ func _process(delta) -> void:
 	if $UpCurvePath/PathFollow2D.progress_ratio >= 1:
 		detonate()
 
-var explosion_preload = preload("res://Scenes/Entities/Projectiles/explosion.tscn")
+var explosion_preload = preload("res://Scenes/Entities/Projectiles/Variations/molotov_explosion.tscn")
 
 func detonate() -> void:
 	var instance = explosion_preload.instantiate()
