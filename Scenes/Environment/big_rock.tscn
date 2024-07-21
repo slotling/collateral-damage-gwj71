@@ -1,0 +1,201 @@
+[gd_scene load_steps=14 format=3 uid="uid://dk7g3oivmd24j"]
+
+[ext_resource type="PackedScene" uid="uid://nnds0qqkrcr6" path="res://Scenes/Environment/environment_object.tscn" id="1_uaywl"]
+[ext_resource type="Texture2D" uid="uid://br18pm2bg2jxc" path="res://Resources/Atlases/big_rocks_atlas.tres" id="2_1vagj"]
+[ext_resource type="Script" path="res://Scenes/Environment/big_rock.gd" id="2_hrx54"]
+[ext_resource type="AudioStream" uid="uid://df3en8ob50bc" path="res://Assets/Sounds/EnvSFX/rock4.ogg" id="2_y8wn7"]
+[ext_resource type="PackedScene" uid="uid://cm2ssf8ce16m5" path="res://Handlers/hurt_box_handler.tscn" id="4_qe6i2"]
+[ext_resource type="PackedScene" uid="uid://yso47d6pjwco" path="res://Handlers/hit_box_handler.tscn" id="5_meu4o"]
+
+[sub_resource type="Animation" id="Animation_o4rr4"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.9, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBoxHandler:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HurtBoxHandler:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_em12t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBoxHandler:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HurtBoxHandler:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ohsao"]
+resource_name = "fallen"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.9, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBoxHandler:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(10.2, 3.4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HurtBoxHandler:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ar1rr"]
+_data = {
+"RESET": SubResource("Animation_em12t"),
+"fallen": SubResource("Animation_ohsao"),
+"hit": SubResource("Animation_o4rr4")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gpn25"]
+height = 128.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ct3gr"]
+size = Vector2(16, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k2o0c"]
+radius = 40.0
+height = 128.0
+
+[node name="BigRock" instance=ExtResource("1_uaywl")]
+collision_layer = 9
+collision_mask = 9
+wall_min_slide_angle = 3.14159
+script = ExtResource("2_hrx54")
+movable = true
+
+[node name="SpriteShaker" parent="." index="0"]
+duration = 6
+pause_interval = 0.01
+offset_range = 10
+
+[node name="RockSliding" type="AudioStreamPlayer2D" parent="." index="1"]
+stream = ExtResource("2_y8wn7")
+volume_db = 1.0
+bus = &"SFX"
+
+[node name="HealthHandler" parent="." index="2"]
+health = 1
+max_health = 1
+regen = true
+
+[node name="Sprite2D" parent="." index="3"]
+texture = ExtResource("2_1vagj")
+offset = Vector2(0, -48)
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_ar1rr")
+}
+
+[node name="CollisionShape2D" parent="." index="5"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gpn25")
+
+[node name="HurtBoxHandler" parent="." index="6" instance=ExtResource("4_qe6i2")]
+scale = Vector2(1e-05, 1e-05)
+monitorable = false
+strength = 20
+cause = "Crushed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxHandler" index="0"]
+shape = SubResource("RectangleShape2D_ct3gr")
+
+[node name="HitBoxHandler" parent="." index="7" instance=ExtResource("5_meu4o")]
+resistant_to = "Crushed"
+cooldown_time = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxHandler" index="1"]
+position = Vector2(0, -32)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_k2o0c")
+
+[connection signal="hit" from="HitBoxHandler" to="." method="_on_hit_box_handler_hit"]

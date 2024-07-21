@@ -3,6 +3,8 @@ class_name Enemy
 
 signal state_changed(new_state)
 
+@export var can_get_scared: bool = true
+
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var movement_handler: Node = $MovementHandler
 @onready var health_handler: Node = $HealthHandler
@@ -41,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	if soft_collision.is_colliding():
 		velocity += soft_collision.get_push_vector() * delta * 1000
 	
-	if health_handler.health <= int(health_handler.max_health * 0.5):
+	if health_handler.health <= int(health_handler.max_health * 0.5) and can_get_scared:
 		movement_handler.dir = -dir
 	else:
 		movement_handler.dir = dir
