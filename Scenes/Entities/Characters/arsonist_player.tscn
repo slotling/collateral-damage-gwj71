@@ -140,9 +140,6 @@ script = ExtResource("2_owpu5")
 [node name="CharacterAttack2" parent="." index="8"]
 script = ExtResource("3_0124p")
 
-[node name="CooldownTimer" parent="CharacterAttack2" index="0"]
-wait_time = 3.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="11"]
 libraries = {
 "": SubResource("AnimationLibrary_kcttf")

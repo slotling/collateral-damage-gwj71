@@ -17,7 +17,8 @@ const default_data = { # REBOOT EXISTING SAVE FILE EVERYTIME YOU WANT TO CHANGE 
 var save_path: String = "user://megarion.anime"
 var data: Dictionary = { }
 
-
+var class_to_play: String = "arsonist"
+var won_the_game: bool = false
 
 func _ready() -> void:
 	#reboot_data()

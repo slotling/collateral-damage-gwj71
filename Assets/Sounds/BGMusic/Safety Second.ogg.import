@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://8mybeyvxqlbs"
+path="res://.godot/imported/Safety Second.ogg-933eb1662141e3d8029ee7754ab6ff1f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/BGMusic/Safety Second.ogg"
+dest_files=["res://.godot/imported/Safety Second.ogg-933eb1662141e3d8029ee7754ab6ff1f.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

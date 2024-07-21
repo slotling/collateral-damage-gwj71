@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv53egv0sgmhl"]
+[gd_scene load_steps=4 format=3 uid="uid://dv53egv0sgmhl"]
 
 [ext_resource type="PackedScene" uid="uid://cqbskis2pu6vb" path="res://Scenes/Entities/Projectiles/explosion.tscn" id="1_h5gjc"]
+[ext_resource type="SpriteFrames" uid="uid://b2fggnjbh07jb" path="res://Resources/SpriteFrames/FIREINTHEHOLE.tres" id="2_nf5e3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2xj8"]
 resource_local_to_scene = true
@@ -21,3 +22,35 @@ wait_time = 6.0
 
 [node name="DespawnTimer" parent="." index="2"]
 wait_time = 10.0
+
+[node name="ANIMTEDEAHDHDJSH2" type="AnimatedSprite2D" parent="." index="5"]
+modulate = Color(1, 1, 1, 0.796078)
+position = Vector2(-32, -16)
+sprite_frames = ExtResource("2_nf5e3")
+autoplay = "default"
+frame_progress = 0.174884
+offset = Vector2(0, -24)
+
+[node name="ANIMTEDEAHDHDJSH" type="AnimatedSprite2D" parent="." index="6"]
+modulate = Color(1, 1, 1, 0.796078)
+position = Vector2(32, -16)
+sprite_frames = ExtResource("2_nf5e3")
+autoplay = "default"
+frame_progress = 0.562167
+offset = Vector2(0, -24)
+
+[node name="ANIMTEDEAHDHDJSH3" type="AnimatedSprite2D" parent="." index="7"]
+modulate = Color(1, 1, 1, 0.796078)
+position = Vector2(-32, 40)
+sprite_frames = ExtResource("2_nf5e3")
+autoplay = "default"
+frame_progress = 0.174884
+offset = Vector2(0, -24)
+
+[node name="ANIMTEDEAHDHDJSH4" type="AnimatedSprite2D" parent="." index="8"]
+modulate = Color(1, 1, 1, 0.796078)
+position = Vector2(32, 40)
+sprite_frames = ExtResource("2_nf5e3")
+autoplay = "default"
+frame_progress = 0.846196
+offset = Vector2(0, -24)

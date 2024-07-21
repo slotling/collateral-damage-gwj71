@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://blhlqsjnfnix7"]
+
+[ext_resource type="Theme" uid="uid://ch2bx845fh1ba" path="res://Resources/Themes/main_ui_theme.tres" id="1_hs2vc"]
+[ext_resource type="Script" path="res://UI/select_player.gd" id="1_lycf1"]
+[ext_resource type="Texture2D" uid="uid://c0smi112nxl26" path="res://Assets/Textures/teddy.png" id="2_5ykwq"]
+[ext_resource type="Texture2D" uid="uid://rnqebbyyivvt" path="res://Assets/Textures/forgothisname.png" id="3_n1318"]
+[ext_resource type="AudioStream" uid="uid://ckd0eva1rxm47" path="res://Assets/Sounds/BGMusic/Succumbing to the Damage.ogg" id="5_je4d2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_20yhr"]
+font_size = 10
+
+[node name="SelectPlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hs2vc")
+script = ExtResource("1_lycf1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(160, 104)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_5ykwq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(416, 104)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("3_n1318")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 200.0
+offset_right = 239.0
+offset_bottom = 223.0
+text = "Theodore \"Teddy\" Dynamite"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 224.0
+offset_right = 264.0
+offset_bottom = 291.0
+text = "After 67 odd years of faulty demolition, the cops have finally decided they'd like to arrest this cranky old man. His state-of-the-art red goggles allow him to see exactly how much destruction he can cause with his arsenal.
+"
+label_settings = SubResource("LabelSettings_20yhr")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 224.0
+offset_right = 520.0
+offset_bottom = 280.0
+text = "A chef by day, a mechanic by night, this molotov-slinging arsonist has burned more houses than she has pleats on her chef's hat—all the more reason for the police to arrest her."
+label_settings = SubResource("LabelSettings_20yhr")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 200.0
+offset_right = 496.0
+offset_bottom = 223.0
+text = "Natascha \"Napalm\" Ivanov"
+horizontal_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 280.0
+offset_right = 296.0
+offset_bottom = 336.0
+
+[node name="D" type="Button" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 288.0
+offset_right = 256.0
+offset_bottom = 312.0
+theme_override_font_sizes/font_size = 20
+text = "DEMOLITIONIST"
+
+[node name="A" type="Button" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 288.0
+offset_right = 520.0
+offset_bottom = 312.0
+theme_override_font_sizes/font_size = 20
+text = "ARSONIST"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_je4d2")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="D" to="." method="_on_d_pressed"]
+[connection signal="pressed" from="A" to="." method="_on_a_pressed"]

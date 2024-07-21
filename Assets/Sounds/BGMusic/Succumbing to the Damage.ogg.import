@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ckd0eva1rxm47"
+path="res://.godot/imported/Succumbing to the Damage.ogg-c76a79617b1eb12dd9f81b840764013f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/BGMusic/Succumbing to the Damage.ogg"
+dest_files=["res://.godot/imported/Succumbing to the Damage.ogg-c76a79617b1eb12dd9f81b840764013f.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

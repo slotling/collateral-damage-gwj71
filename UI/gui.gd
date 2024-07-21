@@ -33,6 +33,10 @@ func _physics_process(_delta) -> void:
 	update_cooldowns()
 	update_hearts()
 
+func dead():
+	$Control.hide()
+	$AttackCooldowns.hide()
+
 func update_cooldowns() -> void:
 	
 	if player.state == "dead":
