@@ -87,8 +87,8 @@ shape = SubResource("RectangleShape2D_bs2og")
 shape = SubResource("RectangleShape2D_u4dv5")
 
 [node name="HealthHandler" parent="." index="5"]
-health = 300
-max_health = 300
+health = 150
+max_health = 150
 
 [node name="MovementHandler" parent="." index="6"]
 max_speed = 150.0

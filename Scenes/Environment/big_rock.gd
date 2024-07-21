@@ -5,7 +5,7 @@ extends "res://EnvironmentObject.gd"
 
 
 func _ready() -> void:
-	if !bool(randi_range(0, 100)):
+	if !bool(randi_range(0, 10000)):
 		sprite.frame = 0
 
 func _on_health_handler_died(value, cause, hurtbox_global_position) -> void:
