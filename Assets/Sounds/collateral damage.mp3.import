@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dde3vr0pxr4ft"
+path="res://.godot/imported/collateral damage.mp3-9dc3a24c89ba0c58e877b0c6b1376cf2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/collateral damage.mp3"
+dest_files=["res://.godot/imported/collateral damage.mp3-9dc3a24c89ba0c58e877b0c6b1376cf2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -20,6 +20,10 @@ func _process(delta):
 
 func _on_explosion_active_timer_timeout():
 	$HurtBoxHandler/CollisionShape2D.disabled = true
+	
+	for i in range(3):
+		if has_node("ANIMTEDEAHDHDJSH3" + str(i+1)):
+			get_node("ANIMTEDEAHDHDJSH3" + str(i+1)).hide()
 
 func _on_despawn_timer_timeout():
 	queue_free()

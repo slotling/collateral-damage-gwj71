@@ -1,11 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxacdto1scojh"]
+[gd_scene load_steps=9 format=3 uid="uid://dxacdto1scojh"]
 
 [ext_resource type="PackedScene" uid="uid://d3hrl4tjnukfe" path="res://Scenes/Generation/terrain.tscn" id="1_r6r10"]
-[ext_resource type="PackedScene" uid="uid://dl472ck8pk4d7" path="res://Scenes/Entities/Characters/arsonist_player.tscn" id="3_iuyp1"]
+[ext_resource type="Script" path="res://Scenes/Root/world.gd" id="1_r50fy"]
+[ext_resource type="AudioStream" uid="uid://ckd0eva1rxm47" path="res://Assets/Sounds/BGMusic/Succumbing to the Damage.ogg" id="2_nllxw"]
 [ext_resource type="PackedScene" uid="uid://14wcwtgp2v2v" path="res://Handlers/wave_handler.tscn" id="4_apm3v"]
+[ext_resource type="Texture2D" uid="uid://c5uqr58jceirc" path="res://DRATS.png" id="5_ee07j"]
+[ext_resource type="PackedScene" uid="uid://bwvgbh0q0mp66" path="res://Handlers/sprite_shaker.tscn" id="6_7fh2f"]
+[ext_resource type="AudioStream" uid="uid://cv2a3ld5ru4h" path="res://Assets/Sounds/PlayerSFX/player_d.ogg" id="7_n6mbk"]
+[ext_resource type="Theme" uid="uid://ch2bx845fh1ba" path="res://Resources/Themes/main_ui_theme.tres" id="7_uwajf"]
 
 [node name="World" type="Node2D" groups=["main"]]
 y_sort_enabled = true
+script = ExtResource("1_r50fy")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="DeadMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nllxw")
+bus = &"Music"
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_n6mbk")
+volume_db = 1.0
+bus = &"SFX"
 
 [node name="WaveHandler" parent="." instance=ExtResource("4_apm3v")]
 wave_cooldown = 3
@@ -16,4 +34,63 @@ size = Vector2(100, 100)
 small_rock_scarcity_chance = 100
 big_rock_scarcity_chance = 220
 
-[node name="DemolitionistPlayer" parent="." instance=ExtResource("3_tncp8")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 256.0
+grow_horizontal = 2
+texture = ExtResource("5_ee07j")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/TextureRect"]
+layout_mode = 1
+offset_left = 72.0
+offset_top = 240.0
+offset_right = 504.0
+offset_bottom = 312.0
+theme = ExtResource("7_uwajf")
+alignment = 1
+
+[node name="TryAgain" type="Button" parent="CanvasLayer/Control/TextureRect/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "TRY AGAIN"
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/Control/TextureRect/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "MAIN MENU"
+
+[node name="Blackfade" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="SpriteShaker" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("6_7fh2f")]
+sprite = NodePath("../CanvasLayer/Control/TextureRect")
+offset_property = "position"
+duration = 6
+pause_interval = 0.01
+offset_range = 10
+
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]
+[connection signal="all_waves_finished" from="WaveHandler" to="." method="_on_wave_handler_all_waves_finished"]
+[connection signal="pressed" from="CanvasLayer/Control/TextureRect/VBoxContainer/TryAgain" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/TextureRect/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

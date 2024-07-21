@@ -38,6 +38,9 @@ const tile_atlas_coords = [
 ]
 
 func _ready():
+	pass
+
+func start():
 	randomize()
 	noise_map.noise.seed = randi()
 	noise = noise_map.noise

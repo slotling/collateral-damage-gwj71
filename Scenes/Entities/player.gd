@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+signal died
 signal state_changed(new_state)
 
 @onready var movement_handler: Node = $MovementHandler
@@ -35,7 +36,11 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _on_health_handler_died(value, cause, hurtbox_global_position):
+	if state == "dead":
+		return
+	
 	state = "dead"
+	died.emit()
 
 func _on_hit_box_handler_hit(strength, cause, hurtbox_global_position):
 	health_handler.affect(-abs(strength), cause, hurtbox_global_position)

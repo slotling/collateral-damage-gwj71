@@ -1,10 +1,568 @@
-[gd_scene load_steps=4 format=3 uid="uid://b70j7r0ykulqx"]
+[gd_scene load_steps=23 format=3 uid="uid://b70j7r0ykulqx"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_ngevu"]
 [ext_resource type="Theme" uid="uid://ch2bx845fh1ba" path="res://Resources/Themes/main_ui_theme.tres" id="1_vd5ui"]
+[ext_resource type="AudioStream" uid="uid://cvmxujh843ays" path="res://Assets/Sounds/BGMusic/Public Safety Risk.ogg" id="3_2bkgf"]
+[ext_resource type="Texture2D" uid="uid://c6bkhqxs4shjb" path="res://Assets/collateraldamage.png" id="4_1id3w"]
+[ext_resource type="AudioStream" uid="uid://d4qp7dapaa6q" path="res://Assets/Sounds/EnvSFX/metal_h3.ogg" id="4_rievv"]
+[ext_resource type="Texture2D" uid="uid://dq7k21sjho2mh" path="res://BG.png" id="4_ro25p"]
+[ext_resource type="Texture2D" uid="uid://b462k84b3mjvr" path="res://BG2.png" id="5_jcl2j"]
+[ext_resource type="AudioStream" uid="uid://c06fujus4p78m" path="res://Assets/Sounds/EnvSFX/bamboo2.ogg" id="5_ncacf"]
+[ext_resource type="AudioStream" uid="uid://2kquhex12ogr" path="res://Assets/Sounds/EnvSFX/menu1.ogg" id="8_7d65b"]
+[ext_resource type="PackedScene" uid="uid://bwvgbh0q0mp66" path="res://Handlers/sprite_shaker.tscn" id="9_dvwtm"]
+
+[sub_resource type="Animation" id="Animation_ol2d4"]
+resource_name = "Begin"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.785398, 0.244346, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(0.4, 0.4), Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Logo:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"instantiate_explosion"
+}, {
+"args": [],
+"method": &"start_music"
+}]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Metal")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_rievv")
+}, {
+"end_offset": 0.214593,
+"start_offset": 0.0,
+"stream": ExtResource("5_ncacf")
+}],
+"times": PackedFloat32Array(0.1, 0.4)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Panel/TextureRect:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_jcl2j"), ExtResource("4_ro25p")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Panel/VBoxContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Panel/VBoxContainer:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(0.0941176, 0.117647, 0.152941, 1), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Panel/Label:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Flash:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Flash:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Flash:color")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Credits:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2fw85"]
+resource_name = "BeginSoft"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.785398, 0.244346, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(0.4, 0.4), Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Logo:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"instantiate_explosion"
+}]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Metal")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_rievv")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Panel/TextureRect:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_ro25p")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Panel/VBoxContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Panel/VBoxContainer:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(0.0941176, 0.117647, 0.152941, 1), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Panel/Label:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Flash:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Flash:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Flash:color")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Credits:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k3d6f"]
+resource_name = "Credits"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.858824)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Credits:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2rwiq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Logo:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/TextureRect:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_jcl2j")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel/VBoxContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Panel/VBoxContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Panel/Label:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Flash:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Flash:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Flash:color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Credits:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8nusm"]
+_data = {
+"Begin": SubResource("Animation_ol2d4"),
+"BeginSoft": SubResource("Animation_2fw85"),
+"Credits": SubResource("Animation_k3d6f"),
+"RESET": SubResource("Animation_2rwiq")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iniyl"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jje25"]
 font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_t1uea"]
+font_size = 32
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qqpry"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gu08k"]
+font_size = 48
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u51gy"]
+font_size = 8
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_byjpy"]
+font_size = 18
+font_color = Color(1, 0, 0, 1)
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -17,6 +575,21 @@ theme = ExtResource("1_vd5ui")
 script = ExtResource("1_ngevu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8nusm")
+}
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2bkgf")
+bus = &"Music"
+
+[node name="MenuButton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_7d65b")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="Metal" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -38,15 +611,20 @@ offset_right = -16.0
 offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iniyl")
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 536.0
-offset_bottom = 264.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_jcl2j")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 176.0
 offset_top = 152.0
@@ -61,11 +639,6 @@ layout_mode = 2
 focus_mode = 0
 text = "PLAY"
 
-[node name="Settings" type="Button" parent="Panel/VBoxContainer" groups=["MainMenuButton"]]
-layout_mode = 2
-focus_mode = 0
-text = "SETTINGS"
-
 [node name="Credits" type="Button" parent="Panel/VBoxContainer" groups=["MainMenuButton"]]
 layout_mode = 2
 focus_mode = 0
@@ -76,6 +649,16 @@ layout_mode = 2
 focus_mode = 0
 text = "QUIT"
 
+[node name="Label" type="Label" parent="Panel"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 120.0
+offset_top = 168.0
+offset_right = 416.0
+offset_bottom = 192.0
+text = "<< BATTLE OF SHICHISHITO FOREST >>"
+horizontal_alignment = 1
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 12
@@ -85,7 +668,215 @@ anchor_bottom = 1.0
 offset_top = -36.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "MANGO LASAGNA 2024"
+text = "ASCENDED MANGOS 2024"
 label_settings = SubResource("LabelSettings_jje25")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Logo" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+position = Vector2(288, 120)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_1id3w")
+
+[node name="SpriteShaker" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_dvwtm")]
+sprite = NodePath("../Logo")
+pause_interval = 0.02
+offset_range = 20
+
+[node name="Flash" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 11
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Credits" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 12
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label8" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 8.0
+offset_right = 383.0
+offset_bottom = 41.0
+text = "Special Thanks"
+label_settings = SubResource("LabelSettings_t1uea")
+horizontal_alignment = 1
+
+[node name="Label15" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 48.0
+offset_right = 408.0
+offset_bottom = 245.0
+text = "Rosilliam, Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. Megarion. and last but not the least, Megarion."
+label_settings = SubResource("LabelSettings_qqpry")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 416.0
+offset_right = 573.0
+offset_bottom = 48.0
+text = "KROFUS"
+label_settings = SubResource("LabelSettings_gu08k")
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 104.0
+offset_right = 573.0
+offset_bottom = 152.0
+text = "NYOM"
+label_settings = SubResource("LabelSettings_gu08k")
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 208.0
+offset_right = 573.0
+offset_bottom = 256.0
+text = "CREPE"
+label_settings = SubResource("LabelSettings_gu08k")
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 165.0
+offset_bottom = 48.0
+text = "MEGARION"
+label_settings = SubResource("LabelSettings_gu08k")
+
+[node name="Label6" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 104.0
+offset_right = 165.0
+offset_bottom = 152.0
+text = "DESCA"
+label_settings = SubResource("LabelSettings_gu08k")
+
+[node name="Label7" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 208.0
+offset_right = 165.0
+offset_bottom = 256.0
+text = "U23"
+label_settings = SubResource("LabelSettings_gu08k")
+
+[node name="Label9" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 160.0
+offset_bottom = 105.0
+text = "Team Leader, Programmer
+
+literally the guy who kept everyone's focus away from unnecessary things and kept our priorities. Best leader ever frfr."
+label_settings = SubResource("LabelSettings_u51gy")
+autowrap_mode = 3
+
+[node name="Label10" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 160.0
+offset_bottom = 209.0
+text = "Musician, Soundman, Marketing
+
+Funny dude with awesome music, bro produced 99% of the music used here. His beats are FIRE!!!"
+label_settings = SubResource("LabelSettings_u51gy")
+autowrap_mode = 3
+
+[node name="Label11" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 256.0
+offset_right = 160.0
+offset_bottom = 313.0
+text = "Programmer, Sprite Artist, Musician, Marketing, Creditswriter >:))
+
+Helped with alotta art and some code and a tiny bit of the music. I just made a drum track that's it kekw. This team is so awesomesauce they're crazie."
+label_settings = SubResource("LabelSettings_u51gy")
+autowrap_mode = 3
+
+[node name="Label12" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 48.0
+offset_right = 568.0
+offset_bottom = 105.0
+text = "Programmer, Sprite Artist, Marketing
+
+Amazing sprite artist and programmer. Conquered github braver than whoever's writing these credits descriptions. She makes fire art and fire systems. Keep it up bud!"
+label_settings = SubResource("LabelSettings_u51gy")
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="Label13" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 152.0
+offset_right = 568.0
+offset_bottom = 209.0
+text = "Sprite Artist
+
+One of the most best sprite artists out there. Man no matter what she always produces fire sprites. And barely complained bout edits. A fighter fr."
+label_settings = SubResource("LabelSettings_u51gy")
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="Label14" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 256.0
+offset_right = 568.0
+offset_bottom = 313.0
+text = "Concept Artist
+
+Great artist and animator this gal is. We all absolutely loved the little characters she cooked up for the game. I love teddy dynamite I love teddy dynamite I love teddy dynamite I love teddy dynamite I"
+label_settings = SubResource("LabelSettings_u51gy")
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="BackToMenu" type="Button" parent="Credits"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 280.0
+offset_right = 376.0
+offset_bottom = 296.0
+text = "BACK TO MENU"
+
+[node name="WIN" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 552.0
+offset_bottom = 56.0
+text = "THANKS FOR PLAYING"
+label_settings = SubResource("LabelSettings_byjpy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Credits/BackToMenu" to="." method="_on_back_to_menu_pressed"]
