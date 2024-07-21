@@ -11,6 +11,8 @@ var state: String = "idle"
 var dir: Vector2 = Vector2.ZERO
 var target: CharacterBody2D = null
 
+var prev_state: String = "idle"
+
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("player")
 	call_deferred("target_setup")
@@ -35,6 +37,8 @@ func _physics_process(delta: float) -> void:
 	movement_handler.dir = dir
 	
 	movement_handler.running = movement_handler.bot_sprint_condition
+  
+	prev_state = state
 	
 	move_and_slide()
 
