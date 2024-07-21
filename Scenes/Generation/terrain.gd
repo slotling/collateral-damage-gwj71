@@ -81,8 +81,8 @@ func generate_initial():
 		for y in range(size.y+border_width*2):
 			generate_tile(3, x-border_width, y-border_width)
 			
-	for x in range(size.x+1):
-		for y in range(size.y+1):
+	for x in range(size.x+2):
+		for y in range(size.y+2):
 			generate_tile(0, x-1, y-1)
 
 var navigation_vertices = []
