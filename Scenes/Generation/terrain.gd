@@ -21,16 +21,16 @@ var noise : Noise
 @onready var tilesize: Vector2 = tileset.tile_size
 
 const tile_source = [
+	0, # no collide water
 	4, # water tile
 	5, # dirt tile
 	3, # grass tile
-	0 # no collide water
 ]
 const tile_atlas_coords = [
 	Vector2(0, 0),
 	Vector2(0, 0),
-	Vector2(3, 7),
 	Vector2(0, 0),
+	Vector2(3, 7),
 ]
 
 func _ready():
@@ -79,11 +79,11 @@ func generate():
 func generate_initial():
 	for x in range(size.x+border_width*2):
 		for y in range(size.y+border_width*2):
-			generate_tile(3, x-border_width, y-border_width)
+			generate_tile(0, x-border_width, y-border_width)
 			
 	for x in range(size.x+2):
 		for y in range(size.y+2):
-			generate_tile(0, x-1, y-1)
+			generate_tile(1, x-1, y-1)
 
 var navigation_vertices = []
 
@@ -94,16 +94,16 @@ func generate_tile(value, x, y):
 	tilemap.set_cell(0, tilepos, tile_source[value], tile_atlas_coords[value])
 	
 	match value:
-		3: # no collide water tile
+		0: # no collide water tile
 			pass
-		0: # water tile
+		1: # water tile
 			pass
-		1: # dirt tile
+		2: # dirt tile
 			if randi_range(0, bamboo_scarcity_chance) == 0:
 				var instance = bambooPreload.instantiate()
 				instance.global_position = tilepos*tilesize
 				Global.add_world_node(instance)
-		2: # grass tile
+		3: # grass tile
 			if randi_range(0, torii_scarcity_chance) == 0:
 				var instance = toriiPreload.instantiate()
 				instance.global_position = tilepos*tilesize
