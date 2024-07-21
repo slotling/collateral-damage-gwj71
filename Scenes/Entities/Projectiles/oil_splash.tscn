@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhb8djgqug4a2"]
+
+[ext_resource type="Texture2D" uid="uid://ksar58ip6n72" path="res://Resources/Atlases/oil_splash.tres" id="1_hmpxm"]
+[ext_resource type="Script" path="res://Scenes/Entities/Projectiles/oil_splash.gd" id="1_nohgc"]
+
+[node name="OilSplash" type="Node2D"]
+script = ExtResource("1_nohgc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hmpxm")
+hframes = 3
