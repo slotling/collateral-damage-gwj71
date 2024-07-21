@@ -4,8 +4,6 @@
 
 [node name="DespawnOnContactHandler" type="Area2D"]
 editor_description = "REQUIRE PARENT TO HAVE \"despawn\" FUNCTION"
-collision_layer = 9
-collision_mask = 9
 script = ExtResource("1_5gayd")
 avoid_contacting_world = true
 

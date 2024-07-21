@@ -79,7 +79,6 @@ right={
 2d_physics/layer_1="World (layer) - Enemy & Player (mask)"
 2d_physics/layer_2="Soft Collision"
 2d_physics/layer_3="Enemy - Enemy"
-2d_physics/layer_4="DespawnOnHitHandler & EnvironmentObjects"
 
 [rendering]
 

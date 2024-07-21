@@ -1,18 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl472ck8pk4d7"]
+[gd_scene load_steps=3 format=3 uid="uid://dl472ck8pk4d7"]
 
 [ext_resource type="PackedScene" uid="uid://d2vt5m4ks2jor" path="res://Scenes/Entities/player.tscn" id="1_ofonj"]
 [ext_resource type="Script" path="res://Handlers/AttackHandlers/CharacterAttacks/Arsonist_Attack1.gd" id="2_owpu5"]
-[ext_resource type="Script" path="res://Handlers/AttackHandlers/CharacterAttacks/Arsonist_Attack2.gd" id="3_0124p"]
 
 [node name="ArsonistPlayer" instance=ExtResource("1_ofonj")]
 
 [node name="CharacterAttack1" parent="." index="6"]
 script = ExtResource("2_owpu5")
-
-[node name="CharacterAttack2" parent="." index="7"]
-script = ExtResource("3_0124p")
-
-[node name="CooldownTimer" parent="CharacterAttack2" index="0"]
-wait_time = 5.0
-
-[editable path="CharacterAttack2"]
