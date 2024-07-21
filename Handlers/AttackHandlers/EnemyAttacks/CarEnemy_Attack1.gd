@@ -3,6 +3,7 @@ extends EnemyAttack
 var enemy_bullet_preload = preload("res://Scenes/Entities/Projectiles/Bullet.tscn")
 
 func execute() -> void:
+	Global.play_sound("EnemySFX", "car_e" + str(randi_range(1, 2)), 0, enemy.global_position)
 	for i in range(30):
 		var instance = enemy_bullet_preload.instantiate()
 		var enemypos = enemy.global_position

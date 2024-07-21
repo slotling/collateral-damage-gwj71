@@ -15,6 +15,6 @@ script = ExtResource("2_owpu5")
 script = ExtResource("3_0124p")
 
 [node name="CooldownTimer" parent="CharacterAttack2" index="0"]
-wait_time = 4.0
+wait_time = 3.0
 
 [editable path="CharacterAttack2"]

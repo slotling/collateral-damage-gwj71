@@ -38,7 +38,7 @@ func _physics_process(_delta):
 		if weapon_timer.is_stopped():
 			speed_weapon_multiplier = 1
 		else:
-			speed_weapon_multiplier = 0.5
+			speed_weapon_multiplier = 0.3
 	
 	## Handle Velocity
 	if dir != Vector2.ZERO: # Proceed If Walking

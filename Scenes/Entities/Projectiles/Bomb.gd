@@ -9,10 +9,11 @@ func init(from=Vector2.ZERO, to=Vector2.ZERO) -> void: # global positions
 	global_position = from
 	$UpCurvePath.pos1 = from-global_position
 	$UpCurvePath.pos2 = to-global_position
+	$Sprite2D.global_position = to
 	end_position = to
 
 func _ready() -> void:
-	pass
+	$AnimationPlayer.play("spark")
 
 func _process(delta) -> void:
 	if global_position.x <= end_position.x:

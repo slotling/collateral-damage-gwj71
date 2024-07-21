@@ -1,5 +1,6 @@
 extends Bomb
 
 func _ready() -> void:
+	$AnimationPlayer.play("spark")
 	explosion_preload = preload("res://Scenes/Entities/Projectiles/Variations/molotov_explosion.tscn")
 	Global.play_sound("PlayerSFX", "molotov_t" + str(randi_range(1, 3)), 0, global_position)

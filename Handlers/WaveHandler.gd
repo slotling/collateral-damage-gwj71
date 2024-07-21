@@ -54,7 +54,7 @@ func get_random_position():
 	return Vector2.ZERO
 
 func _process(delta):
-	print(enemy_count)
+	pass
 
 func spawn_enemy(enemy):
 	var enemy_instance = enemy.instantiate()

@@ -1,11 +1,61 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfqvhwih0qcti"]
+[gd_scene load_steps=9 format=3 uid="uid://cfqvhwih0qcti"]
 
 [ext_resource type="PackedScene" uid="uid://ca3tsn8ksqgef" path="res://Scenes/Misc/UpCurvePath.tscn" id="1_eohv5"]
 [ext_resource type="Script" path="res://Scenes/Entities/Projectiles/Bomb.gd" id="1_vxjbw"]
 [ext_resource type="Texture2D" uid="uid://dnsjq5yixo2q6" path="res://Resources/Atlases/dynamite.tres" id="3_6cknm"]
+[ext_resource type="Texture2D" uid="uid://djph3r6qhqu6u" path="res://Resources/Atlases/spark.tres" id="4_rv3rx"]
 
-[sub_resource type="Curve2D" id="Curve2D_8vq6u"]
+[sub_resource type="Curve2D" id="Curve2D_a6kln"]
 resource_local_to_scene = true
+
+[sub_resource type="Animation" id="Animation_73yvj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ca5rt"]
+resource_name = "spark"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mqhll"]
+_data = {
+"RESET": SubResource("Animation_73yvj"),
+"spark": SubResource("Animation_ca5rt")
+}
 
 [node name="Bomb" type="Node2D"]
 y_sort_enabled = true
@@ -13,9 +63,19 @@ script = ExtResource("1_vxjbw")
 ROTATE_DEGREES_SPEED = 1350
 
 [node name="UpCurvePath" parent="." instance=ExtResource("1_eohv5")]
-curve = SubResource("Curve2D_8vq6u")
+curve = SubResource("Curve2D_a6kln")
 
 [node name="Sprite2D" type="Sprite2D" parent="UpCurvePath/PathFollow2D" index="0"]
 texture = ExtResource("3_6cknm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mqhll")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 100
+texture = ExtResource("4_rv3rx")
+hframes = 4
 
 [editable path="UpCurvePath"]

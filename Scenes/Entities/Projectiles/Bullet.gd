@@ -8,6 +8,7 @@ func init(pos, rot_deg):
 	rotation_degrees = rot_deg
 
 func _ready():
+	Global.play_sound("EnemySFX", "ninja_t", -5, global_position)
 	await get_tree().create_timer(10).timeout
 	despawn()
 
