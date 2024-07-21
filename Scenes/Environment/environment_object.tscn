@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bwvgbh0q0mp66" path="res://Handlers/sprite_shaker.tscn" id="4_ift6q"]
 
 [node name="EnvironmentObject" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_nc5r5")
 
 [node name="SpriteShaker" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("4_ift6q")]

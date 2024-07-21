@@ -1,11 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhb8djgqug4a2"]
+[gd_scene load_steps=5 format=3 uid="uid://dhb8djgqug4a2"]
 
 [ext_resource type="Texture2D" uid="uid://ksar58ip6n72" path="res://Resources/Atlases/oil_splash.tres" id="1_hmpxm"]
 [ext_resource type="Script" path="res://Scenes/Entities/Projectiles/oil_splash.gd" id="1_nohgc"]
+[ext_resource type="PackedScene" uid="uid://yso47d6pjwco" path="res://Handlers/hit_box_handler.tscn" id="2_j4l2x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e5xl4"]
+radius = 64.0
 
 [node name="OilSplash" type="Node2D"]
 script = ExtResource("1_nohgc")
 
+[node name="HitBoxHandler" parent="." instance=ExtResource("2_j4l2x")]
+exclusiveDamageTypeThatCanDamageThisHitbox = "Burnt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxHandler"]
+shape = SubResource("CircleShape2D_e5xl4")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_hmpxm")
 hframes = 3
+
+[connection signal="hit" from="HitBoxHandler" to="." method="_on_hit_box_handler_hit"]
