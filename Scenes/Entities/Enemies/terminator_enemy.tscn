@@ -72,9 +72,6 @@ vframes = 4
 [node name="CollisionShape2D" parent="HitBoxHandler" index="1"]
 position = Vector2(0, -20)
 
-[node name="CollisionShape2D" parent="HitBoxHandler" index="1"]
-shape = SubResource("RectangleShape2D_yvu18")
-
 [node name="MovementHandler" parent="." index="6"]
 max_speed = 250.0
 

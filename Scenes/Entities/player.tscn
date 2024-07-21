@@ -52,10 +52,6 @@ is_secondary_attack = true
 
 [node name="GUI" parent="." instance=ExtResource("8_4pj48")]
 
-[node name="WeaponMoveSlowTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
 [connection signal="hit" from="HitBoxHandler" to="." method="_on_hit_box_handler_hit"]
 [connection signal="died" from="HealthHandler" to="." method="_on_health_handler_died"]
 [connection signal="hit" from="HealthHandler" to="." method="_on_health_handler_hit"]
