@@ -6,7 +6,7 @@ func execute() -> void:
 	var instance = enemy_bullet_preload.instantiate()
 	var enemypos = enemy.global_position
 	var playerpos = player.global_position
-	var direction = rad_to_deg(enemypos.angle_to_point(playerpos)) + randi_range(-60, 60)
+	var direction = rad_to_deg(enemypos.angle_to_point(playerpos)) + randi_range(-15, 15)
 	
 	instance.init(enemypos, direction)
 	Global.add_world_node(instance)

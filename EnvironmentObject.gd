@@ -32,3 +32,6 @@ func _on_health_handler_died(value, cause, hurtbox_global_position) -> void:
 
 func _on_hit_box_handler_hit(strength, cause, hurtbox_global_position) -> void:
 	health_handler.affect(-abs(strength), cause, hurtbox_global_position)
+
+func _process(delta):
+	$CollisionShape2D.disabled = (state == "dead" or state == "decaying")

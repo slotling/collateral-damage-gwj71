@@ -30,6 +30,7 @@ window/size/viewport_height=324
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://Assets/Textures/tile225.png"
 
 [editor]
 
