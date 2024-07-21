@@ -1,25 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cck6w5dg3r0k6"]
+[gd_scene load_steps=14 format=3 uid="uid://cck6w5dg3r0k6"]
 
 [ext_resource type="PackedScene" uid="uid://nnds0qqkrcr6" path="res://Scenes/Environment/environment_object.tscn" id="1_xpaj3"]
 [ext_resource type="Texture2D" uid="uid://j8pjeqsmop3q" path="res://Resources/Atlases/small_rocks_atlas.tres" id="2_b6ms6"]
 [ext_resource type="Script" path="res://Scenes/Environment/small_rock.gd" id="2_pnw5j"]
 [ext_resource type="PackedScene" uid="uid://yso47d6pjwco" path="res://Handlers/hit_box_handler.tscn" id="4_mbmo6"]
-
-[sub_resource type="Animation" id="Animation_l1nh3"]
-resource_name = "hit"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.7, 1.2), Vector2(1, 1)]
-}
+[ext_resource type="AudioStream" uid="uid://df3en8ob50bc" path="res://Assets/Sounds/EnvSFX/rock4.ogg" id="5_b8jyn"]
+[ext_resource type="PackedScene" uid="uid://cm2ssf8ce16m5" path="res://Handlers/hurt_box_handler.tscn" id="6_jvxv7"]
 
 [sub_resource type="Animation" id="Animation_vw0h3"]
 length = 0.001
@@ -34,6 +20,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBoxHandler:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HurtBoxHandler:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_7kb72"]
@@ -51,6 +61,58 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1.2, 0.95), Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBoxHandler:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HurtBoxHandler:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_l1nh3"]
+resource_name = "hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.7, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBoxHandler:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gyilb"]
 _data = {
@@ -63,42 +125,62 @@ _data = {
 radius = 8.0
 height = 64.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ubgm"]
+radius = 16.0
+height = 80.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_kp6rj"]
 radius = 16.0
 
 [node name="SmallRock" instance=ExtResource("1_xpaj3")]
 collision_layer = 9
 collision_mask = 9
+platform_on_leave = 1
 script = ExtResource("2_pnw5j")
 movable = true
 auto_disable_collision = false
+friction = 0.05
 
 [node name="SpriteShaker" parent="." index="0"]
 duration = 6
 pause_interval = 0.01
 offset_range = 5
 
-[node name="HealthHandler" parent="." index="1"]
+[node name="RockSliding" type="AudioStreamPlayer2D" parent="." index="1"]
+stream = ExtResource("5_b8jyn")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="HealthHandler" parent="." index="2"]
 health = 1
 max_health = 1
 regen = true
 
-[node name="Sprite2D" parent="." index="2"]
+[node name="Sprite2D" parent="." index="3"]
 texture = ExtResource("2_b6ms6")
 offset = Vector2(0, -16)
 vframes = 4
 
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_gyilb")
 }
 
-[node name="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" parent="." index="5"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_p5g1b")
 
-[node name="HitBoxHandler" parent="." index="5" instance=ExtResource("4_mbmo6")]
-resistant_to = "Burnt"
+[node name="HurtBoxHandler" parent="." index="6" instance=ExtResource("6_jvxv7")]
+scale = Vector2(1e-05, 1e-05)
+monitorable = false
+cause = "Crushed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxHandler" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8ubgm")
+
+[node name="HitBoxHandler" parent="." index="7" instance=ExtResource("4_mbmo6")]
+resistant_to = "Crushed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxHandler" index="1"]
 position = Vector2(0, -8)

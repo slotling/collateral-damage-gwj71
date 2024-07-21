@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c6no1qlukpfbs"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Projectiles/Bullet.gd" id="1_7mcev"]
-[ext_resource type="Texture2D" uid="uid://b1k3mggtht0mx" path="res://icon.svg" id="2_hin6l"]
+[ext_resource type="Texture2D" uid="uid://b2uaekwv72pjw" path="res://Assets/Textures/Shurikens.png" id="2_7apet"]
 [ext_resource type="PackedScene" uid="uid://cm2ssf8ce16m5" path="res://Handlers/hurt_box_handler.tscn" id="3_fhy25"]
 [ext_resource type="PackedScene" uid="uid://bkgwrq0s5kkjl" path="res://Handlers/despawn_on_contact_handler.tscn" id="4_gi5hn"]
 
@@ -12,13 +12,10 @@ radius = 8.0
 script = ExtResource("1_7mcev")
 
 [node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(1, 0.35, 0, 1)
-rotation = 1.57079
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_hin6l")
+texture = ExtResource("2_7apet")
+hframes = 3
 
 [node name="HurtBoxHandler" parent="." instance=ExtResource("3_fhy25")]
-strength = 30
 cause = "Shot"
 avoid_damaging_enemies = true
 

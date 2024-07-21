@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Handlers/HitBoxHandler.gd" id="1_6ar2r"]
 
-[node name="HitBoxHandler" type="Area2D"]
+[node name="HitBoxHandler" type="Area2D" groups=["hitbox"]]
 script = ExtResource("1_6ar2r")
 cooldown_time = 0.1
 

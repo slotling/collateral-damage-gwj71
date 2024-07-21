@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxacdto1scojh"]
+[gd_scene load_steps=4 format=3 uid="uid://dxacdto1scojh"]
 
 [ext_resource type="PackedScene" uid="uid://d3hrl4tjnukfe" path="res://Scenes/Generation/terrain.tscn" id="1_r6r10"]
 [ext_resource type="PackedScene" uid="uid://dl472ck8pk4d7" path="res://Scenes/Entities/Characters/arsonist_player.tscn" id="3_iuyp1"]
 [ext_resource type="PackedScene" uid="uid://14wcwtgp2v2v" path="res://Handlers/wave_handler.tscn" id="4_apm3v"]
-[ext_resource type="PackedScene" uid="uid://cck6w5dg3r0k6" path="res://Scenes/Environment/small_rock.tscn" id="4_rnhts"]
 
 [node name="World" type="Node2D" groups=["main"]]
 y_sort_enabled = true
@@ -14,8 +13,7 @@ wave_cooldown = 3
 [node name="Terrain" parent="." instance=ExtResource("1_r6r10")]
 z_index = -2
 size = Vector2(100, 100)
+small_rock_scarcity_chance = 100
+big_rock_scarcity_chance = 220
 
-[node name="ArsonistPlayer" parent="." instance=ExtResource("3_iuyp1")]
-
-[node name="SmallRock" parent="." instance=ExtResource("4_rnhts")]
-position = Vector2(248, 0)
+[node name="DemolitionistPlayer" parent="." instance=ExtResource("3_tncp8")]

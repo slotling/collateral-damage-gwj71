@@ -16,6 +16,9 @@ func _on_cooldown_timer_timeout():
 	monitoring = true
 
 func get_hit(str, cause, hurtbox_global_position):
+	if cause == resistant_to:
+		return
+	
 	if cooldown_timer.is_stopped():
 		set_deferred("monitoring", false)
 		cooldown_timer.start(cooldown_time)
@@ -29,6 +32,6 @@ func _on_area_entered(area):
 		
 		if area.avoid_damaging_player && parent.is_in_group("player"):
 			return
-			
+		
 		if exclusiveDamageTypeThatCanDamageThisHitbox == "" || (exclusiveDamageTypeThatCanDamageThisHitbox == area.cause):
 			get_hit(area.strength, area.cause, area.global_position)

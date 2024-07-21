@@ -1,20 +1,151 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl472ck8pk4d7"]
+[gd_scene load_steps=11 format=3 uid="uid://dl472ck8pk4d7"]
 
 [ext_resource type="PackedScene" uid="uid://d2vt5m4ks2jor" path="res://Scenes/Entities/player.tscn" id="1_ofonj"]
 [ext_resource type="Script" path="res://Handlers/AttackHandlers/CharacterAttacks/Arsonist_Attack1.gd" id="2_owpu5"]
 [ext_resource type="Texture2D" uid="uid://cd77payn6vbp" path="res://Assets/Emotions/NataschaNapalm/NataschaNapalmEmotions.png" id="2_r1t3h"]
 [ext_resource type="Script" path="res://Handlers/AttackHandlers/CharacterAttacks/Arsonist_Attack2.gd" id="3_0124p"]
+[ext_resource type="Texture2D" uid="uid://bad3morrqrlma" path="res://Resources/Atlases/arsonist_atlas.tres" id="5_08f0l"]
+
+[sub_resource type="Animation" id="Animation_l32nx"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_m53nk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_30o5e"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ge7ok"]
+resource_name = "dead"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, -1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcttf"]
+_data = {
+"RESET": SubResource("Animation_m53nk"),
+"dead": SubResource("Animation_ge7ok"),
+"idle": SubResource("Animation_30o5e"),
+"walk": SubResource("Animation_l32nx")
+}
 
 [node name="ArsonistPlayer" instance=ExtResource("1_ofonj")]
 icon_texture = ExtResource("2_r1t3h")
 
-[node name="CharacterAttack1" parent="." index="6"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("5_08f0l")
+offset = Vector2(0, -32)
+vframes = 4
+
+[node name="CharacterAttack1" parent="." index="7"]
 script = ExtResource("2_owpu5")
 
-[node name="CharacterAttack2" parent="." index="7"]
+[node name="CharacterAttack2" parent="." index="8"]
 script = ExtResource("3_0124p")
 
 [node name="CooldownTimer" parent="CharacterAttack2" index="0"]
 wait_time = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="11"]
+libraries = {
+"": SubResource("AnimationLibrary_kcttf")
+}
 
 [editable path="CharacterAttack2"]
