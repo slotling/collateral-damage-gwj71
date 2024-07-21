@@ -21,14 +21,16 @@ func soft_anim_play(anim:String) -> void:
 		anim_player.play(anim)
 
 func _on_health_handler_hit(value, cause, hurtbox_global_position) -> void:
-	if state == "dead" or state == "decaying":
+	if state == "dead":
 		return
 	
 	soft_anim_play("hit")
 	sprite_shaker.shake()
 
 func _on_health_handler_died(value, cause, hurtbox_global_position) -> void:
-	pass
+	
+	if !regeneratable:
+		queue_free()
 
 func _on_hit_box_handler_hit(strength, cause, hurtbox_global_position) -> void:
 	health_handler.affect(-abs(strength), cause, hurtbox_global_position)

@@ -12,7 +12,7 @@ func _on_health_handler_died(value, cause, hurtbox_global_position) -> void:
 	state = "dead"
 	
 	match cause:
-		"Lol hlpe me":
+		"Flamed":
 			pass
 		_:
 			var fall_vector: Vector2 = calculate_fall_to_vector(hurtbox_global_position)

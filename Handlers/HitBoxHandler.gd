@@ -4,7 +4,6 @@ signal hit(strength: int, cause: String, hurtbox_global_position: Vector2)
 signal cooldown_end()
 
 @export var immune := false
-@export var resistant_to := "Unknown"
 @export_range(0.01, 5) var cooldown_time := 0.5
 
 @onready var cooldown_timer = $CooldownTimer
