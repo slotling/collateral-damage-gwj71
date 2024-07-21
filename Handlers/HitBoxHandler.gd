@@ -6,6 +6,8 @@ signal cooldown_end()
 @export var immune := false
 @export_range(0.01, 5) var cooldown_time := 0.5
 
+@export var exclusiveDamageTypeThatCanDamageThisHitbox = ""
+
 @onready var cooldown_timer = $CooldownTimer
 
 func _on_cooldown_timer_timeout():
@@ -26,5 +28,6 @@ func _on_area_entered(area):
 		
 		if area.avoid_damaging_player && parent.is_in_group("player"):
 			return
-		
-		get_hit(area.strength, area.cause, area.global_position)
+			
+		if exclusiveDamageTypeThatCanDamageThisHitbox == "" || (exclusiveDamageTypeThatCanDamageThisHitbox == area.cause):
+			get_hit(area.strength, area.cause, area.global_position)
