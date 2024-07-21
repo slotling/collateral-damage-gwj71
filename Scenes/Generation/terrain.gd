@@ -23,12 +23,14 @@ var noise : Noise
 const tile_source = [
 	4, # water tile
 	5, # dirt tile
-	3 # grass tile
+	3, # grass tile
+	0 # no collide water
 ]
 const tile_atlas_coords = [
 	Vector2(0, 0),
 	Vector2(0, 0),
-	Vector2(3, 7)
+	Vector2(3, 7),
+	Vector2(0, 0),
 ]
 
 func _ready():
@@ -77,7 +79,11 @@ func generate():
 func generate_initial():
 	for x in range(size.x+border_width*2):
 		for y in range(size.y+border_width*2):
-			generate_tile(0, x-border_width, y-border_width)
+			generate_tile(3, x-border_width, y-border_width)
+			
+	for x in range(size.x+1):
+		for y in range(size.y+1):
+			generate_tile(0, x-1, y-1)
 
 var navigation_vertices = []
 
@@ -88,6 +94,8 @@ func generate_tile(value, x, y):
 	tilemap.set_cell(0, tilepos, tile_source[value], tile_atlas_coords[value])
 	
 	match value:
+		3: # no collide water tile
+			pass
 		0: # water tile
 			pass
 		1: # dirt tile
