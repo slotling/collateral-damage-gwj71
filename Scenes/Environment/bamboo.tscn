@@ -509,13 +509,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwjpc"]
 size = Vector2(32, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5fsq"]
-size = Vector2(32, 42)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l78k1"]
+size = Vector2(32, 64)
 
 [node name="Bamboo" instance=ExtResource("1_f4gq0")]
 y_sort_enabled = true
-collision_layer = 8
-collision_mask = 8
 script = ExtResource("2_mt40n")
 flammable = true
 regeneratable = true
@@ -560,9 +558,9 @@ shape = SubResource("RectangleShape2D_rwjpc")
 [node name="RegrowTimer" type="Timer" parent="." index="6"]
 one_shot = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7"]
-position = Vector2(0, -24)
-shape = SubResource("RectangleShape2D_u5fsq")
+[node name="CollisionShape2D" parent="." index="7"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_l78k1")
 
 [connection signal="hit" from="HitBoxHandler" to="." method="_on_hit_box_handler_hit"]
 [connection signal="timeout" from="RegrowTimer" to="." method="_on_regrow_timer_timeout"]

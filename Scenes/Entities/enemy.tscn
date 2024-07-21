@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgmyc6lbh46uf"]
+[gd_scene load_steps=15 format=3 uid="uid://bgmyc6lbh46uf"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/enemy.gd" id="1_eb3nf"]
 [ext_resource type="PackedScene" uid="uid://yso47d6pjwco" path="res://Handlers/hit_box_handler.tscn" id="2_7q284"]
 [ext_resource type="PackedScene" uid="uid://bd0rf1irac7tl" path="res://Handlers/health_handler.tscn" id="2_mm7t0"]
+[ext_resource type="Texture2D" uid="uid://b1k3mggtht0mx" path="res://icon.svg" id="2_pifbb"]
 [ext_resource type="PackedScene" uid="uid://7ua4udaksgfe" path="res://Handlers/movement_handler.tscn" id="3_od5h0"]
 [ext_resource type="PackedScene" uid="uid://bn7wfghlv05w0" path="res://Handlers/soft_collision.tscn" id="6_rl0ta"]
 [ext_resource type="PackedScene" uid="uid://0hfltfn6va1t" path="res://Handlers/AttackHandlers/enemy_attacks_group.tscn" id="7_73tpc"]
+[ext_resource type="Texture2D" uid="uid://vbxvfkbam5bj" path="res://Assets/Textures/smoke.png" id="7_qg01r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ub75"]
 radius = 32.0
@@ -17,6 +19,55 @@ size = Vector2(32, 40)
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ap06"]
 radius = 11.3137
 
+[sub_resource type="Animation" id="Animation_22w2l"]
+resource_name = "spawn"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpawnSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_m5kvu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpawnSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gr5c0"]
+_data = {
+"RESET": SubResource("Animation_m5kvu"),
+"spawn": SubResource("Animation_22w2l")
+}
+
 [node name="Enemy" type="CharacterBody2D" groups=["enemy", "enemy_and_player"]]
 collision_layer = 4
 collision_mask = 5
@@ -25,6 +76,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_eb3nf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pifbb")
 offset = Vector2(0, -16)
 
 [node name="SoftCollision" parent="." instance=ExtResource("6_rl0ta")]
@@ -58,6 +110,17 @@ max_speed = 100.0
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." groups=["enemy"]]
 
 [node name="EnemyAttacksGroup" parent="." instance=ExtResource("7_73tpc")]
+
+[node name="AnimationPlayerEnemy" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gr5c0")
+}
+
+[node name="SpawnSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+scale = Vector2(2, 2)
+texture = ExtResource("7_qg01r")
+hframes = 8
 
 [connection signal="hit" from="HitBoxHandler" to="." method="_on_hit_box_handler_hit"]
 [connection signal="timeout" from="ReactionTimeTimer" to="." method="_on_reaction_time_timer_timeout"]
