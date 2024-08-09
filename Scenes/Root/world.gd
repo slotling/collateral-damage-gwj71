@@ -54,8 +54,6 @@ func _on_music_finished():
 	
 	$Music.play()
 
-
-
 func _on_try_again_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Root/world.tscn")
 

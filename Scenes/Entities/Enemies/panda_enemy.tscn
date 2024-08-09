@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8tiawpo7kom1"]
+[gd_scene load_steps=12 format=3 uid="uid://c8tiawpo7kom1"]
 
 [ext_resource type="PackedScene" uid="uid://bgmyc6lbh46uf" path="res://Scenes/Entities/enemy.tscn" id="1_dp45x"]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemies/panda_enemy.gd" id="2_0b4od"]
 [ext_resource type="Texture2D" uid="uid://bsuivnim0eylp" path="res://Resources/Atlases/panda_atlas.tres" id="2_26ryx"]
 [ext_resource type="PackedScene" uid="uid://qo5gh36pq2cc" path="res://Handlers/AttackHandlers/enemy_attack.tscn" id="2_jrqnt"]
 [ext_resource type="Script" path="res://Handlers/AttackHandlers/EnemyAttacks/PandaEnemy_Attack1.gd" id="2_knduc"]
@@ -69,6 +70,7 @@ _data = {
 }
 
 [node name="Panda_Enemy" instance=ExtResource("1_dp45x")]
+script = ExtResource("2_0b4od")
 death_prefix = "panda_d"
 
 [node name="Sprite2D" parent="." index="0"]

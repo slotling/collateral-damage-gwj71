@@ -14,6 +14,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var pressed := Input.is_action_just_pressed("attack1") if !is_secondary_attack else Input.is_action_just_pressed("attack2")
+	
+	if get_parent().is_mobile_pressed_to_walk and Global.operating_system == "Android":
+		return
+	
+	if Global.operating_system == "Android":
+		pressed = Input.is_action_just_released("attack1") if !is_secondary_attack else Input.is_action_just_released("attack2")
+	
 	if pressed and cooldown_timer.is_stopped() and get_parent().state != "dead":
 		execute()
 		cooldown_timer.start()

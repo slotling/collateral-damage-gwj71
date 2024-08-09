@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c37pk28hj6rad"]
+[gd_scene load_steps=18 format=3 uid="uid://c37pk28hj6rad"]
 
 [ext_resource type="Script" path="res://UI/gui.gd" id="1_a0fpn"]
 [ext_resource type="Texture2D" uid="uid://dmsc4lddqmp2g" path="res://Resources/Atlases/gui_icon_atlas.tres" id="2_vd156"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://ce6nmwq1d6tdc" path="res://Resources/Atlases/gui_empty_stamina_atlas.tres" id="8_tp7gk"]
 [ext_resource type="Texture2D" uid="uid://bno2dgijcapuc" path="res://Resources/Atlases/gui_stamina_atlas.tres" id="9_wnh1g"]
 [ext_resource type="FontFile" uid="uid://bi6x30dpos4nj" path="res://Assets/Fonts/m6x11plus.ttf" id="10_u05t0"]
+[ext_resource type="Texture2D" uid="uid://cdtff8bwgh0wc" path="res://UI/Mobile/Run.png" id="11_nat4v"]
+[ext_resource type="Texture2D" uid="uid://c6asjgf3mronv" path="res://UI/Mobile/RunExec.png" id="12_vjg5a"]
+[ext_resource type="Texture2D" uid="uid://do8w01gq3fd4s" path="res://UI/Mobile/OuterSquare.png" id="13_hyy4y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p5pw0"]
 line_spacing = -0.155
@@ -23,6 +26,9 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61g2h"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kmfqx"]
+radius = 48.0
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_a0fpn")
@@ -138,3 +144,24 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_61g2h")
 max_value = 64.0
 value = 64.0
 show_percentage = false
+
+[node name="MobileUI" type="Node2D" parent="."]
+
+[node name="RunButton" type="TouchScreenButton" parent="MobileUI"]
+position = Vector2(480, 224)
+texture_normal = ExtResource("11_nat4v")
+texture_pressed = ExtResource("12_vjg5a")
+shape = SubResource("CircleShape2D_kmfqx")
+passby_press = true
+action = "run"
+
+[node name="Joystick" type="TouchScreenButton" parent="MobileUI"]
+modulate = Color(1, 1, 1, 0.423529)
+position = Vector2(32, 224)
+texture_normal = ExtResource("13_hyy4y")
+texture_pressed = ExtResource("13_hyy4y")
+shape = SubResource("CircleShape2D_kmfqx")
+passby_press = true
+
+[node name="JoystickCenter" type="Marker2D" parent="MobileUI"]
+position = Vector2(64, 256)

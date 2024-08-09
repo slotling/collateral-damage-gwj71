@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+
+
 const heh1_preload: AtlasTexture = preload("res://Resources/Atlases/gui_one_third_half_empty_hearts_atlas.tres")
 const heh2_preload: AtlasTexture = preload("res://Resources/Atlases/gui_two_thirds_half_empty_hearts_atlas.tres")
 const heh3_preload: AtlasTexture = preload("res://Resources/Atlases/gui_half_empty_heart_atlas.tres")
@@ -23,9 +25,15 @@ const emotions = {
 @onready var secondary_atk_cooldown: ProgressBar = $AttackCooldowns/SecondaryAttackCooldown
 @onready var emotion_timer: Timer = $EmotionTimer
 @onready var icon: Sprite2D = $Control/ColorRect/HBoxContainer/IconBase/Icon
+@onready var joystick: TouchScreenButton = $MobileUI/Joystick
+@onready var joystick_center: Marker2D = $MobileUI/JoystickCenter
 
 func _ready() -> void:
 	await player.ready
+	
+	if Global.operating_system != "Android":
+		$MobileUI.hide()
+	
 	player.health_handler.connect("hit", player_hit)
 
 func _physics_process(_delta) -> void:

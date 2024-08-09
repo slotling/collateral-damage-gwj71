@@ -1,17 +1,82 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv53egv0sgmhl"]
+[gd_scene load_steps=9 format=3 uid="uid://dv53egv0sgmhl"]
 
 [ext_resource type="PackedScene" uid="uid://cqbskis2pu6vb" path="res://Scenes/Entities/Projectiles/explosion.tscn" id="1_h5gjc"]
 [ext_resource type="SpriteFrames" uid="uid://b2fggnjbh07jb" path="res://Resources/SpriteFrames/FIREINTHEHOLE.tres" id="2_nf5e3"]
+[ext_resource type="PackedScene" uid="uid://cm2ssf8ce16m5" path="res://Handlers/hurt_box_handler.tscn" id="3_3jqrc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2xj8"]
 resource_local_to_scene = true
 radius = 64.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nrbr6"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_65aa8"]
+resource_name = "explode"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBoxHandler2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(8, 8), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBoxHandler2:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_3h5dm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBoxHandler2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBoxHandler2:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a2fhw"]
+_data = {
+"RESET": SubResource("Animation_3h5dm"),
+"explode": SubResource("Animation_65aa8")
+}
+
 [node name="MolotovExplosion" instance=ExtResource("1_h5gjc")]
 explosionSfxName = "molotov_i"
 
 [node name="HurtBoxHandler" parent="." index="0"]
-strength = 3
+strength = 5
 cause = "Burnt"
 
 [node name="CollisionShape2D" parent="HurtBoxHandler" index="0"]
@@ -54,3 +119,17 @@ sprite_frames = ExtResource("2_nf5e3")
 autoplay = "default"
 frame_progress = 0.846196
 offset = Vector2(0, -24)
+
+[node name="HurtBoxHandler2" parent="." index="9" instance=ExtResource("3_3jqrc")]
+scale = Vector2(1e-05, 1e-05)
+strength = 5
+cause = "Exploded"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxHandler2" index="0"]
+shape = SubResource("CircleShape2D_nrbr6")
+
+[node name="ExplosionHurtBox" type="AnimationPlayer" parent="." index="10"]
+libraries = {
+"": SubResource("AnimationLibrary_a2fhw")
+}
+autoplay = "explode"

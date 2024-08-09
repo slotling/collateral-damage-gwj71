@@ -35,6 +35,7 @@ shape = SubResource("RectangleShape2D_t45nw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SoftCollision"]
 shape = SubResource("CircleShape2D_6q348")
+debug_color = Color(0.947613, 5.0056e-06, 0.582256, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jroy1")
@@ -56,6 +57,16 @@ is_secondary_attack = true
 
 [node name="WeaponMoveSlowTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
+
+[node name="MobileControls" type="CanvasLayer" parent="."]
+
+[node name="MobileMovementDebugLine" type="Line2D" parent="MobileControls"]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 4.0
+default_color = Color(1, 0, 1, 1)
+
+[node name="PressedToWalkTimer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="state_changed" from="." to="." method="_on_state_changed"]

@@ -20,7 +20,12 @@ var data: Dictionary = { }
 var class_to_play: String = "arsonist"
 var won_the_game: bool = false
 
+var operating_system: String = "Android"
+
 func _ready() -> void:
+	
+	operating_system = OS.get_name()
+	
 	#reboot_data()
 	load_data()
 

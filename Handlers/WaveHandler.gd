@@ -16,16 +16,17 @@ var enemy_preload = [
 @export var wave_cooldown: int
 
 var wave_layout = [
-	[3, 0, 0],
-	[5, 0, 0],
-	[5, 0, 0],
-	[8, 0, 0],
-	[10, 0, 0],
-	[10, 1, 0],
-	[12, 1, 0],
+	#[3, 0, 0],
+	#[5, 0, 0],
+	#[5, 0, 0],
+	#[8, 0, 0],
+	#[10, 0, 0],
+	#[10, 1, 0],
+	#[12, 1, 0],
 	[12, 1, 0],
 	[12, 2, 0],
 	[0, 0, 1],
+	[1, 0, 0],
 ]
 
 var enemy_count: int = 0
@@ -54,7 +55,9 @@ func get_random_position():
 	return Vector2.ZERO
 
 func _process(delta):
-	pass
+	if current_wave == wave_layout.size() - 1:
+		if get_tree().get_nodes_in_group("enemy"):
+			all_waves_finished.emit()
 
 func spawn_enemy(enemy):
 	var enemy_instance = enemy.instantiate()
@@ -65,6 +68,7 @@ func spawn_enemy(enemy):
 
 func _on_wave_completed():
 	print("wave completed")
+	
 	cooldown_timer.start(wave_cooldown)
 	current_wave += 1
 
@@ -72,10 +76,10 @@ func _on_wave_cooldown_timeout():
 	if current_wave != wave_layout.size():
 		start_wave()
 		print("wave started")
-	else:
-		all_waves_finished.emit()
 
 func _on_enemy_died():
 	enemy_count -= 1
 	if enemy_count == 0:
 		wave_completed.emit()
+		
+		
